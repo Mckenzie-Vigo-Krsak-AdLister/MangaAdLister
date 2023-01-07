@@ -1,7 +1,9 @@
-import java.util.ArrayList;
+import managers.Manga;
+
+import java.io.IOException;
 
 public interface ApiHandel {
 
-   Manga getMangaContent();
+   Manga getMangaContent() throws IOException, InterruptedException;
 
 }
