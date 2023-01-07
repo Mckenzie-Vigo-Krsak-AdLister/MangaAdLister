@@ -1,3 +1,5 @@
+import dao.DaoFactory;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -5,11 +7,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-    @WebServlet(name = "GetWebServlet", urlPatterns = "/ads")
+    @WebServlet(name = "GetWebServlet", urlPatterns = "/mangas")
     public class GetWebServlet extends HttpServlet {
         protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-            response.getWriter().println("<h1>Get Web Servlet</h1>");
+            request.setAttribute("mangas", DaoFactory.getMangaDao().all());
+            request.getRequestDispatcher("/WEB-INF/index.jsp").forward(request, response);
         }
 
 
@@ -17,5 +19,5 @@ import java.io.IOException;
 
     }
 
-}
+
 
