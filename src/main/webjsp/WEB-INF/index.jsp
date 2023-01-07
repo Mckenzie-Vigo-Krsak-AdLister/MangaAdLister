@@ -8,7 +8,7 @@
 <div class="container">
     <h1>Here Are all the ads!</h1>
 
-    <c:forEach var="manga" items="${mangas}">
+    <c:forEach var="manga" items="${manga_adlister}">
         <div class="col-md-6">
             <h2>${manga.title}</h2>
             <p>${manga.description}</p>
