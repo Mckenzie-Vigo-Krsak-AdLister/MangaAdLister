@@ -3,9 +3,9 @@ USE manga_adlister;
 -- Create a bunch of mock users
 INSERT INTO users(email,password,created )
 VALUES
-    ('john@gmail.com','passwd','01-01-2023'),
-    ('aldanis@gmail.com','passwd','01-01-2023'),
-    ('alvin@gmail.com','passwd','01-01-2023');
+    ('john@gmail.com','passwd','2023-01-01'),
+    ('aldanis@gmail.com','passwd','2023-01-01'),
+    ('alvin@gmail.com','passwd','2023-01-01');
 
 
 -- Create a bunch of mock listings

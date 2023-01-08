@@ -9,6 +9,6 @@ public class Config {
 
     public static String mysqlUser = "root";
 
-    public static String mysqlPassword = "codeup";
+    public static String mysqlPassword = "passwd";
 
 }
