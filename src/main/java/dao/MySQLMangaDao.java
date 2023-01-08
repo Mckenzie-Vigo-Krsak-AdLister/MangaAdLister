@@ -52,7 +52,7 @@ public class MySQLMangaDao implements Mangas  {
     }
 
     private String createInsertQuery(Manga manga) {
-        String sql = "INSERT INTO manga_adlister.listing(id, title, image, description, price, users_id) VALUES ('?', '?', '?', '?', '?', '?')";
+        String sql = "INSERT INTO manga_adlister.listing(id, title, image, description, price, users_id) VALUES (?, ?, ?, ?, ?, ?)";
         PreparedStatement statement = null;
         try {
             statement = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
@@ -70,12 +70,12 @@ public class MySQLMangaDao implements Mangas  {
 
     private Manga extractManga(ResultSet rs) throws SQLException {
         return new Manga(
-                rs.getString("id"),
                 rs.getString("title"),
+                rs.getString("description"),
                 rs.getString("image"),
                 rs.getString("price"),
-                rs.getString("description"),
-                rs.getString("users_id")
+                rs.getLong("id"),
+                rs.getLong("users_id")
         );
     }
 
