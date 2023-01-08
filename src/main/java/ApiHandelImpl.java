@@ -21,9 +21,7 @@ public class ApiHandelImpl implements ApiHandel {
                 .build();
         HttpResponse<String> response = HttpClient.newHttpClient().send(request, HttpResponse.BodyHandlers.ofString());
         ObjectMapper mapper = new ObjectMapper();
-
         Manga manga = mapper.readValue(response.body(), Manga.class);
-
         System.out.println(manga);
 
         return manga;

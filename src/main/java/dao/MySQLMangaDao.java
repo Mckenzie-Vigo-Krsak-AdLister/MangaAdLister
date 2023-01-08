@@ -31,7 +31,7 @@ public class MySQLMangaDao implements Mangas  {
 
         try {
             statement = connection.createStatement();
-            ResultSet rs = statement.executeQuery("SELECT * FROM manga_adlister.listing");
+            ResultSet rs = statement.executeQuery("SELECT * FROM listing");
             return createMangaFromResults(rs);
         } catch (SQLException e) {
             throw new RuntimeException("Error retrieving mangas.", e);
@@ -52,7 +52,7 @@ public class MySQLMangaDao implements Mangas  {
     }
 
     private String createInsertQuery(Manga manga) {
-        String sql = "INSERT INTO manga_adlister.listing(id, title, image, description, price, users_id) VALUES (?, ?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO listing(id, title, image, description, price, users_id) VALUES (?, ?, ?, ?, ?, ?)";
         PreparedStatement statement = null;
         try {
             statement = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
