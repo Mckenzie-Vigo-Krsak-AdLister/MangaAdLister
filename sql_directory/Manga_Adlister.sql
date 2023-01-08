@@ -1,7 +1,13 @@
+-- Drop the database if it exists
 DROP DATABASE IF EXISTS manga_adlister;
+
+-- Recreate and use the database
 CREATE DATABASE manga_adlister;
 
 USE manga_adlister;
+
+
+-- Generate Required Tables
 CREATE TABLE users(
     id INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
     email TEXT NOT NULL,
