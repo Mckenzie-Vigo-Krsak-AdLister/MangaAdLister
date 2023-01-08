@@ -1,3 +1,5 @@
+package servlets;
+
 import dao.DaoFactory;
 
 import javax.servlet.ServletException;
@@ -11,12 +13,8 @@ import java.io.IOException;
     public class GetWebServlet extends HttpServlet {
         protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
             request.setAttribute("mangas", DaoFactory.getMangaDao().all());
-            request.getRequestDispatcher("/WEB-INF/index.jsp").forward(request, response);
+            request.getRequestDispatcher("index.jsp").forward(request, response);
         }
-
-
-
-
     }
 
 

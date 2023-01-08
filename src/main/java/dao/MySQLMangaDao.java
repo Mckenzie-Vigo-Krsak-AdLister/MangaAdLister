@@ -3,7 +3,7 @@ package dao;
 
 import Config.Config;
 import com.mysql.cj.jdbc.Driver;
-import managers.Manga;
+import models.Manga;
 
 import java.sql.*;
 import java.util.ArrayList;

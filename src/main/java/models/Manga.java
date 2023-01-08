@@ -1,6 +1,9 @@
-package managers;
+package models;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import java.io.Serializable;
 
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class Manga implements Serializable {
 
     private long id;
@@ -10,6 +13,7 @@ public class Manga implements Serializable {
     private String image;
     private String price;
 
+
     public Manga(String title, String description, String image, String price, long id, long userId) {
         this.title = title;
         this.description = description;
@@ -18,6 +22,8 @@ public class Manga implements Serializable {
         this.id = id;
         this.userId = userId;
     }
+
+    public Manga(){}
 
     public String getTitle() {
         return title;

@@ -1,6 +1,6 @@
 package dao;
 
-import managers.Manga;
+import models.Manga;
 
 import java.util.List;
 
