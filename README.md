@@ -12,18 +12,12 @@ they'd like and store them in their server side cart for purchase.
 ![Database Schema](docs/img/db_schema.png)
 
 ## Registration & Account Recovery Flow
-<object data="docs/img/register_flow.pdf" type="application/pdf" width="700px" height="700px">
-    <embed src="docs/img/register_flow.pdf">
-        <p>This browser does not support PDFs. Please download the PDF to view it: <a href="http://yoursite.com/the.pdf">Download PDF</a>.</p>
-    </embed>
-</object>
+![Registration Flow](docs/img/register_flow.jpg)
+<a href="docs/img/register_flow.pdf">Download PDF</a>
 
 ## Login & Account Recovery Flow
-<object data="docs/img/login_flow.pdf" type="application/pdf" width="700px" height="700px">
-    <embed src="docs/img/login_flow.pdf">
-        <p>This browser does not support PDFs. Please download the PDF to view it: <a href="http://yoursite.com/the.pdf">Download PDF</a>.</p>
-    </embed>
-</object>
+![Login Flow](docs/img/login_flow.jpg)
+<a href="docs/img/login_flow.pdf">Download PDF</a>
 
 ## Post Listing Flow
 
