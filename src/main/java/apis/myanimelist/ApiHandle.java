@@ -8,4 +8,6 @@ public interface ApiHandle {
 
    Manga[] getMangaContent(String title) throws IOException, InterruptedException;
 
+   Manga getMangaContentById(Manga myManga) throws IOException, InterruptedException;
+
 }
