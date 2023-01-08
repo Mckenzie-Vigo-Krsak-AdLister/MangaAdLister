@@ -48,3 +48,6 @@ VALUES
     );
 
 -- Create some genres
+insert into genre(genre) values('Action'),('Fighting'),('Racing'),('Adventure'),('Isaki'),('Fantasy');
+
+
