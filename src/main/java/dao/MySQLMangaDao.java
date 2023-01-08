@@ -4,22 +4,19 @@ package dao;
 import Config.Config;
 import com.mysql.cj.jdbc.Driver;
 import managers.Manga;
-
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
 public class MySQLMangaDao implements Mangas  {
     private Connection connection = null;
-
-    public MySQLMangaDao(Config config) {
-
+    public MySQLMangaDao() {
         try {
             DriverManager.registerDriver(new Driver());
             connection = DriverManager.getConnection(
-                    config.getUrl(),
-                    config.getUser(),
-                    config.getPassword()
+                    Config.jdbcConnectionString,
+                    Config.mysqlUser,
+                    Config.mysqlPassword
             );
 
         } catch (SQLException e) {

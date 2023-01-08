@@ -9,7 +9,7 @@ public class DaoFactory {
 
     public static Mangas getMangaDao() {
         if (mangasDao == null) {
-            mangasDao = new MySQLMangaDao(config);
+            mangasDao = new MySQLMangaDao();
         }
         return mangasDao;
     }

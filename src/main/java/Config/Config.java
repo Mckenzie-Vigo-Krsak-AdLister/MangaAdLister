@@ -2,14 +2,9 @@ package Config;
 
 public class Config {
 
-    public String getUrl() {
-        return "jdbc:mysql://localhost:3306/manga_adlister?allowPublicKeyRetrieval=true&useSSL=false";
-    }
-    public String getUser() {
-        return "root";
-    }
+    public static String jdbcConnectionString = "jdbc:mysql://localhost:3306/manga_adlister?allowPublicKeyRetrieval=true&useSSL=false";
 
-    public String getPassword() {
-        return "codeup";
-    }
+    public static String mysqlUser = "root";
+
+    public static String mysqlPassword = "codeup";
 }
