@@ -4,22 +4,19 @@ package dao;
 import Config.Config;
 import com.mysql.cj.jdbc.Driver;
 import models.Manga;
-
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
 public class MySQLMangaDao implements Mangas  {
     private Connection connection = null;
-
-    public MySQLMangaDao(Config config) {
-
+    public MySQLMangaDao() {
         try {
             DriverManager.registerDriver(new Driver());
             connection = DriverManager.getConnection(
-                    config.getUrl(),
-                    config.getUser(),
-                    config.getPassword()
+                    Config.jdbcConnectionString,
+                    Config.mysqlUser,
+                    Config.mysqlPassword
             );
 
         } catch (SQLException e) {
@@ -34,7 +31,7 @@ public class MySQLMangaDao implements Mangas  {
 
         try {
             statement = connection.createStatement();
-            ResultSet rs = statement.executeQuery("SELECT * FROM manga_adlister.listing");
+            ResultSet rs = statement.executeQuery("SELECT * FROM listing");
             return createMangaFromResults(rs);
         } catch (SQLException e) {
             throw new RuntimeException("Error retrieving mangas.", e);
@@ -55,7 +52,7 @@ public class MySQLMangaDao implements Mangas  {
     }
 
     private String createInsertQuery(Manga manga) {
-        String sql = "INSERT INTO manga_adlister.listing(id, title, image, description, price, users_id) VALUES (?, ?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO listing(id, title, image, description, price, users_id) VALUES (?, ?, ?, ?, ?, ?)";
         PreparedStatement statement = null;
         try {
             statement = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
