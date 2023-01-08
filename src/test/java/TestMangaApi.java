@@ -30,4 +30,10 @@ public class TestMangaApi {
         Assert.assertEquals("The story takes place in the distant future and focuses on a boy named Yuma Tsukumo, the number one bad boy at his school. Something unexpected happens when Ryouga challenges him to a Duel as the mysterious ghost of Astral appears before them, a new legend begins.", myManga.getSynopsis());
         Assert.assertEquals("https://cdn.myanimelist.net/images/manga/1/178242.jpg", myManga.getPicture_url());
     }
+
+    @Test
+    public void testTopFifty() throws IOException, InterruptedException{
+        Manga manga = api.topFifty()[6];
+        Assert.assertEquals("Slam Dunk", manga.getTitle());
+    }
 }
