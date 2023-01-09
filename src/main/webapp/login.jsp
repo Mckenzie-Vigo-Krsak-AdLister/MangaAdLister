@@ -33,7 +33,7 @@
           <button class="btn btn-outline-success me-3">Register</button>
           <button class="btn btn-outline-success">Login</button>
         </p>
-        <p>
+        <p style="align-content: center ">
           <a href="/recover">
             Recover
           </a>
