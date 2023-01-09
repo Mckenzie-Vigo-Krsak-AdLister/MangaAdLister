@@ -31,7 +31,7 @@ public class Manga implements Serializable {
     private String title;
     private String description;
     private String image;
-    private String price;
+    private Double price;
 
     public int getMyanimelist_id() {
         return myanimelist_id;
@@ -43,7 +43,7 @@ public class Manga implements Serializable {
 
     private int myanimelist_id;
 
-    public Manga(String title, String description, String image, String price, long id, long userId) {
+    public Manga(String title, String description, String image, Double price, long id, long userId) {
         this.title = title;
         this.description = description;
         this.image = image;
@@ -58,7 +58,7 @@ public class Manga implements Serializable {
         return title;
     }
 
-    public String getPrice() {
+    public Double getPrice() {
         return price;
     }
 
@@ -70,12 +70,12 @@ public class Manga implements Serializable {
         return image;
     }
 
-    public String getId() {
-        return String.valueOf(id);
+    public long getId() {
+        return id;
     }
 
-    public String getUserId() {
-        return String.valueOf(userId);
+    public long getUserId() {
+        return userId;
     }
 
 }

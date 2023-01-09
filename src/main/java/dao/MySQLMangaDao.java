@@ -56,12 +56,12 @@ public class MySQLMangaDao implements Mangas  {
         PreparedStatement statement = null;
         try {
             statement = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
-            statement.setString(1, manga.getId());
+            statement.setLong(1, manga.getId());
             statement.setString(2, manga.getTitle());
             statement.setString(3, manga.getImage());
-            statement.setString(4, manga.getPrice());
+            statement.setDouble(4, manga.getPrice());
             statement.setString(5, manga.getDescription());
-            statement.setString(6, manga.getUserId());
+            statement.setLong(6, manga.getUserId());
             return statement.toString();
         } catch (SQLException e) {
             throw new RuntimeException("Error creating a new manga.", e);
@@ -73,7 +73,7 @@ public class MySQLMangaDao implements Mangas  {
                 rs.getString("title"),
                 rs.getString("description"),
                 rs.getString("image"),
-                rs.getString("price"),
+                rs.getDouble("price"),
                 rs.getLong("id"),
                 rs.getLong("users_id")
         );

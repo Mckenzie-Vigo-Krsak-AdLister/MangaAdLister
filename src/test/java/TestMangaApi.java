@@ -1,11 +1,15 @@
 import apis.myanimelist.ApiHandle;
 import apis.myanimelist.ApiHandleImpl;
+import dao.ListingsDao;
+import dao.ListingsDaoImpl;
+import models.Listing;
 import models.Manga;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
 import java.io.IOException;
+import java.sql.SQLException;
 import java.sql.Time;
 import java.time.Instant;
 import java.util.Arrays;
@@ -16,9 +20,12 @@ public class TestMangaApi {
 
     private static ApiHandle api;
 
+    private ListingsDao listingsDao;
+
     @Before
     public void init(){
         this.api = new ApiHandleImpl();
+        this.listingsDao = new ListingsDaoImpl();
     }
 
 
@@ -67,5 +74,23 @@ public class TestMangaApi {
 
         //Check that the API call doesn't take too long to retrieve all 50 images.
         Assert.assertEquals(true, maxReasonableSeconds > secs);
+
     }
+
+    @Test
+    public void testCreateListing() throws SQLException {
+
+        Listing fakeListing = new Listing("Test", "testDescription", "testImg", 9.99, 10, 1);
+
+        boolean created = this.listingsDao.createListing(fakeListing);
+
+        Assert.assertEquals(true, created);
+
+        Listing expectedListing = this.listingsDao.getListingById(10);
+
+//        Assert.assertEquals(fakeListing.getDescription(), expectedListing.getDescription());
+        Assert.assertEquals(true, expectedListing != null);
+
+    }
+
 }
