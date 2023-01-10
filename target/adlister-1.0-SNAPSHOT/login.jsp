@@ -9,11 +9,12 @@
 <head>
     <title>MangaLister - Login</title>
     <jsp:include page="partials/header.jsp" />
+  <link href="/css/login.css" rel="stylesheet" type="text/css">
 </head>
 <body>
   <jsp:include page="partials/navbar.jsp" />
-  <div class="container d-flex justify-content-center align-items-center h-75 w-100">
-    <div class="card p-5">
+  <div class="container d-flex justify-content-center align-items-center w-100">
+    <div class="card p-5" id="logCard">
       <form action="/login" method="POST">
         <p>
           <label for="email">
@@ -33,7 +34,7 @@
           <button class="btn btn-outline-success me-3">Register</button>
           <button class="btn btn-outline-success">Login</button>
         </p>
-        <p>
+        <p style="align-content: center ">
           <a href="/recover">
             Recover
           </a>
