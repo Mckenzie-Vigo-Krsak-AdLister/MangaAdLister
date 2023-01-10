@@ -7,7 +7,7 @@
 package models;
 
 import java.io.Serializable;
-import java.sql.Date;
+import java.util.Date;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
@@ -17,11 +17,21 @@ public class User implements Serializable {
     private String password;
     private Date created;
 
-    public User(int id, String email, String password, Date created){
+    private String roles;
+
+    public User(int id, String email, String password, Date created,String roles){
         this.id = id;
         this.email = email;
         this.password = password;
         this.created = created;
+        this.roles = roles;
+    }
+
+    public User(String email, String password, Date created, String roles){
+        this.email = email;
+        this.password = password;
+        this.created = created;
+        this.roles = roles;
     }
 
     public User(){
@@ -58,6 +68,12 @@ public class User implements Serializable {
 
     public void setCreated(Date created) {
         this.created = created;
+    }
+
+    public String getRoles() { return roles; }
+
+    public void setRoles(String roles){
+        this.roles = roles;
     }
 
     public static User userFromResultSet(ResultSet rs) throws SQLException {

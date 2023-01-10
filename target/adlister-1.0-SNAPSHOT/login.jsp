@@ -17,6 +17,10 @@
     <div class="card p-5" id="logCard">
       <form action="/login" method="POST">
         <p>
+          <em></em>
+        </p>
+
+        <p>
           <label for="email">
             Email
             <input class="form-control" type="text" placeholder="Email" id="email" name="email"/>
@@ -31,15 +35,21 @@
         </p>
 
         <p class="d-flex justify-content-center">
-          <button class="btn btn-outline-success me-3">Register</button>
           <button class="btn btn-outline-success">Login</button>
         </p>
+<<<<<<< Updated upstream
         <p style="align-content: center ">
+=======
+      </form>
+      <div class="container d-flex justify-content-center">
+        <a href="/register"><button class="btn btn-outline-success me-3">Register</button></a>
+        <p>
+>>>>>>> Stashed changes
           <a href="/recover">
             Recover
           </a>
         </p>
-      </form>
+      </div>
     </div>
   </div>
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>

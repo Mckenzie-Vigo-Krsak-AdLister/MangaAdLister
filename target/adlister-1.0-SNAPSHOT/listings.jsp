@@ -32,8 +32,8 @@
                 <c:forEach var="manga" items="${mangas}">
                     <div class="col-6 col-md-4 col-lg-3">
                         <h2>${manga.title}</h2>
-                        <p>${manga.description}</p>
                         <a href="/listing?id=${manga.id}"><img src="${manga.image}" alt="${manga.title}" class="img-fluid img-thumbnail"></a>
+                        <p>${manga.description}</p>
                     </div>
                 </c:forEach>
             </div>

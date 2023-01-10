@@ -64,15 +64,12 @@
             </p>
 
             <p class="d-flex justify-content-center">
-
-                <button class="me-2 btn btn-outline-success">Back to Login</button>
                 <button class="btn btn-outline-success me-3">Register</button>
-
-            </p>
-            <p>
-
             </p>
         </form>
+        <p>
+            <a href="/login"><button class="me-2 btn btn-outline-success">Back to Login</button></a>
+        </p>
     </div>
 </div>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
