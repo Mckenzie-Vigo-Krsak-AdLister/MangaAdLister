@@ -10,8 +10,8 @@
 <head>
     <title>MangaLister - Register</title>
     <jsp:include page="partials/header.jsp" />
-    <link href="/css/register.css" rel="stylesheet" type="text/css">
-    <script src="Js/register.js"></script>
+    <link href="./css/register.css" rel="stylesheet" type="text/css">
+    <script src="./Js/register.js"></script>
 </head>
 <body>
 <jsp:include page="partials/navbar.jsp" />

@@ -59,6 +59,7 @@ CREATE TABLE cart_item(
 );
 
 CREATE TABLE messages(
+    id INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
     message TEXT NOT NULL,
     time_stamp datetime,
     from_id INT UNSIGNED NOT NULL,
