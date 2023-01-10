@@ -11,7 +11,7 @@ public class MessagesDaoImpl implements MessagesDao {
 
     private Connection connection = null;
 
-    private MessagesDaoImpl() {
+    public MessagesDaoImpl() {
         try {
             DriverManager.registerDriver(new Driver());
             connection = DriverManager.getConnection(Config.jdbcConnectionString, Config.mysqlUser, Config.mysqlPassword);

@@ -1,10 +1,10 @@
-var form = $(".talking-form");
-var inputPara = $(".talking-para");
-var bubble = $(".bubble-effect");
-var chatBox = $(".chat-box");
-var newPara;
-var text;
-var pos, top, left, width, height;
+let form = $(".talking-form");
+let inputPara = $(".talking-para");
+let bubble = $(".bubble-effect");
+let chatBox = $(".chat-box");
+let newPara;
+let text;
+let pos, top, left, width, height;
 
 $(".talking-btn").click(function (event) {
     event.preventDefault();
