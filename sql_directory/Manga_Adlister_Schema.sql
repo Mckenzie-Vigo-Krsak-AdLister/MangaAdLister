@@ -56,6 +56,8 @@ CREATE TABLE cart_item(
 );
 
 CREATE TABLE messages(
+    message TEXT NOT NULL,
+    time_stamp datetime,
     from_id INT UNSIGNED NOT NULL,
     to_id INT UNSIGNED NOT NULL,
     FOREIGN KEY (from_id) REFERENCES users(id),
