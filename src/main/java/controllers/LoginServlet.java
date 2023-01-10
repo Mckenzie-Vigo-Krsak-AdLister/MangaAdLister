@@ -1,7 +1,9 @@
 package controllers;
 
+import dao.DaoFactory;
 import dao.UsersDao;
 import dao.UsersDaoImpl;
+import models.Cart;
 import models.User;
 import org.mindrot.jbcrypt.BCrypt;
 
@@ -63,6 +65,12 @@ public class LoginServlet extends HttpServlet {
                     request.getSession().setAttribute("loggedIn", true);
                     request.getSession().setAttribute("loggedInUser",matchingUser);
 
+                    //Pull the latest cart
+                    Cart latestCart = DaoFactory.getCartDao().getLatestCartForUser(matchingUser);
+
+                    //Save the latest cart in a session variable
+                    request.getSession().setAttribute("cart",latestCart);
+
                     //Use the request dispatcher to send the user to the listings page
                     //                request.getRequestDispatcher("/listings").forward(request,response);
                     response.sendRedirect("/listings");
@@ -73,7 +81,6 @@ public class LoginServlet extends HttpServlet {
             }else{
                 response.sendRedirect("/login?error=notfound");
             }
-
         } catch (SQLException e){
             try {
                 throw e;

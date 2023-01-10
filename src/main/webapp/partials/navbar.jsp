@@ -1,4 +1,4 @@
-<%--
+<%@ page import="models.User" %><%--
   Created by IntelliJ IDEA.
   User: aldanisvigo
   Date: 1/8/23
@@ -7,6 +7,9 @@
 --%>
 
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<% Boolean loggedIn = (Boolean) request.getSession().getAttribute("loggedIn"); %>
+<% User loggedInUser = (User) request.getSession().getAttribute("loggedInUser"); %>
+
 <nav class="navbar bg-body-tertiary">
     <div class="container-fluid">
         <a class="navbar-brand col-2">Manga Lister</a>
@@ -20,5 +23,7 @@
         <a href="/login" style="display:${!loggedIn ? "block" : "none"};">
             <button class="btn btn-outline-success">Login</button>
         </a>
+        ${loggedInUser.getFirstName().toString()}
     </div>
+    <script src="js/cartsystem.js" defer></script>
 </nav>
