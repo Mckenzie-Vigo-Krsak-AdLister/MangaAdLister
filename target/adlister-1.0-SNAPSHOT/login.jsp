@@ -10,6 +10,7 @@
     <title>MangaLister - Login</title>
     <jsp:include page="partials/header.jsp" />
   <link href="/css/login.css" rel="stylesheet" type="text/css">
+  <script src="/js/login.js"></script>
 </head>
 <body>
   <jsp:include page="partials/navbar.jsp" />
@@ -37,14 +38,10 @@
         <p class="d-flex justify-content-center">
           <button class="btn btn-outline-success">Login</button>
         </p>
-<<<<<<< Updated upstream
-        <p style="align-content: center ">
-=======
       </form>
       <div class="container d-flex justify-content-center">
         <a href="/register"><button class="btn btn-outline-success me-3">Register</button></a>
         <p>
->>>>>>> Stashed changes
           <a href="/recover">
             Recover
           </a>

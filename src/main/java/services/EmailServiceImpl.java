@@ -16,30 +16,34 @@ import java.io.File;
 public class EmailServiceImpl implements EmailService {
 
     @Override
-    public void sendEmail(User user, String message, String subject, String html) {
-        File propertiesFile = new File("../../../../simplemail.properties");
-        ConfigLoader.loadProperties(propertiesFile,false); // optional default
-        Email email = EmailBuilder.startingBlank()
-                .to("Dear Client", user.getEmail())
-                .withReplyTo("Manga Adlister Codeup Group", "mangaadlistercodeup@gmail.com")
-                .withSubject(subject)
-                .withHTMLText(html)
-                .withHeader("X-Priority", 5)
-                .buildEmail();
+    public boolean sendEmail(User user, String subject, String html) {
+        try {
+            Email email = EmailBuilder.startingBlank()
+                    .from("Manga Adlister Codeup", "no-reply@mangaadlistercodeup.com")
+                    .to("Dear Mangalister", user.getEmail())
+                    .withSubject(subject)
+                    .withHTMLText(html)
+                    .buildEmail();
 
-        Mailer mailer = MailerBuilder
-                .withSMTPServer(Config.smtpHost, Config.smtpPort, Config.smtpUsername, Config.smtpPassword)
-                .withTransportStrategy(TransportStrategy.SMTP_TLS)
-                .withSessionTimeout(10 * 1000)
-                .clearEmailValidator() // turns off email validation
-                .withEmailValidator( // or not
-                        JMail.strictValidator()
-                                .requireOnlyTopLevelDomains(TopLevelDomain.DOT_COM)
-                                .withRule(em -> em.localPart().startsWith("allowed")))
-                .withDebugLogging(true)
-                .async()
-                .buildMailer();
+            Mailer mailer = MailerBuilder
+                    .withSMTPServer(Config.smtpHost, Config.smtpPort, Config.smtpUsername, Config.smtpPassword)
+                    //                .withTransportStrategy(TransportStrategy.SMTP_TLS)
+                    .withSessionTimeout(10 * 1000)
+                    .withEmailValidator( // or not
+                            JMail.strictValidator()
+                                    .requireOnlyTopLevelDomains(TopLevelDomain.DOT_COM)
+                    )
+                    .withDebugLogging(true)
+                    .async()
+                    .buildMailer();
 
-        mailer.sendMail(email);
+            mailer.sendMail(email);
+
+            return true;
+        }catch(Exception e){
+            System.out.println("Error while sending email.");
+            System.out.println(e.getMessage());
+            return false;
+        }
     }
 }

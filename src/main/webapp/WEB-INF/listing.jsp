@@ -18,6 +18,7 @@
 <head>
     <title>Manga Listings</title>
     <jsp:include page="/partials/header.jsp" />
+    <script src="Js/listing.js"></script>
 </head>
 <body>
 <jsp:include page="/partials/navbar.jsp" />
@@ -38,13 +39,12 @@
     </div>
     <h1 class="mt-4">Here is the ad!</h1>
     <div class="container-fluid row">
-
-            <div class="col-6 col-md-4 col-lg-3">
-                <h2>${listing.title}</h2>
-                <img src="${listing.image}" class="img-fluid img-thumbnail">
-                <p>${listing.description}</p>
-            </div>
-
+        <div class="col-6 col-md-4 col-lg-3">
+            <h2>${listing.title}</h2>
+            <img src="${listing.image}" class="img-fluid img-thumbnail">
+            <p>${listing.description}</p>
+            <button id="sendSellerMessage">Message Seller</button>
+        </div>
     </div>
 </div>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>

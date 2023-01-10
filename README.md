@@ -37,4 +37,18 @@ fill in their auth details
 
 ## Purchase Flow
 
+## Mocked SMTP Email Server
+
+In order to reduce costs during development smtp4dev was used. 
+the configuration at Config/Config.java is set to use smtp4dev running from a
+docker container.
+
+To install docker go to https://docs.docker.com/desktop/install/mac-install/
+
+Once docker is started, you can launch smtp4dev using the following command.
+
+`docker run -p 3000:80 -p 2525:25 -d --name smtpdev rnwood/smtp4dev`
+
+To view the outgoing mocked emails visit [Here]('http://localhost:3000') after launching the docker container using the command above.
+
 

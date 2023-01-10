@@ -17,8 +17,8 @@
         <form style="display:${loggedIn ? "block" : "none"};" action="/logout" method="post">
             <button>Logout</button>
         </form>
-        <a href="/login" style="display:${loggedIn ? "block" : "none"};">
-            <button class="btn btn-outline-success mt-3"></button>
+        <a href="/login" style="display:${!loggedIn ? "block" : "none"};">
+            <button class="btn btn-outline-success">Login</button>
         </a>
     </div>
 </nav>

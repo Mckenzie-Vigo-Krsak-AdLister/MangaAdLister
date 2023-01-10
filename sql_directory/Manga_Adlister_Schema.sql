@@ -60,4 +60,11 @@ CREATE TABLE messages(
     FOREIGN KEY (to_id) REFERENCES users(id)
 );
 
+CREATE TABLE recovery(
+    id INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    code TEXT,
+    userid INT UNSIGNED NOT NULL,
+    FOREIGN KEY (userid) REFERENCES users(id)
+)
+
  

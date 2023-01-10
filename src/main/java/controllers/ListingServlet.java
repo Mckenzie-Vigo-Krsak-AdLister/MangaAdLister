@@ -16,13 +16,23 @@ public class ListingServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         try {
-//            long id = (long) req.getAttribute("id");
             long id = Long.parseLong(req.getParameter("id"));
             Listing l = DaoFactory.getListingsDao().getListingById(id);
-            System.out.println(l.getDescription());
-            req.setAttribute("listing", l);
 
-            req.getRequestDispatcher("/WEB-INF/listing.jsp").forward(req,resp);
+            //Check if the user is logged in
+            try {
+                boolean loggedIn = (boolean) req.getSession().getAttribute("loggedIn");
+
+                //If they are send them to the listing protected route
+                if (loggedIn) {
+                    req.setAttribute("listing", l);
+                    req.getRequestDispatcher("/WEB-INF/listing.jsp").forward(req, resp);
+                } else { //Otherwise redirect them to the login page.
+                    resp.sendRedirect("/login");
+                }
+            }catch(NullPointerException e){ //If there's not even an attribute set in the session for loggedIn
+                resp.sendRedirect("/login"); //Send them to the login page, because the session is null
+            }
         }
         catch (Exception e ){
             try {

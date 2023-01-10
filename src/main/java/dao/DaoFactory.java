@@ -2,10 +2,14 @@ package dao;
 
 import Config.Config;
 
+import java.sql.SQLException;
+
 public class DaoFactory {
     private static Mangas mangasDao;
     private static UsersDao usersDao;
     private static ListingsDao listingsDao;
+
+    private static RecoveryDao recoveryDao;
 
     public static Mangas getMangaDao() {
         if (mangasDao == null) {
@@ -26,6 +30,13 @@ public class DaoFactory {
             listingsDao = new ListingsDaoImpl();
         }
         return listingsDao;
+    }
+
+    public static RecoveryDao getRecoveryDao() throws SQLException {
+        if(recoveryDao == null){
+            recoveryDao = new RecoveryDaoImpl();
+        }
+        return recoveryDao;
     }
 
 }

@@ -74,4 +74,26 @@ public class UsersDaoImpl implements UsersDao {
             throw e;
         }
     }
+
+    @Override
+    public boolean updateUserPassword(int id, String newpassword) {
+        try{
+            //Hash the new password using BCrypt
+            String hashedPass = BCrypt.hashpw(newpassword,BCrypt.gensalt());
+
+            //Create a prepared statement to update the password for the user with the given id
+            PreparedStatement stmt = connection.prepareStatement("UPDATE users SET password = ? WHERE id = ?;");
+            stmt.setString(1,hashedPass);
+            stmt.setInt(2,id);
+
+            //If we have more at least one row updated
+            if(stmt.executeUpdate() > 0){
+                return true;
+            }else{
+                return false;
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
 }

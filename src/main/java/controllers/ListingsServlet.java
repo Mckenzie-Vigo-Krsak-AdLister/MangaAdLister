@@ -15,6 +15,11 @@ public class ListingsServlet extends HttpServlet {
         request.setAttribute("mangas", DaoFactory.getMangaDao().all());
         request.getRequestDispatcher("listings.jsp").forward(request, response);
     }
+
+    protected void doPost(HttpServletRequest request,HttpServletResponse response) throws ServletException, IOException {
+//        boolean loggedIn = (boolean) request.getSession().getAttribute("loggedIn");
+//        if(loggedIn)
+    }
 }
 
 

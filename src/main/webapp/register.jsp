@@ -35,7 +35,7 @@
             <p>
                 <label for="confirm">
                     Confirm Password
-                    <input class="form-control" type="confirm" placeholder="Confirm" id="confirm" name="confirm"/>
+                    <input class="form-control" type="password" placeholder="Confirm" id="confirm" name="confirm"/>
                 </label>
             </p>
 

@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.net.URLEncoder;
 import java.sql.SQLException;
 
 @WebServlet(name="Login", urlPatterns = "/login")
@@ -18,9 +19,18 @@ public class LoginServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         try {
-            request.getRequestDispatcher("/login.jsp").forward(request, response);
-        }catch(Exception e){
-            throw e;
+            if(request.getSession().getAttribute("loggedIn") != null) {
+                Boolean loggedIn = Boolean.getBoolean(request.getSession().getAttribute("loggedIn").toString());
+                if (loggedIn) {
+                    request.getRequestDispatcher("/WEB-INF/listings.jsp").forward(request, response);
+                } else {
+                    request.getRequestDispatcher("/login.jsp").forward(request, response);
+                }
+            }else{
+                request.getRequestDispatcher("/login.jsp").forward(request,response);
+            }
+        }catch(Exception e){  //Session is null
+           throw e;
         }
     }
 
@@ -40,29 +50,30 @@ public class LoginServlet extends HttpServlet {
             UsersDao usersDao = new UsersDaoImpl();
             User matchingUser = usersDao.getUserByEmail(email);
 
-            //Get the matching user's password
-            String userPass = matchingUser.getPassword();
+            if(matchingUser != null) {
+                //Get the matching user's password
+                String userPass = matchingUser.getPassword();
 
-            //Use an instance of BCrypt to check if the passwords match up
-            Boolean checksout = BCrypt.checkpw(password,userPass);
+                //Use an instance of BCrypt to check if the passwords match up
+                Boolean checksout = BCrypt.checkpw(password, userPass);
 
-            //If it checks out
-            if(checksout){
-                //Save the loggedIn attribute into the request's session
-                request.getSession().setAttribute("loggedIn",true);
+                //If it checks out
+                if (checksout) {
+                    //Save the loggedIn attribute into the request's session
+                    request.getSession().setAttribute("loggedIn", true);
 
-                //Use the request dispatcher to send the user to the listings page
-                request.getRequestDispatcher("/listings").forward(request,response);
+                    //Use the request dispatcher to send the user to the listings page
+                    //                request.getRequestDispatcher("/listings").forward(request,response);
+                    response.sendRedirect("/listings");
+                } else {
+                    //send the user back to the login page
+                    response.sendRedirect("/login?error=authfailed");
+                }
             }else{
-                //Set the request parameter for error with a message letting the
-                //user know that there was an error authenticating their input
-                request.setAttribute("error","There was an error authenticating you. Please try again.");
-
-                //send the user back to the login page
-                response.sendRedirect("/login");
+                response.sendRedirect("/login?error=notfound");
             }
 
-        } catch (SQLException | ServletException e){
+        } catch (SQLException e){
             try {
                 throw e;
             } catch (SQLException ex) {

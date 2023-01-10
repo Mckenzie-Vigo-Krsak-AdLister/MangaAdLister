@@ -18,7 +18,16 @@ public class RegisterServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         try {
-            request.getRequestDispatcher("/register.jsp").forward(request, response);
+            if(request.getSession().getAttribute("loggedIn") != null) {
+                Boolean loggedIn = Boolean.getBoolean(request.getSession().getAttribute("loggedIn").toString());
+                if (loggedIn) {
+                    request.getRequestDispatcher("/WEB-INF/listings.jsp").forward(request, response);
+                } else {
+                    request.getRequestDispatcher("/register.jsp").forward(request, response);
+                }
+            }else{
+                request.getRequestDispatcher("/register.jsp").forward(request,response);
+            }
         } catch (Exception e) {
             throw e;
         }
@@ -73,7 +82,8 @@ public class RegisterServlet extends HttpServlet {
 
                     request.getSession().setAttribute("loggedIn", true);
                     request.getSession().setAttribute("uid", newUserId);
-                    request.getRequestDispatcher("/WEB-INF/listings").forward(request, response);
+//                    request.getRequestDispatcher("/listings.jsp").forward(request, response);
+                    response.sendRedirect("/listings");
                 }else{
                     request.getSession().invalidate();
                     response.sendRedirect("/register?error=accountexists");
