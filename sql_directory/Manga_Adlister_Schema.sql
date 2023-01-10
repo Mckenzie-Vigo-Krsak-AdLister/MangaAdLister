@@ -12,7 +12,8 @@ CREATE TABLE users(
     id INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
     email TEXT NOT NULL,
     password TEXT NOT NULL,
-    created DATETIME
+    created DATETIME,
+    roles TEXT
 );
 
 CREATE TABLE genre(

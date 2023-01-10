@@ -1,11 +1,11 @@
 USE manga_adlister;
 
 -- Create a bunch of mock users
-INSERT INTO users(email,password,created )
+INSERT INTO users(email,password,created,roles)
 VALUES
-    ('john@gmail.com','passwd','2023-01-01'),
-    ('aldanis@gmail.com','passwd','2023-01-01'),
-    ('alvin@gmail.com','passwd','2023-01-01');
+    ('john@gmail.com','passwd','2023-01-01','ADMIN|USER'),
+    ('aldanis@gmail.com','passwd','2023-01-01','USER'),
+    ('alvin@gmail.com','passwd','2023-01-01','USER');
 
 
 -- Create a bunch of mock listings
