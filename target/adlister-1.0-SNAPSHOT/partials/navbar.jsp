@@ -15,7 +15,7 @@
             <button class="btn btn-outline-success mt-3" type="submit">Search</button>
         </form>
         <form style="display:${loggedIn ? "block" : "none"};" action="/logout" method="post">
-            <button>Logout</button>
+            <button class="btn btn-outline-danger">Logout</button>
         </form>
         <a href="/login" style="display:${!loggedIn ? "block" : "none"};">
             <button class="btn btn-outline-success">Login</button>

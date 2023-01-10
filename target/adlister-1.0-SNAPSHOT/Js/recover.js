@@ -73,8 +73,8 @@
         const pass_conf = document.createElement('input')
         pass_conf.type = 'password'
         pass_conf.placeholder = "New Password Confirmation"
-        pass_conf.id = "password_conf"
-        pass_conf.name = "password_conf"
+        pass_conf.id = "password_confirmation"
+        pass_conf.name = "password_confirmation"
 
         //Append the password conf input to the password conf label
         passConfLabel.appendChild(pass_conf)
@@ -91,13 +91,29 @@
         //Create a submit button paragraph and append the submit button to it
         const submitBtnParagraph = document.createElement('p')
         submitBtnParagraph.append(submitBtn)
-        submitBtn.onclick = (e) => {
+        submitBtn.onclick = async (e) => {
             e.preventDefault(); //Don't submit the form right away
 
             //Instead do a validation check on the input and make sure the passwords match
             if(pass.value === pass_conf.value){
-                //Submit the form with a fetch request
-                console.log("Submitting the form now.")
+                // const data = new FormData();
+                // data.set("password",pass.value);
+                // data.set("password_confirmation",pass_conf.value);
+                //
+                // //Submit the form with a fetch request
+                // const request = await fetch("http://localhost:8080/resetpassword",{
+                //     method : "POST",
+                //     headers : {
+                //       "Content-Type" : "application/x-www-form-urlencoded"
+                //     },
+                //     body : JSON.stringify(data)
+                // })
+                //
+                // //Await the response from the server
+                // const request_json = await request.json()
+                // console.log("Received response from server:")
+                // console.log(request_json);
+                form.submit()
             }else{
                 alert("Your passwords do not match, please check them and try again.");
             }
@@ -105,6 +121,8 @@
 
         //Create a hidden nonce field
         const nonceField = document.createElement('input')
+        nonceField.name = "nonce"
+        nonceField.id = "nonce"
         nonceField.type = 'hidden'
         nonceField.value = nonce
 

@@ -61,6 +61,7 @@ public class LoginServlet extends HttpServlet {
                 if (checksout) {
                     //Save the loggedIn attribute into the request's session
                     request.getSession().setAttribute("loggedIn", true);
+                    request.getSession().setAttribute("loggedInUser",matchingUser);
 
                     //Use the request dispatcher to send the user to the listings page
                     //                request.getRequestDispatcher("/listings").forward(request,response);

@@ -77,7 +77,7 @@ public class RegisterServlet extends HttpServlet {
                         System.out.println("Fishy activity detected in the Registration department. Please check logs for baffonery.");
                     }
 
-                    User newUser = new User(email, password, now, roles);
+                    User newUser = new User(email, password,name,lastName, now, roles);
                     long newUserId = DaoFactory.getUsersDao().addUser(newUser);
 
                     request.getSession().setAttribute("loggedIn", true);

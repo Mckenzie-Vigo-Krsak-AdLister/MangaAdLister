@@ -9,16 +9,18 @@
 <%@ page import="models.Manga" %>
 <%@ page import="java.util.List" %>
 <%@ page import="models.Listing" %>
+<%@ page import="models.User" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%--<jsp:useBean id="listing" scope="request" type="models.Listing"/>--%>
 <% Listing listing = (Listing) request.getAttribute("listing"); %>
+<% User loggedInUser = (User) request.getSession().getAttribute("loggedInUser"); %>
 
 <html>
 <head>
     <title>Manga Listings</title>
     <jsp:include page="/partials/header.jsp" />
-    <script src="Js/listing.js"></script>
+    <script src="/js/listing.js"></script>
 </head>
 <body>
 <jsp:include page="/partials/navbar.jsp" />
@@ -37,7 +39,7 @@
             <button id="searchButton" class="btn btn-primary">Search</button>
         </div>
     </div>
-    <h1 class="mt-4">Here is the ad!</h1>
+    <h1 class="mt-4">Hey ${loggedInUser.getFirstName()}!, here's the manga you asked for!</h1>
     <div class="container-fluid row">
         <div class="col-6 col-md-4 col-lg-3">
             <h2>${listing.title}</h2>

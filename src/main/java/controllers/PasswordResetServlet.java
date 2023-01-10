@@ -20,6 +20,11 @@ public class PasswordResetServlet extends HttpServlet {
             String password_confirmation = req.getParameter("password_confirmation");
             String nonce = req.getParameter("nonce");
 
+            System.out.println("Received request to change password");
+            System.out.println("Password:" + password);
+            System.out.println("Password Confirmation: " + password_confirmation);
+            System.out.println("Nonce: " + nonce);
+
             //Server side validation check
             if(password.equals(password_confirmation) && nonce != null){
                 //If the passwords match and there's a nonce available
@@ -29,9 +34,9 @@ public class PasswordResetServlet extends HttpServlet {
 
                 //Change the user's password to the new password
                 if(DaoFactory.getUsersDao().updateUserPassword(uid,password)){
-
+                    res.sendRedirect("/recover?complete=true");
                 }else{
-
+                    res.sendRedirect("/recover?error=errupdatingpassword");
                 }
             }else{ //Send them back
                 res.sendRedirect("/recover?return=true&nonce=" + nonce);

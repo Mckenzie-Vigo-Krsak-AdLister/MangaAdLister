@@ -15,23 +15,31 @@ public class User implements Serializable {
     private int id;
     private String email;
     private String password;
+
+    private String first_name;
+
+    private String last_name;
     private Date created;
 
     private String roles;
 
-    public User(int id, String email, String password, Date created,String roles){
+    public User(int id, String email, String password,String firstName,String lastName, Date created,String roles){
         this.id = id;
         this.email = email;
         this.password = password;
         this.created = created;
         this.roles = roles;
+        this.first_name = firstName;
+        this.last_name = lastName;
     }
 
-    public User(String email, String password, Date created, String roles){
+    public User(String email, String password,String firstName, String lastName, Date created, String roles){
         this.email = email;
         this.password = password;
         this.created = created;
         this.roles = roles;
+        this.first_name = firstName;
+        this.last_name = lastName;
     }
 
     public User(){
@@ -71,6 +79,10 @@ public class User implements Serializable {
     }
 
     public String getRoles() { return roles; }
+
+    public String getFirstName() {
+        return this.first_name;
+    }
 
     public void setRoles(String roles){
         this.roles = roles;
