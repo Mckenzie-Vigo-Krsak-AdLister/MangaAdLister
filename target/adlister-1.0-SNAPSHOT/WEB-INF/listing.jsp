@@ -41,8 +41,8 @@
 
             <div class="col-6 col-md-4 col-lg-3">
                 <h2>${listing.title}</h2>
-                <p>${listing.description}</p>
                 <img src="${listing.image}" class="img-fluid img-thumbnail">
+                <p>${listing.description}</p>
             </div>
 
     </div>

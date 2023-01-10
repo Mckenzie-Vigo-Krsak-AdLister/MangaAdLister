@@ -10,11 +10,12 @@
 <head>
     <title>MangaLister - Register</title>
     <jsp:include page="partials/header.jsp" />
+    <link href="/css/register.css" rel="stylesheet" type="text/css">
 </head>
 <body>
 <jsp:include page="partials/navbar.jsp" />
 <div class="container d-flex justify-content-center align-items-center w-100">
-    <div class="card p-5">
+    <div class="card p-5" id="regCard">
         <form action="/register" method="POST">
             <p>
                 <label for="email">
