@@ -1,2 +1,4 @@
-package dao;public class MessagesDaoImpl {
+package dao;
+
+public class MessagesDaoImpl {
 }
