@@ -3,16 +3,13 @@ package dao;
 import com.mysql.cj.jdbc.Driver;
 import models.CartItem;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
+import java.sql.*;
+import java.time.Instant;
 import java.util.ArrayList;
 import java.util.List;
-
 import Config.Config;
-public class CartItemDaoImpl implements CartItemDao{
 
+public class CartItemDaoImpl implements CartItemDao{
     private Connection connection;
 
     public CartItemDaoImpl(){
@@ -70,6 +67,22 @@ public class CartItemDaoImpl implements CartItemDao{
             System.out.println("Error while getting cart items for the give user.");
             System.out.println(e.getMessage());
             return null;
+        }
+    }
+
+    @Override
+    public boolean addCartItem(int user, int cartid,int listingid) {
+        try{
+            PreparedStatement stmt = connection.prepareStatement("INSERT INTO cart_item(users_id,listing_id,cart_id,created) VALUES(?,?,?,?);");
+            stmt.setInt(1,user);
+            stmt.setInt(2,listingid);
+            stmt.setInt(3,cartid);
+            stmt.setTimestamp(4, Timestamp.from(Instant.now()));
+            return stmt.execute();
+        }catch(Exception e){
+            System.out.println("Error saving cart item to the database");
+            System.out.println(e.getMessage());
+            return false;
         }
     }
 }

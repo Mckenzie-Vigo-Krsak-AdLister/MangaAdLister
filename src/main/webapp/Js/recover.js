@@ -96,23 +96,6 @@
 
             //Instead do a validation check on the input and make sure the passwords match
             if(pass.value === pass_conf.value){
-                // const data = new FormData();
-                // data.set("password",pass.value);
-                // data.set("password_confirmation",pass_conf.value);
-                //
-                // //Submit the form with a fetch request
-                // const request = await fetch("http://localhost:8080/resetpassword",{
-                //     method : "POST",
-                //     headers : {
-                //       "Content-Type" : "application/x-www-form-urlencoded"
-                //     },
-                //     body : JSON.stringify(data)
-                // })
-                //
-                // //Await the response from the server
-                // const request_json = await request.json()
-                // console.log("Received response from server:")
-                // console.log(request_json);
                 form.submit()
             }else{
                 alert("Your passwords do not match, please check them and try again.");

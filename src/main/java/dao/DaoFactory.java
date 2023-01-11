@@ -13,6 +13,8 @@ public class DaoFactory {
 
     private static CartDao cartDao;
 
+    private static CartItemDao cartItemDao;
+
     public static Mangas getMangaDao() {
         if (mangasDao == null) {
             mangasDao = new MySQLMangaDao();
@@ -48,4 +50,10 @@ public class DaoFactory {
         return cartDao;
     }
 
+    public static CartItemDao getCartItemsDao() throws SQLException {
+        if(cartItemDao == null){
+            cartItemDao = new CartItemDaoImpl();
+        }
+        return cartItemDao;
+    }
 }

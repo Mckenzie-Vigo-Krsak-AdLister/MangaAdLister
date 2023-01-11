@@ -65,11 +65,13 @@ public class LoginServlet extends HttpServlet {
                     request.getSession().setAttribute("loggedIn", true);
                     request.getSession().setAttribute("loggedInUser",matchingUser);
 
-                    //Pull the latest cart
-                    Cart latestCart = DaoFactory.getCartDao().getLatestCartForUser(matchingUser);
+                    if(DaoFactory.getCartDao().getLatestCartForUser(matchingUser) != null) {
+                        //Pull the latest cart
+                        Cart latestCart = DaoFactory.getCartDao().getLatestCartForUser(matchingUser);
 
-                    //Save the latest cart in a session variable
-                    request.getSession().setAttribute("cart",latestCart);
+                        //Save the latest cart in a session variable
+                        request.getSession().setAttribute("cart", latestCart);
+                    }
 
                     //Use the request dispatcher to send the user to the listings page
                     //                request.getRequestDispatcher("/listings").forward(request,response);

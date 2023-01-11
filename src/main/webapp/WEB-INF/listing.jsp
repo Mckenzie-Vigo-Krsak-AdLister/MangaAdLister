@@ -20,7 +20,7 @@
 <head>
     <title>Manga Listings</title>
     <jsp:include page="/partials/header.jsp" />
-    <script src="/js/listing.js"></script>
+    <script src="/js/listing.js" defer></script>
 </head>
 <body>
 <jsp:include page="/partials/navbar.jsp" />
@@ -46,6 +46,9 @@
             <img src="${listing.image}" class="img-fluid img-thumbnail">
             <p>${listing.description}</p>
             <button id="sendSellerMessage">Message Seller</button>
+            <button id="addToCart" listing="${listing.getId()}">
+                Add To Cart
+            </button>
         </div>
     </div>
 </div>
