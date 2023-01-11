@@ -29,7 +29,7 @@
                 </div>
             </div>
             <h1 class="mt-4">Here Are all the ads!</h1>
-            <div class="container-fluid row">
+            <div class="container-fluid row" id="default_view">
                 <c:forEach var="manga" items="${mangas}">
                     <div class="col-6 col-md-4 col-lg-3">
                         <h2>${manga.title}</h2>
@@ -37,6 +37,9 @@
                         <p>${manga.description}</p>
                     </div>
                 </c:forEach>
+            </div>
+            <div class="container-fluid row" id="search_view">
+
             </div>
         </div>
         <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
