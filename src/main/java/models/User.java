@@ -80,10 +80,6 @@ public class User implements Serializable {
 
     public String getRoles() { return roles; }
 
-    public String getFirstName() {
-        return this.first_name;
-    }
-
     public void setRoles(String roles){
         this.roles = roles;
     }
@@ -94,10 +90,14 @@ public class User implements Serializable {
             String email = rs.getString("email");
             String password = rs.getString("password");
             Date created = rs.getDate("created");
+            String firstName = rs.getString("first_name");
+            String lastName = rs.getString("last_name");
 
             User usr = new User();
             usr.setId(id);
             usr.setEmail(email);
+            usr.setFirstName(firstName);
+            usr.setLast_name(lastName);
             usr.setPassword(password);
             usr.setCreated(created);
 
@@ -107,4 +107,21 @@ public class User implements Serializable {
             throw e;
         }
     }
+
+    public String getLast_name() {
+        return last_name;
+    }
+
+    public void setLast_name(String last_name) {
+        this.last_name = last_name;
+    }
+
+    public String getFirstName() {
+        return this.first_name;
+    }
+
+    public void setFirstName(String first_name){
+        this.first_name = first_name;
+    }
+
 }

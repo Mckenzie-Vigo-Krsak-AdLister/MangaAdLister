@@ -43,19 +43,23 @@ CREATE TABLE assoc_genre_listing(
 CREATE TABLE cart(
     id INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
     users_id INT UNSIGNED NOT NULL,
+    created TIMESTAMP NOT NULL,
     FOREIGN KEY (users_id) REFERENCES users(id)
 );
 
 CREATE TABLE cart_item(
+    id INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
     users_id INT UNSIGNED NOT NULL,
     listing_id INT UNSIGNED NOT NULL,
     cart_id INT UNSIGNED NOT NULL,
+    created TIMESTAMP NOT NULL,
     FOREIGN KEY (users_id) REFERENCES users(id),
     FOREIGN KEY (listing_id) REFERENCES listing(id),
     FOREIGN KEY (cart_id) REFERENCES cart(id)
 );
 
 CREATE TABLE messages(
+    id INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
     message TEXT NOT NULL,
     time_stamp datetime,
     from_id INT UNSIGNED NOT NULL,

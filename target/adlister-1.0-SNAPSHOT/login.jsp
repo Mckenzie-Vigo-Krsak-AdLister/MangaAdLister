@@ -9,8 +9,8 @@
 <head>
     <title>MangaLister - Login</title>
     <jsp:include page="partials/header.jsp" />
-  <link href="/css/login.css" rel="stylesheet" type="text/css">
-  <script src="/js/login.js"></script>
+  <link href="./css/login.css" rel="stylesheet" type="text/css">
+  <script src="./Js/login.js"></script>
 </head>
 <body>
   <jsp:include page="partials/navbar.jsp" />

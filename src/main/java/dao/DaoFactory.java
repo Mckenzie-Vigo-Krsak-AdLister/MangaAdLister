@@ -11,6 +11,8 @@ public class DaoFactory {
 
     private static RecoveryDao recoveryDao;
 
+    private static CartDao cartDao;
+
     public static Mangas getMangaDao() {
         if (mangasDao == null) {
             mangasDao = new MySQLMangaDao();
@@ -37,6 +39,13 @@ public class DaoFactory {
             recoveryDao = new RecoveryDaoImpl();
         }
         return recoveryDao;
+    }
+
+    public static CartDao getCartDao() throws SQLException {
+        if(cartDao == null){
+            cartDao = new CartDaoImpl();
+        }
+        return cartDao;
     }
 
 }

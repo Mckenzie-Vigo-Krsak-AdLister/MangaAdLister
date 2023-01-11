@@ -10,8 +10,8 @@
 <head>
     <title>MangaLister - Register</title>
     <jsp:include page="partials/header.jsp" />
-    <link href="/css/register.css" rel="stylesheet" type="text/css">
-    <script src="Js/register.js"></script>
+    <link href="./css/register.css" rel="stylesheet" type="text/css">
+    <script src="./Js/register.js"></script>
 </head>
 <body>
 <jsp:include page="partials/navbar.jsp" />
@@ -40,16 +40,16 @@
             </p>
 
             <p>
-                <label for="name">
+                <label for="first_name">
                     First Name
-                    <input class="form-control" type="name" placeholder="First Name" id="name" name="name"/>
+                    <input class="form-control" type="name" placeholder="First Name" id="first_name" name="first_name"/>
                 </label>
             </p>
 
             <p>
-                <label for="lastName">
+                <label for="last_name">
                     Last Name
-                    <input class="form-control" type="lastName" placeholder="Last Name" id="lastName" name="lastName"/>
+                    <input class="form-control" type="lastName" placeholder="Last Name" id="last_name" name="last_name"/>
                 </label>
             </p>
 

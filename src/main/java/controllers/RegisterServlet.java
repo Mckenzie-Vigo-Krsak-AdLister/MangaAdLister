@@ -48,8 +48,8 @@ public class RegisterServlet extends HttpServlet {
             String email = request.getParameter("email");
             String password = request.getParameter("password");
             String confirm = request.getParameter("confirm");
-            String name = request.getParameter("name");
-            String lastName = request.getParameter("lastName");
+            String name = request.getParameter("first_name");
+            String lastName = request.getParameter("last_name");
             String accountType = request.getParameter("accountType");
 
             System.out.println("Incoming login request.");

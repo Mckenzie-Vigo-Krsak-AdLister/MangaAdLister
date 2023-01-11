@@ -20,7 +20,9 @@
 <head>
     <title>Manga Listings</title>
     <jsp:include page="/partials/header.jsp" />
-    <script src="/js/listing.js"></script>
+    <script src="../Js/listing.js"></script>
+    <script src="../js/messages.js"></script>
+    <link rel="stylesheet" href="../css/listing.css">
 </head>
 <body>
 <jsp:include page="/partials/navbar.jsp" />
@@ -48,6 +50,27 @@
             <button id="sendSellerMessage">Message Seller</button>
         </div>
     </div>
+
+    <div class="message-wrapper">
+        <div class="chat-box">
+            <div class="moniker">Nana</div>
+            <div class="dialog">
+                <span class="para">Hello,Man!</span>
+            </div>
+            <div class="dialog">
+                <span class="para">What are you up to</span>
+            </div>
+            <div class="dialog">
+                <span class="para">Are you ok!!!</span>
+            </div>
+        </div>
+        <form class="talking-form">
+            <input type="text" class="talking-para" />
+            <input type="submit" class="talking-btn" value="SEND" />
+        </form>
+        <div class="bubble-effect hide"></div>
+    </div>
+
 </div>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js" integrity="sha384-mQ93GR66B00ZXjt0YO5KlohRA5SY2XofN4zfuZxLkoj1gXtW8ANNCe9d5Y3eG5eD" crossorigin="anonymous"></script>

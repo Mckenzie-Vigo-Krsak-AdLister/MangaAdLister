@@ -59,13 +59,16 @@ public class UsersDaoImpl implements UsersDao {
     @Override
     public long addUser(User user) throws SQLException {
         try{
-            PreparedStatement stmt = connection.prepareStatement("INSERT INTO users(email,password,created,roles) VALUES(?,?,?,?)", Statement.RETURN_GENERATED_KEYS);
+            PreparedStatement stmt = connection.prepareStatement("INSERT INTO users(email,password,first_name,last_name,created,roles) VALUES(?,?,?,?,?,?)", Statement.RETURN_GENERATED_KEYS);
             String salt = BCrypt.gensalt();
             String hash = BCrypt.hashpw(user.getPassword(),salt);
             stmt.setString(1, user.getEmail());
             stmt.setString(2, hash);
-            stmt.setDate(3, new java.sql.Date(Date.from(Instant.now()).getTime()));
-            stmt.setString(4, user.getRoles());
+            stmt.setString(3,user.getFirstName());
+            stmt.setString(4,user.getLast_name());
+            stmt.setDate(5, new java.sql.Date(Date.from(Instant.now()).getTime()));
+            stmt.setString(6, user.getRoles());
+
             stmt.executeUpdate();
             ResultSet rs = stmt.getGeneratedKeys();
             rs.next();
