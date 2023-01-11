@@ -2,6 +2,7 @@ package controllers;
 
 import dao.DaoFactory;
 import models.Listing;
+import models.User;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -18,6 +19,8 @@ public class ListingServlet extends HttpServlet {
         try {
             long id = Long.parseLong(req.getParameter("id"));
             Listing l = DaoFactory.getListingsDao().getListingById(id);
+            User listingOwner = DaoFactory.getUsersDao().getUserById((int) l.getUserId());
+            req.setAttribute("listingOwner", listingOwner);
 
             //Check if the user is logged in
             try {

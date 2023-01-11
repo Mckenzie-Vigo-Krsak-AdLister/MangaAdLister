@@ -15,6 +15,7 @@
 <%--<jsp:useBean id="listing" scope="request" type="models.Listing"/>--%>
 <% Listing listing = (Listing) request.getAttribute("listing"); %>
 <% User loggedInUser = (User) request.getSession().getAttribute("loggedInUser"); %>
+<% User listingOwner = (User) request.getAttribute("listingOwner"); %>
 
 <html>
 <head>
@@ -51,25 +52,9 @@
         </div>
     </div>
 
-    <div class="message-wrapper">
-        <div class="chat-box">
-            <div class="moniker">Nana</div>
-            <div class="dialog">
-                <span class="para">Hello,Man!</span>
-            </div>
-            <div class="dialog">
-                <span class="para">What are you up to</span>
-            </div>
-            <div class="dialog">
-                <span class="para">Are you ok!!!</span>
-            </div>
-        </div>
-        <form class="talking-form">
-            <input type="text" class="talking-para" />
-            <input type="submit" class="talking-btn" value="SEND" />
-        </form>
-        <div class="bubble-effect hide"></div>
-    </div>
+    <jsp:include page="/partials/messages.jsp" >
+        <jsp:param name="listingOwner" value="${listingOwner.getFirstName()}" />
+    </jsp:include>
 
 </div>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>

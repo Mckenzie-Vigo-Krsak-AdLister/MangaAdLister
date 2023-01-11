@@ -1,12 +1,12 @@
-var form = $(".talking-form");
-var inputPara = $(".talking-para");
-var bubble = $(".bubble-effect");
-var chatBox = $(".chat-box");
-var newPara;
-var text;
-var pos, top, left, width, height;
-
-$(".talking-btn").click(function (event) {
+let newPara;
+let text;
+let pos, top, left, width, height;
+const chatBox = document.getElementsByClassName("chat-box")
+const bubble = document.getElementsByClassName("chat-box");
+const inputPara = document.getElementsByClassName("talking-para");
+const form = document.getElementsByClassName("talking-form");
+const sendBtn = document.getElementsByClassName("talking-btn")
+sendBtn.onclick = ()=> {
     event.preventDefault();
     text = inputPara.val();
 
@@ -18,7 +18,7 @@ $(".talking-btn").click(function (event) {
         "</span></div>"
     );
 
-    newPara = $(".dialog:last .para");
+    newPara = document.getElementsByClassName("dialog:last, para")
     pos = newPara.position();
     width = newPara.width();
     height = newPara.height();
@@ -43,4 +43,4 @@ $(".talking-btn").click(function (event) {
             }
         );
     }, 1000);
-});
+}

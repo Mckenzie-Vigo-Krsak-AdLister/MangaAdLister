@@ -26,27 +26,16 @@
 <body>
 <jsp:include page="/partials/navbar.jsp" />
 <div class="container">
-    <div class="row">
-        <div class="col-8">
-            <input type="text" placeholder="Search" id="searchListings" class="form-control"/>
-        </div>
-        <div class="col-2">
-            <select id="searchType" class="form-select">
-                <option value="title">Title</option>
-                <option value="author">Genre</option>
-            </select>
-        </div>
-        <div class="col-2">
-            <button id="searchButton" class="btn btn-primary">Search</button>
-        </div>
-    </div>
-    <h1 class="mt-4">Hey ${loggedInUser.getFirstName()}!, here's the manga you asked for!</h1>
+    <h1 class="mt-4">${loggedInUser.getFirstName()}'s Profile</h1>
     <div class="container-fluid row">
         <div class="col-6 col-md-4 col-lg-3">
-            <h2>${listing.title}</h2>
-            <img src="${listing.image}" class="img-fluid img-thumbnail">
-            <p>${listing.description}</p>
-            <button id="sendSellerMessage">Message Seller</button>
+            <c:forEach var="manga" items="${mangas}">
+                <div class="col-6 col-md-4 col-lg-3">
+                    <h2>${manga.title}</h2>
+                    <a href="/listing?id=${manga.id}"><img src="${manga.image}" alt="${manga.title}" class="img-fluid img-thumbnail"></a>
+                    <p>${manga.description}</p>
+                </div>
+            </c:forEach>
         </div>
     </div>
 
