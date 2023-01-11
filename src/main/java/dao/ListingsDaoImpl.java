@@ -5,6 +5,9 @@ import Config.Config;
 import models.Listing;
 
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.List;
 
 public class ListingsDaoImpl implements ListingsDao {
 
@@ -74,4 +77,6 @@ public class ListingsDaoImpl implements ListingsDao {
             throw new RuntimeException(e);
         }
     }
+
+    
 }

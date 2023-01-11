@@ -20,6 +20,7 @@ public class ListingsServlet extends HttpServlet {
 //        boolean loggedIn = (boolean) request.getSession().getAttribute("loggedIn");
 //        if(loggedIn)
     }
+
 }
 
 
