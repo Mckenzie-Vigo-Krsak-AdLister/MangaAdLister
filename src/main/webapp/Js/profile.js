@@ -34,6 +34,10 @@
         }
     }
 
+    const deleteBtn = documetn.getElementById("deleteButton");
+
+
+
     const addListingBtn = document.getElementById("addListingBtn")
     const createForm = document.getElementById("createForm")
 
