@@ -40,6 +40,7 @@ public class ApiHandleImpl implements ApiHandle {
                 .build();
         HttpResponse<String> response = HttpClient.newHttpClient().send(request, HttpResponse.BodyHandlers.ofString());
         ObjectMapper mapper = new ObjectMapper();
+        System.out.println(response.body());
         Manga manga = mapper.readValue(response.body(), Manga.class);
 
         return manga;

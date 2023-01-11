@@ -22,35 +22,22 @@ import java.util.List;
 @WebServlet (name = "CreateListingServlet", urlPatterns = "/addlisting")
 public class CreateListingServlet extends HttpServlet {
 
-    protected void doPost(HttpServletRequest request,HttpServletResponse response) throws ServletException, IOException{
-        ObjectMapper  mapper = new ObjectMapper();
+    @Override
+    protected void doPost(HttpServletRequest request,HttpServletResponse response) throws ServletException, IOException {
+        ObjectMapper mapper = new ObjectMapper();
         CreateListingRequest req = mapper.readValue(request.getInputStream(), CreateListingRequest.class);
         System.out.println(req.getNewListing().getMyanimelist_id());
 
         ApiHandle myApi = new ApiHandleImpl();
         try {
             Manga newManga = myApi.getMangaContentById(req.getNewListing().getMyanimelist_id());
-
-//            ublic Listing(String title, String description, String image, Double price, long userId)
-
-            System.out.println(newManga.getTitle());
+            System.out.println(newManga.getSynopsis());
+            System.out.println(newManga.getTitle_ov());
             System.out.println(req.getUserId());
-//            Listing newListing = new Listing(newManga.getTitle(), newManga.getSynopsis(), newManga.getPicture_url(), 0.0, loggedInUser.getId());
-
-//            DaoFactory.getListingsDao().createListing(newListing);
-
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
-//        boolean results = DaoFactory.getMangaDao().createListing(req.getNewListing());
-
-//        request.setAttribute("listingCreated", results);
-//        response.setContentType("application/json");
-//        String resultsJson = mapper.writeValueAsString(results);
-//        response.getWriter().println(resultsJson);
-
     }
-
 }
 @JsonIgnoreProperties(ignoreUnknown = true)
 class CreateListingRequest {
