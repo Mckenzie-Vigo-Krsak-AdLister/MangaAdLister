@@ -14,7 +14,7 @@
     <div class="container-fluid">
         <a class="navbar-brand col-2">Manga Lister</a>
         <form class="d-flex justify-content-center col-12 col-md-3" role="search">
-            <input class="form-control me-2 mt-3" type="search" placeholder="Find Titles" aria-label="Find">
+            <input class="form-control me-2 mt-3" type="search" placeholder="Find Titles" aria-label="Find" id="searchTerm">
             <button class="btn btn-outline-success mt-3" type="submit">Search</button>
         </form>
         <form style="display:${loggedIn ? "block" : "none"};" action="/logout" method="post">
@@ -25,5 +25,4 @@
         </a>
         ${loggedInUser.getFirstName().toString()}
     </div>
-    <script src="js/cartsystem.js" defer></script>
 </nav>
