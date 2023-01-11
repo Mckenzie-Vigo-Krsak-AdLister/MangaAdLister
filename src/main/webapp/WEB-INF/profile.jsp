@@ -35,12 +35,20 @@
 
     <div class="container">
 <%--        <h1 class="mt-4">Here Are all the ads!</h1>--%>
-        <div class="container-fluid row">
+        <div class="container-fluid row mt-4">
             <c:forEach var="manga" items="${listing}">
-                <div class="col-6 col-md-4 col-lg-3">
-                    <h2>${manga.title}</h2>
-                    <a href="/listing?id=${manga.id}"><img src="${manga.image}" alt="${manga.title}" class="img-fluid img-thumbnail"></a>
-                    <p>${manga.description}</p>
+                <div class="col-12 col-md-6 col-lg-4 mb-3">
+                    <div class="card">
+                        <div class="card-header d-flex justify-content-between">
+                            <h2>${manga.title}</h2>
+                            <button id="deleteButton" class="btn">x</button>
+                        </div>
+                        <div class="card-body d-flex flex-column align-items-center">
+                            <p class="fw-bold">Buy this manga for $${manga.price}0</p>
+                            <a href="/listing?id=${manga.id}"><img src="${manga.image}" alt="${manga.title}" class="img-fluid img-thumbnail mb-2"></a>
+                            <p>${manga.description}</p>
+                        </div>
+                    </div>
                 </div>
             </c:forEach>
         </div>
