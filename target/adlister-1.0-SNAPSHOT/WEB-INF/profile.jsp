@@ -19,8 +19,7 @@
 <head>
     <title>Profile</title>
     <jsp:include page="/partials/header.jsp" />
-    <script src="../Js/listing.js"></script>
-    <script src="../js/messages.js"></script>
+    <script src="../Js/messages.js"></script>
     <link rel="stylesheet" href="../css/listing.css">
 </head>
 <body>
@@ -39,9 +38,13 @@
         </div>
     </div>
 
+    <jsp:include page="/partials/messages.jsp" >
+        <jsp:param name="listingOwner" value="${listingOwner.getFirstName()}" />
+    </jsp:include>
+
     <div class="message-wrapper">
         <div class="chat-box">
-            <div class="moniker">Nana</div>
+            <div class="moniker">${listingOwner.getFirstName()}</div>
             <div class="dialog">
                 <span class="para">Hello,Man!</span>
             </div>

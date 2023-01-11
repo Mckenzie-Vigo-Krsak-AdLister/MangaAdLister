@@ -1,7 +1,9 @@
 package controllers;
 
+import apis.myanimelist.ApiHandle;
 import dao.DaoFactory;
 import models.Listing;
+import models.Manga;
 import models.User;
 
 import javax.servlet.ServletException;
@@ -11,6 +13,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.concurrent.ExecutionException;
 
 @WebServlet(name="ProfileServlet", urlPatterns = "/profile")
 public class ProfileServlet extends HttpServlet {
@@ -27,7 +30,7 @@ public class ProfileServlet extends HttpServlet {
                 //If they are send them to the listing protected route
                 if (loggedIn) {
                     req.setAttribute("listing", l);
-                    req.getRequestDispatcher("/WEB-INF/listing.jsp").forward(req, resp);
+                    req.getRequestDispatcher("/WEB-INF/profile.jsp").forward(req, resp);
                 } else { //Otherwise redirect them to the login page.
                     resp.sendRedirect("/login");
                 }
@@ -42,6 +45,23 @@ public class ProfileServlet extends HttpServlet {
                 throw new RuntimeException(ex);
             }
         }
+    }
+
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+        String title = request.getParameter("title");
+        Double price = Double.parseDouble(request.getParameter("price"));
+
+        Manga[] listManga;
+        try {
+            listManga = DaoFactory.getApiHandle().getMangaContent(title);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+
+        Manga manga = new Manga(listManga.title, image, description, price);
+
+
     }
 
 }

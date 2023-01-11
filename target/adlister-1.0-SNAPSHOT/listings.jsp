@@ -13,20 +13,6 @@
     <body>
     <jsp:include page="partials/navbar.jsp" />
         <div class="container">
-            <div class="row">
-                <div class="col-8">
-                    <input type="text" placeholder="Search" id="searchListings" class="form-control"/>
-                </div>
-                <div class="col-2">
-                    <select id="searchType" class="form-select">
-                        <option value="title">Title</option>
-                        <option value="author">Genre</option>
-                    </select>
-                </div>
-                <div class="col-2">
-                    <button id="searchButton" class="btn btn-primary">Search</button>
-                </div>
-            </div>
             <h1 class="mt-4">Here Are all the ads!</h1>
             <div class="container-fluid row">
                 <c:forEach var="manga" items="${mangas}">

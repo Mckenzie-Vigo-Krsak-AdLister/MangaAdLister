@@ -19,14 +19,26 @@
 <head>
     <title>Profile</title>
     <jsp:include page="/partials/header.jsp" />
-    <script src="../Js/listing.js"></script>
-    <script src="../js/messages.js"></script>
+    <script src="../Js/messages.js"></script>
     <link rel="stylesheet" href="../css/listing.css">
 </head>
 <body>
 <jsp:include page="/partials/navbar.jsp" />
 <div class="container">
     <h1 class="mt-4">${loggedInUser.getFirstName()}'s Profile</h1>
+
+    <form action="/profile" method="post">
+        <label for="title">Manga Title
+            <input name="title" id="title" type="text" placeholder="enter manga title">
+        </label>
+        <br>
+        <label for="price">Set price at $
+            <input name="price" id="price" type="text" placeholder="enter price here">
+        </label>
+        <br>
+        <button type="submit">Submit Listing</button>
+    </form>
+
     <div class="container-fluid row">
         <div class="col-6 col-md-4 col-lg-3">
             <c:forEach var="manga" items="${mangas}">
@@ -39,9 +51,13 @@
         </div>
     </div>
 
+    <jsp:include page="/partials/messages.jsp" >
+        <jsp:param name="listingOwner" value="${listingOwner.getFirstName()}" />
+    </jsp:include>
+
     <div class="message-wrapper">
         <div class="chat-box">
-            <div class="moniker">Nana</div>
+            <div class="moniker">${listingOwner.getFirstName()}</div>
             <div class="dialog">
                 <span class="para">Hello,Man!</span>
             </div>
