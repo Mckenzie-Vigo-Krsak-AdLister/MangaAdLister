@@ -21,24 +21,20 @@ public class SearchServlet extends HttpServlet {
         ObjectMapper  mapper = new ObjectMapper();
         SearchRequest req = mapper.readValue(request.getInputStream(), SearchRequest.class);
         System.out.println(req.getSearchTerm());
-//        try {
-//            String title = request.getParameter("searchTerm");
-//            List<Listing> results = DaoFactory.getSearchDao().getListingsByTitle(title);
-//            System.out.println(results.size());
-//            for (Listing l: results){
-//                System.out.println(l.getTitle());
-//            }
-//            request.setAttribute("results", results);
-//            response.setContentType("application/json");
-//            String resultsJson = mapper.writeValueAsString(results);
-//            response.getWriter().println(resultsJson);
-//        } catch (SQLException e) {
-//            throw new RuntimeException(e);
-//        }
-//
-//
-//        request.setAttribute("mangas", DaoFactory.getMangaDao().all());
-//        request.getRequestDispatcher("listings.jsp").forward(request, response);
+
+        try {
+           List<Listing> l =  DaoFactory.getSearchDao().getListingsByTitle(req.getSearchTerm());
+
+           for (Listing listing : l) {
+               System.out.println(listing.getTitle());
+           }
+           String json = mapper.writeValueAsString(l);
+              response.setContentType("application/json");
+                response.getWriter().write(json);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
     }
 
 
