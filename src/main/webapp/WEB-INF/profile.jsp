@@ -12,7 +12,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%--<jsp:useBean id="listing" scope="request" type="models.Listing"/>--%>
-<% Listing listing = (Listing) request.getAttribute("listing"); %>
+<% List<Listing> listing = (List<Listing>) request.getAttribute("listing"); %>
 <% User loggedInUser = (User) request.getSession().getAttribute("loggedInUser"); %>
 
 <html>
@@ -33,9 +33,10 @@
     <div id="createForm">
     </div>
 
-    <div class="container-fluid row">
-        <div class="col-6 col-md-4 col-lg-3">
-            <c:forEach var="manga" items="${mangas}">
+    <div class="container">
+<%--        <h1 class="mt-4">Here Are all the ads!</h1>--%>
+        <div class="container-fluid row">
+            <c:forEach var="manga" items="${listing}">
                 <div class="col-6 col-md-4 col-lg-3">
                     <h2>${manga.title}</h2>
                     <a href="/listing?id=${manga.id}"><img src="${manga.image}" alt="${manga.title}" class="img-fluid img-thumbnail"></a>

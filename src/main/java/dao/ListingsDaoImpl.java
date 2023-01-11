@@ -79,21 +79,21 @@ public class ListingsDaoImpl implements ListingsDao {
     }
 
     @Override
-    public Listing[] getListingsByUserId(long userId) throws SQLException {
+    public List<Listing> getListingsByUserId(int userId) throws SQLException {
         try {
-            PreparedStatement stmt = connection.prepareStatement("SELECT * FROM manga_adlister.listing WHERE users_id = ?;");
-            stmt.setLong(1, userId);
+            PreparedStatement stmt = connection.prepareStatement("SELECT * FROM listing WHERE users_id = ?;");
+            stmt.setInt(1, userId);
             stmt.execute();
             ResultSet rs = stmt.getResultSet();
-            Listing[] listings = new Listing[0];
+            List<Listing> listings = new ArrayList<>();
             while (rs.next()) {
                 String title = rs.getString("title");
                 String image = rs.getString("image");
                 String description = rs.getString("description");
                 Double price = rs.getDouble("price");
-                long id = rs.getLong("id");
+                int id = rs.getInt("id");
                 Listing newListing = new Listing(title, description, image, price, id, userId);
-                listings = allListings();
+                listings.add(newListing);
             }
             return listings;
         } catch (SQLException e) {

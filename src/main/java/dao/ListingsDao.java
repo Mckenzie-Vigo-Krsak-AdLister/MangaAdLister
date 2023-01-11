@@ -3,6 +3,7 @@ package dao;
 import models.Listing;
 
 import java.sql.SQLException;
+import java.util.List;
 
 public interface ListingsDao {
 
@@ -16,6 +17,6 @@ public interface ListingsDao {
 
     public Listing getListingById(long id) throws SQLException;
 
-    public Listing[] getListingsByUserId(long id) throws SQLException;
+    public List<Listing> getListingsByUserId(int id) throws SQLException;
 
 }

@@ -2,7 +2,7 @@
 
     const port = 8083;
 
-    const createSearchTerm = async (srcTrm)=> {
+    const createSearchTerm = async (srcTrm, price)=> {
         try{
             const userId = document.getElementById("userId").value
             const options = {
@@ -16,14 +16,15 @@
 
             const data = (await externalApi.json())[0];
 
-            const response = await fetch(`http://localhost:${port}/addListing`, {
+            const response = await fetch(`http://localhost:${port}/addlisting`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
                     // 'Cookie': document.cookie
                 }, body: JSON.stringify({
                     newListing: data,
-                    userId: userId
+                    userId: userId,
+                    price: price
                 })
             })
             const created = await response.json();
@@ -33,14 +34,10 @@
         }
     }
 
-    await createSearchTerm("naruto");
-
     const addListingBtn = document.getElementById("addListingBtn")
     const createForm = document.getElementById("createForm")
 
-    addListingBtn.onclick = async ()=> {
-
-        addListingBtn.style.display = "none"
+    const form = ()=> {
 
         const formTag = document.createElement("form")
         formTag.action = "/profile"
@@ -74,15 +71,68 @@
         formTag.appendChild(priceLable)
         formTag.appendChild(priceInput)
         formTag.appendChild(createSubmitBtn)
-        createForm.appendChild(formTag)
+        // createForm.appendChild(formTag)
 
-        const submitBtn = document.getElementById("submitBtn")
+        createSubmitBtn.onclick = ()=> {
+            createSearchTerm(document.getElementById("title").value, document.getElementById("price").value)
+            createForm.innerHTML = ""
+            addListingBtn.style.display = "inline-block"
+        }
 
-        submitBtn.onclick = ()=> createSearchTerm(document.getElementById("title").value)
-            // createForm.style.display = "none"
-            // addListingBtn.style.display = "inline-block"
+        return formTag;
 
+    }
+
+    addListingBtn.onclick = async ()=> {
+
+        createForm.innerHTML = "";
+        createForm.appendChild(form())
+        addListingBtn.style.display = "none"
+
+        // const formTag = document.createElement("form")
+        // formTag.action = "/profile"
+        // formTag.method = "post"
+        //
+        // const titleLable = document.createElement("label")
+        // titleLable.for = "title"
+        // const titleInput = document.createElement("input")
+        // titleInput.name="title"
+        // titleInput.id = "title"
+        // titleInput.type = "text"
+        // titleInput.placeholder = "enter manga title"
+        //
+        // const priceLable = document.createElement("label")
+        // priceLable.for = "price"
+        // const priceInput = document.createElement("input")
+        // priceInput.name="price"
+        // priceInput.id = "price"
+        // priceInput.type = "text"
+        // priceInput.placeholder = "set a price for the listing"
+        //
+        // const createSubmitBtn = document.createElement("button")
+        // createSubmitBtn.classList.add("btn", "btn-secondary")
+        // createSubmitBtn.type = "button"
+        // createSubmitBtn.id = "submitBtn"
+        // createSubmitBtn.value = "Submit"
+        // createSubmitBtn.innerText = "Submit"
+        //
+        // formTag.appendChild(titleLable)
+        // formTag.appendChild(titleInput)
+        // formTag.appendChild(priceLable)
+        // formTag.appendChild(priceInput)
+        // formTag.appendChild(createSubmitBtn)
+        // createForm.appendChild(formTag)
+        //
+        // const submitBtn = document.getElementById("submitBtn")
+        //
+        // submitBtn.onclick = ()=> {
+        //     createSearchTerm(document.getElementById("title").value)
+        //     createForm.style.display = "none"
+        //     addListingBtn.style.display = "inline-block"
         // }
+
+
+
 
     }
 })()

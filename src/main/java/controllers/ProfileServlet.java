@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.List;
 import java.util.concurrent.ExecutionException;
 
 @WebServlet(name="ProfileServlet", urlPatterns = "/profile")
@@ -20,13 +21,18 @@ public class ProfileServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        try {
+        System.out.println("Please work");
+
 
             //Check if the user is logged in
             try {
                 boolean loggedIn = (boolean) req.getSession().getAttribute("loggedIn");
                 User loggedInUser = (User) req.getSession().getAttribute("loggedInUser");
-                Listing l = DaoFactory.getListingsDao().getListingById(loggedInUser.getId());
+                List<Listing> l = DaoFactory.getListingsDao().getListingsByUserId(loggedInUser.getId());
+                System.out.println(l.size());
+                for (Listing listing : l) {
+                    System.out.println(listing.getTitle());
+                }
                 //If they are send them to the listing protected route
                 if (loggedIn) {
                     req.setAttribute("listing", l);
@@ -34,34 +40,11 @@ public class ProfileServlet extends HttpServlet {
                 } else { //Otherwise redirect them to the login page.
                     resp.sendRedirect("/login");
                 }
-            }catch(NullPointerException e){ //If there's not even an attribute set in the session for loggedIn
-                resp.sendRedirect("/login"); //Send them to the login page, because the session is null
+            }catch(Exception e){ //If there's not even an attribute set in the session for loggedIn
+                System.out.println(e.getMessage());
+//                resp.sendRedirect("/login"); //Send them to the login page, because the session is null
             }
-        }
-        catch (Exception e ){
-            try {
-                throw e;
-            } catch (SQLException ex) {
-                throw new RuntimeException(ex);
-            }
-        }
-    }
 
-//    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-//
-//        String title = request.getParameter("title");
-//        Double price = Double.parseDouble(request.getParameter("price"));
-//
-//        Manga[] listManga;
-//        try {
-//            listManga = DaoFactory.getApiHandle().getMangaContent(title);
-//        } catch (InterruptedException e) {
-//            throw new RuntimeException(e);
-//        }
-//
-//        Manga manga = new Manga(listManga.title, image, description, price);
-//
-//
-//    }
+    }
 
 }

@@ -31,9 +31,12 @@ public class CreateListingServlet extends HttpServlet {
         ApiHandle myApi = new ApiHandleImpl();
         try {
             Manga newManga = myApi.getMangaContentById(req.getNewListing().getMyanimelist_id());
+            Listing newListing = new Listing(newManga.getTitle_ov(), newManga.getSynopsis(), newManga.getPicture_url(), req.getPrice(), Long.parseLong(req.getUserId()));
+            DaoFactory.getListingsDao().createListing(newListing);
             System.out.println(newManga.getSynopsis());
             System.out.println(newManga.getTitle_ov());
             System.out.println(req.getUserId());
+            System.out.println(req.getPrice());
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
@@ -50,9 +53,19 @@ class CreateListingRequest {
         this.userId = userId;
     }
 
+    private double price;
     private String userId;
     private Manga newListing;
-    public CreateListingRequest(Manga newListing , String userId) {
+
+    public double getPrice() {
+        return price;
+    }
+
+    public void setPrice(double price) {
+        this.price = price;
+    }
+
+    public CreateListingRequest(Manga newListing , String userId, double price) {
         this.userId = userId;
         this.newListing = newListing;
     }

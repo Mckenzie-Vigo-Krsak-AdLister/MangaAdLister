@@ -25,6 +25,4 @@
         </a>
         <a href="/profile">${loggedInUser.getFirstName().toString()}'s Profile</a>
     </div>
-
-    
 </nav>

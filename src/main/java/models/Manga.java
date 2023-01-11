@@ -47,7 +47,7 @@ public class Manga implements Serializable {
 
     public Manga(String title, String description, String image, Double price, long id, long userId) {
         this.title_ov = title;
-        this.description = description;
+        this.synopsis = description;
         this.image = image;
         this.price = price;
         this.id = id;
