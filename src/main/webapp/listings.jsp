@@ -9,6 +9,7 @@
         <title>Manga Listings</title>
         <jsp:include page="partials/header.jsp" />
         <link href="/css/listings.css" rel="stylesheet" type="text/css">
+        <script src="/Js/search.js" defer></script>
     </head>
     <body>
     <jsp:include page="partials/navbar.jsp" />

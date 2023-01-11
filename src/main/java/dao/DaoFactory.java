@@ -11,6 +11,8 @@ public class DaoFactory {
 
     private static RecoveryDao recoveryDao;
 
+    private static SearchDao searchDao;
+
     public static Mangas getMangaDao() {
         if (mangasDao == null) {
             mangasDao = new MySQLMangaDao();
@@ -39,4 +41,10 @@ public class DaoFactory {
         return recoveryDao;
     }
 
+    public static SearchDao getSearchDao() throws SQLException {
+        if (searchDao == null) {
+            searchDao = new SearchDao();
+        }
+        return searchDao;
+    }
 }
