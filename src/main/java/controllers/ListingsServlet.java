@@ -21,6 +21,7 @@ public class ListingsServlet extends HttpServlet {
         System.out.println("log");
 //        boolean loggedIn = (boolean) request.getSession().getAttribute("loggedIn");
 //        if(loggedIn)
+        why
     }
 
 }
