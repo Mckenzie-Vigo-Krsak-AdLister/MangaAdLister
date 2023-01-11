@@ -1,21 +1,33 @@
 package dao;
 
+import Config.Config;
+import com.mysql.cj.jdbc.Driver;
 import models.Listing;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
 public class SearchDao {
 
     private Connection connection = null;
+    public SearchDao() {
+        try {
+            DriverManager.registerDriver(new Driver());
+            connection = DriverManager.getConnection(
+                    Config.jdbcConnectionString,
+                    Config.mysqlUser,
+                    Config.mysqlPassword
+            );
 
+        } catch (SQLException e) {
+            throw new RuntimeException("DataBase Error", e);
+        }
+
+    }
     public List<Listing> getListingsByTitle(String searchTitle) throws SQLException {
         try {
-            PreparedStatement stmt = connection.prepareStatement("Select * from listing where title  rlike ?");
+            PreparedStatement stmt = connection.prepareStatement("Select * from listing where title rlike ?;");
             stmt.setString(1, "%" + searchTitle + "%");
             stmt.execute();
             ResultSet rs = stmt.getResultSet();
