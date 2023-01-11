@@ -16,4 +16,6 @@ public interface ListingsDao {
 
     public Listing getListingById(long id) throws SQLException;
 
+    public Listing[] getListingsByUserId(long id) throws SQLException;
+
 }

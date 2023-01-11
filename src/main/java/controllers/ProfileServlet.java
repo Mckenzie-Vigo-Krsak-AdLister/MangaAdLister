@@ -47,21 +47,21 @@ public class ProfileServlet extends HttpServlet {
         }
     }
 
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-        String title = request.getParameter("title");
-        Double price = Double.parseDouble(request.getParameter("price"));
-
-        Manga[] listManga;
-        try {
-            listManga = DaoFactory.getApiHandle().getMangaContent(title);
-        } catch (InterruptedException e) {
-            throw new RuntimeException(e);
-        }
-
-        Manga manga = new Manga(listManga.title, image, description, price);
-
-
-    }
+//    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+//
+//        String title = request.getParameter("title");
+//        Double price = Double.parseDouble(request.getParameter("price"));
+//
+//        Manga[] listManga;
+//        try {
+//            listManga = DaoFactory.getApiHandle().getMangaContent(title);
+//        } catch (InterruptedException e) {
+//            throw new RuntimeException(e);
+//        }
+//
+//        Manga manga = new Manga(listManga.title, image, description, price);
+//
+//
+//    }
 
 }
