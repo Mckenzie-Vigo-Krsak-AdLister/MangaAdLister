@@ -1,19 +1,24 @@
-(()=>{
 
-    let searchItem = e.target.value;
-    if (searchItem.length > 0){
 
-    }
+    document.getElementById("searchTerm").addEventListener("keyup", function (e){
 
-    document.getElementById("searchTerm").addEventListener("keyup", function (){
-
-            let searchItem = e.target.value;
+        let searchItem = ""
+             searchItem += e.key;
             if (searchItem.length > 0) {
-                console.log(searchTerm);
+                let form = document.querySelector("form")
+                form.submit()
+                //     console.log(form)
+                // getSearch()
             } else {
 
             }
     })
 
 
-})()
+
+    // function getSearch(){
+    //     fetch("jdbc:mysql://localhost:3306/manga_adlister?allowPublicKeyRetrieval=true&useSSL=false/-uroot-pcodeup").then(response => response.json()).then(response =>{console.log(response)})
+    //
+    // }
+
+

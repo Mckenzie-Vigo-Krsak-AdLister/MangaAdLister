@@ -17,6 +17,8 @@ public class ListingsServlet extends HttpServlet {
     }
 
     protected void doPost(HttpServletRequest request,HttpServletResponse response) throws ServletException, IOException {
+        System.out.println(request.getParameter("searchInput"));
+        System.out.println("log");
 //        boolean loggedIn = (boolean) request.getSession().getAttribute("loggedIn");
 //        if(loggedIn)
     }
