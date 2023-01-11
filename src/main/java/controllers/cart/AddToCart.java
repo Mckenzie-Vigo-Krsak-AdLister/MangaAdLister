@@ -47,8 +47,15 @@ public class AddToCart extends HttpServlet {
             //Use the cart dao to add the listing to the user's cart
             Cart latestUsersCart = cartDao.getLatestCartForUser(loggedInUser);
 
-            //Get the id of the latest cart
-            int latestUsersCartId = latestUsersCart.getId();
+            Integer latestUsersCartId = null;
+            if(latestUsersCart != null) {
+                //Get the id of the latest cart
+                latestUsersCartId = (Integer) latestUsersCart.getId();
+
+            }else{
+                //Create a new cart
+                latestUsersCartId = cartDao.createCartForUser(loggedInUser.getId());
+            }
 
             //Get the CartItemDao from the DaoFactory
             CartItemDao cartItemDao = DaoFactory.getCartItemsDao();
@@ -61,11 +68,11 @@ public class AddToCart extends HttpServlet {
             );
 
 
-
             //Send a json response back to the client
             res.setContentType("application/json");
             PrintWriter w = res.getWriter();
             w.printf("{\"added\":\"true\",\"message\":\"added " + response.getListingId() + "\"}");
+
         }catch(Exception e){
             System.out.println("Error during post request at CartServlet");
             System.out.println(e.getMessage());
