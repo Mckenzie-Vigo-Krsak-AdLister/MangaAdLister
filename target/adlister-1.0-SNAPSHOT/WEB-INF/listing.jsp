@@ -15,32 +15,18 @@
 <%--<jsp:useBean id="listing" scope="request" type="models.Listing"/>--%>
 <% Listing listing = (Listing) request.getAttribute("listing"); %>
 <% User loggedInUser = (User) request.getSession().getAttribute("loggedInUser"); %>
+<% User listingOwner = (User) request.getAttribute("listingOwner"); %>
 
 <html>
 <head>
     <title>Manga Listings</title>
     <jsp:include page="/partials/header.jsp" />
     <script src="../Js/listing.js"></script>
-    <script src="../js/messages.js"></script>
     <link rel="stylesheet" href="../css/listing.css">
 </head>
 <body>
 <jsp:include page="/partials/navbar.jsp" />
 <div class="container">
-    <div class="row">
-        <div class="col-8">
-            <input type="text" placeholder="Search" id="searchListings" class="form-control"/>
-        </div>
-        <div class="col-2">
-            <select id="searchType" class="form-select">
-                <option value="title">Title</option>
-                <option value="author">Genre</option>
-            </select>
-        </div>
-        <div class="col-2">
-            <button id="searchButton" class="btn btn-primary">Search</button>
-        </div>
-    </div>
     <h1 class="mt-4">Hey ${loggedInUser.getFirstName()}!, here's the manga you asked for!</h1>
     <div class="container-fluid row">
         <div class="col-6 col-md-4 col-lg-3">
@@ -51,25 +37,9 @@
         </div>
     </div>
 
-    <div class="message-wrapper">
-        <div class="chat-box">
-            <div class="moniker">Nana</div>
-            <div class="dialog">
-                <span class="para">Hello,Man!</span>
-            </div>
-            <div class="dialog">
-                <span class="para">What are you up to</span>
-            </div>
-            <div class="dialog">
-                <span class="para">Are you ok!!!</span>
-            </div>
-        </div>
-        <form class="talking-form">
-            <input type="text" class="talking-para" />
-            <input type="submit" class="talking-btn" value="SEND" />
-        </form>
-        <div class="bubble-effect hide"></div>
-    </div>
+    <jsp:include page="/partials/messages.jsp" >
+        <jsp:param name="listingOwner" value="${listingOwner.getFirstName()}" />
+    </jsp:include>
 
 </div>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>

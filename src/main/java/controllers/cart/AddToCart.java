@@ -15,7 +15,7 @@ public class AddToCart extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse res) throws IOException, ServletException {
         try{
             Manga manga = (Manga) req.getAttribute("manga");
-            System.out.println(manga.getTitle());
+            System.out.println(manga.getTitle_ov());
 
         }catch(Exception e){
             System.out.println("Error during post request at CartServlet");

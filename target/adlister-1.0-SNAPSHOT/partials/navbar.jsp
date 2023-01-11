@@ -23,7 +23,7 @@
         <a href="/login" style="display:${!loggedIn ? "block" : "none"};">
             <button class="btn btn-outline-success">Login</button>
         </a>
-        ${loggedInUser.getFirstName().toString()}
+        <a href="/profile">${loggedInUser.getFirstName().toString()}'s Profile</a>
     </div>
 
     

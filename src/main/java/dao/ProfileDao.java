@@ -1,10 +1,14 @@
 package dao;
 
+import apis.myanimelist.ApiHandle;
 import models.Listing;
+import models.Manga;
 
+import java.io.IOException;
 import java.sql.SQLException;
+import java.util.concurrent.ExecutionException;
 
-public interface ListingsDao {
+public interface ProfileDao {
 
     public boolean createListing(Listing newlisting);
 
@@ -15,7 +19,4 @@ public interface ListingsDao {
     public boolean deleteListing(long id);
 
     public Listing getListingById(long id) throws SQLException;
-
-    public Listing[] getListingsByUserId(long id) throws SQLException;
-
 }

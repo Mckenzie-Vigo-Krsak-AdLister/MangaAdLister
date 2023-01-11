@@ -24,27 +24,29 @@ public class Manga implements Serializable {
 
     private String picture_url;
 
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    private String title;
+
     private String synopsis;
 
     private long id;
     private long userId;
-    private String title;
+    private String title_ov;
     private String description;
     private String image;
     private Double price;
 
-    public int getMyanimelist_id() {
-        return myanimelist_id;
-    }
-
-    public void setMyanimelist_id(int myanimelist_id) {
-        this.myanimelist_id = myanimelist_id;
-    }
-
     private int myanimelist_id;
 
     public Manga(String title, String description, String image, Double price, long id, long userId) {
-        this.title = title;
+        this.title_ov = title;
         this.description = description;
         this.image = image;
         this.price = price;
@@ -53,10 +55,6 @@ public class Manga implements Serializable {
     }
 
     public Manga(){}
-
-    public String getTitle() {
-        return title;
-    }
 
     public Double getPrice() {
         return price;
@@ -77,5 +75,22 @@ public class Manga implements Serializable {
     public long getUserId() {
         return userId;
     }
+
+    public String getTitle_ov() {
+        return title_ov ;
+    }
+
+    public void setTitle_ov(String title){
+        this.title_ov = title;
+    }
+
+    public int getMyanimelist_id() {
+        return myanimelist_id;
+    }
+
+    public void setMyanimelist_id(int myanimelist_id) {
+        this.myanimelist_id = myanimelist_id;
+    }
+
 
 }

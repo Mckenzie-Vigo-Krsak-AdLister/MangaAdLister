@@ -58,7 +58,7 @@ public class MySQLMangaDao implements Mangas  {
         try {
             statement = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             statement.setLong(1, manga.getId());
-            statement.setString(2, manga.getTitle());
+            statement.setString(2, manga.getTitle_ov());
             statement.setString(3, manga.getImage());
             statement.setDouble(4, manga.getPrice());
             statement.setString(5, manga.getDescription());

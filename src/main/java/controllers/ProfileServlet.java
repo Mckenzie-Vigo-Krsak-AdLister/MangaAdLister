@@ -1,7 +1,9 @@
 package controllers;
 
+import apis.myanimelist.ApiHandle;
 import dao.DaoFactory;
 import models.Listing;
+import models.Manga;
 import models.User;
 
 import javax.servlet.ServletException;
@@ -11,25 +13,24 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.concurrent.ExecutionException;
 
-@WebServlet(name="ListingServlet", urlPatterns = "/listing")
-public class ListingServlet extends HttpServlet {
+@WebServlet(name="ProfileServlet", urlPatterns = "/profile")
+public class ProfileServlet extends HttpServlet {
+
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         try {
-            long id = Long.parseLong(req.getParameter("id"));
-            Listing l = DaoFactory.getListingsDao().getListingById(id);
-            User listingOwner = DaoFactory.getUsersDao().getUserById((int) l.getUserId());
-            req.setAttribute("listingOwner", listingOwner);
 
             //Check if the user is logged in
             try {
                 boolean loggedIn = (boolean) req.getSession().getAttribute("loggedIn");
-
+                User loggedInUser = (User) req.getSession().getAttribute("loggedInUser");
+                Listing l = DaoFactory.getListingsDao().getListingById(loggedInUser.getId());
                 //If they are send them to the listing protected route
                 if (loggedIn) {
                     req.setAttribute("listing", l);
-                    req.getRequestDispatcher("/WEB-INF/listing.jsp").forward(req, resp);
+                    req.getRequestDispatcher("/WEB-INF/profile.jsp").forward(req, resp);
                 } else { //Otherwise redirect them to the login page.
                     resp.sendRedirect("/login");
                 }
@@ -45,4 +46,22 @@ public class ListingServlet extends HttpServlet {
             }
         }
     }
+
+//    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+//
+//        String title = request.getParameter("title");
+//        Double price = Double.parseDouble(request.getParameter("price"));
+//
+//        Manga[] listManga;
+//        try {
+//            listManga = DaoFactory.getApiHandle().getMangaContent(title);
+//        } catch (InterruptedException e) {
+//            throw new RuntimeException(e);
+//        }
+//
+//        Manga manga = new Manga(listManga.title, image, description, price);
+//
+//
+//    }
+
 }

@@ -1,7 +1,5 @@
 package apis.myanimelist;
 
-import com.fasterxml.jackson.core.JsonParser;
-import com.fasterxml.jackson.databind.JsonDeserializer;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import models.Manga;
 
@@ -10,10 +8,6 @@ import java.net.URI;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ExecutionException;
 
 import Config.Config;
@@ -46,6 +40,7 @@ public class ApiHandleImpl implements ApiHandle {
                 .build();
         HttpResponse<String> response = HttpClient.newHttpClient().send(request, HttpResponse.BodyHandlers.ofString());
         ObjectMapper mapper = new ObjectMapper();
+        System.out.println(response.body());
         Manga manga = mapper.readValue(response.body(), Manga.class);
 
         return manga;

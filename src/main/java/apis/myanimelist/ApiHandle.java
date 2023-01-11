@@ -8,7 +8,9 @@ import java.util.concurrent.ExecutionException;
 
 public interface ApiHandle {
 
-   Manga[] getMangaContent(String title) throws IOException, InterruptedException;
+//   static Manga[] getMangaContent(String title) throws IOException, InterruptedException;
+
+    Manga[] getMangaContent(String title) throws IOException, InterruptedException;
 
     Manga getMangaContentById(int id) throws IOException, InterruptedException;
 
