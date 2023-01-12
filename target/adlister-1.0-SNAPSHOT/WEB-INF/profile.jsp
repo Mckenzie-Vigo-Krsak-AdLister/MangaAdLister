@@ -20,7 +20,7 @@
     <title>Profile</title>
     <jsp:include page="/partials/header.jsp" />
 <%--    <script src="/Js/messages.js"></script>--%>
-    <script src="/Js/profile.js" defer></script>
+    <script src="/js/profile.js" defer></script>
     <link rel="stylesheet" href="../css/listing.css">
     ;<ink rel="stylesheet" href="../css/profile.css"></ink>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">

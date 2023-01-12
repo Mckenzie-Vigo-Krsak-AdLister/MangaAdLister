@@ -10,7 +10,7 @@
     <head>
         <title>Recover</title>
         <jsp:include page="/partials/header.jsp" />
-        <script src="../Js/recover.js" defer></script>
+        <script src="../js/recover.js" defer></script>
         <style>
             .reset_password_form {
                 text-align: center;

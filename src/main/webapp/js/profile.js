@@ -1,6 +1,6 @@
 (async ()=>{
 
-    const port = 8083;
+    const port = 8080;
 
     const clearListings = () => {
         document.getElementById("listingsContainer").innerHTML = "";
