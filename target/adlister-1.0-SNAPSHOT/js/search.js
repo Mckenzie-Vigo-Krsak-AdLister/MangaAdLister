@@ -2,7 +2,7 @@
     // const default_view = document.getElementById('default_view')
     const search_view = document.getElementById('search_view')
     const searchinput = document.getElementById("searchTerm")
-
+    const port = 8080;
 
     const populateResults = (response) => {
         if (search_view){
@@ -81,7 +81,7 @@
 
         if(searchTerm.length === 0){
             console.log(searchTerm)
-            const request = await fetch("http://localhost:8083/search", {
+            const request = await fetch(`http://localhost:${port}/search`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"
@@ -97,7 +97,7 @@
             populateResults(response)
         }else {
             console.log(searchTerm)
-            const request = await fetch("http://localhost:8083/search", {
+            const request = await fetch(`http://localhost:${port}/search`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"
