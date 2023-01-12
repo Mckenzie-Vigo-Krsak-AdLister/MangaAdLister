@@ -16,6 +16,7 @@ public class DaoFactory {
 
     private static RecoveryDao recoveryDao;
 
+
     private static ProfileDao profileDao;
 
     private static CartDao cartDao;
@@ -36,6 +37,8 @@ public class DaoFactory {
 //        return profileDao;
 //    }
 
+
+    private static SearchDao searchDao;
 
 
     public static Mangas getMangaDao() {
@@ -66,6 +69,7 @@ public class DaoFactory {
         return recoveryDao;
     }
 
+
     public static CartDao getCartDao() throws SQLException {
         if(cartDao == null){
             cartDao = new CartDaoImpl();
@@ -73,4 +77,11 @@ public class DaoFactory {
         return cartDao;
     }
 
+    public static SearchDao getSearchDao() throws SQLException {
+        if (searchDao == null) {
+            searchDao = new SearchDao();
+        }
+        return searchDao;
+    }
 }
+
