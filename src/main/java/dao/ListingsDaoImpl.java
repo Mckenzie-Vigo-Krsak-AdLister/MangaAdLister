@@ -6,7 +6,6 @@ import models.Listing;
 
 import java.sql.*;
 import java.util.ArrayList;
-import java.util.LinkedList;
 import java.util.List;
 
 public class ListingsDaoImpl implements ListingsDao {
@@ -54,8 +53,15 @@ public class ListingsDaoImpl implements ListingsDao {
     }
 
     @Override
-    public boolean deleteListing(long id) {
-        return false;
+    public boolean deleteListing(int userId, int listingId) {
+        try {
+            PreparedStatement stmt = connection.prepareStatement("DELETE FROM listing WHERE users_id = ? AND id = ?;");
+            stmt.setInt(1, userId);
+            stmt.setInt(2, listingId);
+            return stmt.execute();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     @Override
