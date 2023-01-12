@@ -25,8 +25,8 @@
 <body>
 <jsp:include page="/partials/navbar.jsp" />
 <div class="container">
-    <div class="row">
-        <div class="col-8">
+    <div class="container-fluid row">
+        <div class="col-6 col-md-4 col-lg-3">
             <form action="/listings" method="post" id="form" name="searchForm">
             <input type="text" placeholder="Search" id="searchListings" class="form-control" name="searchInput"/>
             </form>

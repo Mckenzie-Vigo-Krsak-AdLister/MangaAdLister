@@ -26,6 +26,7 @@
             listingImageLink.href = `/listing?id=${listing.id}`
 
             const listingImage = document.createElement('img')
+            listingImage.classList.add('img-fluid','img-thumbnail')
             listingImage.src = listing.image
 
             const descriptionParagraph = document.createElement('p')
@@ -44,10 +45,10 @@
         }
     }
 
-    searchinput.onchange = async (e) => {
+    searchinput.onkeyup = async (e) => {
         const searchTerm = e.target.value
 
-        if(searchTerm.length <= 0){
+        if(searchTerm.length === 0){
             default_view.style.display = 'block'
             search_view.style.display = 'none'
         }else {

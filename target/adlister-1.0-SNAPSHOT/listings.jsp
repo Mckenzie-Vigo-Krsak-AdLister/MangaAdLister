@@ -38,7 +38,7 @@
                     </div>
                 </c:forEach>
             </div>
-            <div class="container-fluid row" id="search_view">
+            <div class="container row" id="search_view">
 
             </div>
         </div>
