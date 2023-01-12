@@ -8,25 +8,65 @@
     <head>
         <title>Manga Listings</title>
         <jsp:include page="partials/header.jsp" />
-        <link href="/css/listings.css" rel="stylesheet" type="text/css">
+        <link href="${pageContext.request.contextPath}/css/listings.css" rel="stylesheet" type="text/css">
+        <script type="module" defer>
+            import { getCartSize } from './js/cartsystem.js'
+            (async () => await getCartSize())()
+            // async function pageShown(evt){
+            //     if (evt.persisted) {
+            //         await getCartSize()
+            //
+            //         // alert("pageshow event handler called.  The page was just restored from the Page Cache (eg. From the Back button.");
+            //     } else {
+            //         await getCartSize()
+            //
+            //         // alert("pageshow event handler called for the initial load.  This is the same as the load event.");
+            //     }
+            // }
+            //
+            // async function pageHidden(evt){
+            //     if (evt.persisted) {
+            //         // alert("pagehide event handler called.  The page was suspended and placed into the Page Cache.");
+            //     } else {
+            //         // alert("pagehide event handler called for page destruction.  This is the same as the unload event.");
+            //     }
+            // }
+            //
+            // document.addEventListener('DOMContentLoaded',async function () {
+            //     var ibackbutton = document.getElementById("backbuttonstate");
+            //     if (ibackbutton.value == "0") {
+            //         // Page has been loaded for the first time - Set marker
+            //         ibackbutton.value = "1";
+            //         alert('First time load');
+            //     } else {
+            //         // Back button has been fired.. Do Something different..
+            //         alert('Previously loaded - Returned from Back button');
+            //         await getCartSize();
+            //     }
+            // }, false);
+            //
+            // window.addEventListener("pageshow", pageShown, false);
+            // window.addEventListener("pagehide", pageHidden, false);
+        </script>
     </head>
     <body>
+    <input id="backbuttonstate" type="text" value="0" style="display:none;" />
     <jsp:include page="partials/navbar.jsp" />
         <div class="container">
-            <div class="row">
-                <div class="col-8">
-                    <input type="text" placeholder="Search" id="searchListings" class="form-control"/>
-                </div>
-                <div class="col-2">
-                    <select id="searchType" class="form-select">
-                        <option value="title">Title</option>
-                        <option value="author">Genre</option>
-                    </select>
-                </div>
-                <div class="col-2">
-                    <button id="searchButton" class="btn btn-primary">Search</button>
-                </div>
-            </div>
+<%--            <div class="row">--%>
+<%--                <div class="col-8">--%>
+<%--                    <input type="text" placeholder="Search" id="searchListings" class="form-control"/>--%>
+<%--                </div>--%>
+<%--                <div class="col-2">--%>
+<%--                    <select id="searchType" class="form-select">--%>
+<%--                        <option value="title">Title</option>--%>
+<%--                        <option value="author">Genre</option>--%>
+<%--                    </select>--%>
+<%--                </div>--%>
+<%--                <div class="col-2">--%>
+<%--                    <button id="searchButton" class="btn btn-primary">Search</button>--%>
+<%--                </div>--%>
+<%--            </div>--%>
             <h1 class="mt-4">Here Are all the ads!</h1>
             <div class="container-fluid row">
                 <c:forEach var="manga" items="${mangas}">

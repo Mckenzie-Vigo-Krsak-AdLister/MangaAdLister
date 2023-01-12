@@ -65,7 +65,7 @@ public class UsersDaoImpl implements UsersDao {
             stmt.setString(1, user.getEmail());
             stmt.setString(2, hash);
             stmt.setString(3,user.getFirstName());
-            stmt.setString(4,user.getLast_name());
+            stmt.setString(4,user.getLastName());
             stmt.setDate(5, new java.sql.Date(Date.from(Instant.now()).getTime()));
             stmt.setString(6, user.getRoles());
 

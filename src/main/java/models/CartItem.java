@@ -1,7 +1,9 @@
 package models;
 
-import java.io.Serializable;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
+import java.io.Serializable;
+@JsonIgnoreProperties
 public class CartItem implements Serializable {
     private int id;
     private int users_id;
@@ -18,6 +20,10 @@ public class CartItem implements Serializable {
         this.users_id = users_id;
         this.listing_id = listing_id;
         this.cart_id = cart_id;
+    }
+
+    public CartItem(){
+
     }
 
     public int getId() {

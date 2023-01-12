@@ -15,39 +15,48 @@
 <%--<jsp:useBean id="listing" scope="request" type="models.Listing"/>--%>
 <% Listing listing = (Listing) request.getAttribute("listing"); %>
 <% User loggedInUser = (User) request.getSession().getAttribute("loggedInUser"); %>
+<% User owner = (User) request.getSession().getAttribute("owner"); %>
 
 <html>
 <head>
     <title>Manga Listings</title>
     <jsp:include page="/partials/header.jsp" />
-    <script src="/js/listing.js" defer></script>
+    <script src="${pageContext.request.contextPath}../js/listing.js" defer></script>
+    <script type="module" defer>
+        import {getCartSize} from '../js/cartsystem.js'
+        window.addEventListener("pageshow", getCartSize, false);
+    </script>
 </head>
 <body>
 <jsp:include page="/partials/navbar.jsp" />
 <div class="container">
-    <div class="row">
-        <div class="col-8">
-            <input type="text" placeholder="Search" id="searchListings" class="form-control"/>
-        </div>
-        <div class="col-2">
-            <select id="searchType" class="form-select">
-                <option value="title">Title</option>
-                <option value="author">Genre</option>
-            </select>
-        </div>
-        <div class="col-2">
-            <button id="searchButton" class="btn btn-primary">Search</button>
-        </div>
-    </div>
+<%--    <div class="row">--%>
+<%--        <div class="col-8">--%>
+<%--            <input type="text" placeholder="Search" id="searchListings" class="form-control"/>--%>
+<%--        </div>--%>
+<%--        <div class="col-2">--%>
+<%--            <select id="searchType" class="form-select">--%>
+<%--                <option value="title">Title</option>--%>
+<%--                <option value="author">Genre</option>--%>
+<%--            </select>--%>
+<%--        </div>--%>
+<%--        <div class="col-2">--%>
+<%--            <button id="searchButton" class="btn btn-primary">Search</button>--%>
+<%--        </div>--%>
+<%--    </div>--%>
     <h1 class="mt-4">Hey ${loggedInUser.getFirstName()}!, here's the manga you asked for!</h1>
-    <div class="container-fluid row">
+    <h2 style="display: ${loggedInUser.getId() != listing.getUserId() ? "none" : "block"}">YOUR LISTING:</h2>
+    <h2 style="display: ${loggedInUser.getId() != listing.getUserId() ? "block" : "none"}">Posted by ${owner.getFirstName()} ${owner.getLastName()}</h2>
+    <div class="container-fluid row mb-5">
         <div class="col-6 col-md-4 col-lg-3">
             <h2>${listing.title}</h2>
             <img src="${listing.image}" class="img-fluid img-thumbnail">
             <p>${listing.description}</p>
-            <button id="sendSellerMessage">Message Seller</button>
-            <button id="addToCart" listing="${listing.getId()}">
-                Add To Cart
+<%--            <button id="sendSellerMessage">Message Seller</button>--%>
+            <button id="addToCartButton" class="addToCartButton" listing="${listing.getId()}" style="border: none; background: transparent;display:${loggedInUser.getId() != listing.getUserId() ? "block" : "none"};">
+                <span class="material-symbols-outlined">
+                    add_shopping_cart
+                </span>
             </button>
         </div>
     </div>

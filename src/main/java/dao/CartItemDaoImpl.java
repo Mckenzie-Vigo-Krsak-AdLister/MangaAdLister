@@ -47,7 +47,7 @@ public class CartItemDaoImpl implements CartItemDao{
     }
 
     @Override
-    public CartItem[] getCartItemsForUser(int userid) {
+    public List<CartItem> getCartItemsForUser(int userid) {
         try {
             //Prepare a statement to pull all the cart items for the given user
             PreparedStatement stmt = connection.prepareStatement("SELECT * FROM cart_item WHERE users_id = ?;");
@@ -59,10 +59,15 @@ public class CartItemDaoImpl implements CartItemDao{
 
             List<CartItem> cartItems = new ArrayList<>();
             while(rs.next()){
-                CartItem it = new CartItem(rs.getInt(1),rs.getInt(2),rs.getInt(3));
+                CartItem it = new CartItem(
+                        rs.getInt(1),
+                        rs.getInt(2),
+                        rs.getInt(3),
+                        rs.getInt(4)
+                );
                 cartItems.add(it);
             }
-            return (CartItem[]) cartItems.toArray();
+            return cartItems;
         }catch(Exception e){
             System.out.println("Error while getting cart items for the give user.");
             System.out.println(e.getMessage());
@@ -81,6 +86,20 @@ public class CartItemDaoImpl implements CartItemDao{
             return stmt.execute();
         }catch(Exception e){
             System.out.println("Error saving cart item to the database");
+            System.out.println(e.getMessage());
+            return false;
+        }
+    }
+
+    @Override
+    public boolean removeItemById(int id) {
+        try {
+            PreparedStatement stmt = connection.prepareStatement("DELETE FROM cart_item WHERE id = ?;");
+            stmt.setInt(1,id);
+
+            return stmt.execute();
+        }catch(Exception e){
+            System.out.println("Error while deleting cart item from the database");
             System.out.println(e.getMessage());
             return false;
         }

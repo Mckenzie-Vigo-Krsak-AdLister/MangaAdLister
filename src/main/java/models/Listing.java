@@ -21,7 +21,7 @@ public class Listing extends Manga implements Serializable {
     private String image;
     private Double price;
 
-    public Listing(String title, String description, String image, Double price, long userId) {
+    public Listing(String title, String description, String image, Double price, int userId) {
         this.title = title;
         this.description = description;
         this.image = image;
@@ -29,7 +29,7 @@ public class Listing extends Manga implements Serializable {
         this.userId = userId;
     }
 
-    public Listing(String title, String description, String image, Double price, long id, long userId) {
+    public Listing(String title, String description, String image, Double price, int id, int userId) {
         this.title = title;
         this.description = description;
         this.image = image;

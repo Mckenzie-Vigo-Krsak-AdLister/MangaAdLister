@@ -56,21 +56,34 @@ public class ListingsDaoImpl implements ListingsDao {
     }
 
     @Override
-    public Listing getListingById(long id) throws SQLException {
+    public Listing getListingById(int id) throws SQLException {
         try {
-            PreparedStatement stmt = connection.prepareStatement("SELECT * FROM manga_adlister.listing WHERE id = ? LIMIT 1;");
+            PreparedStatement stmt = connection.prepareStatement("SELECT * FROM listing WHERE id = ?;");
             stmt.setLong(1, id);
             stmt.execute();
             ResultSet rs = stmt.getResultSet();
-            rs.next();
-            String title = rs.getString("title");
-            String image = rs.getString("image");
-            String description = rs.getString("description");
-            Double price = rs.getDouble("price");
-            long userId = rs.getLong("users_id");
-            Listing newListing = new Listing(title, description, image, price, id, userId);
-            return newListing;
+            if(rs.next()) {
+                String title = rs.getString("title");
+                String image = rs.getString("image");
+                String description = rs.getString("description");
+                Double price = rs.getDouble("price");
+                int userId = (int) rs.getLong("users_id");
+
+//                System.out.println("Getting Listing By id " + id);
+//                System.out.println("Title: " + title);
+//                System.out.println("Description: " + description);
+//                System.out.println("Image: " + image);
+//                System.out.println("Price: " + price);
+//                System.out.println("Id:" + id);
+//                System.out.println("UserId: " + userId);
+
+                Listing newListing = new Listing(title, description, image, price, id, userId);
+                return newListing;
+            }else{
+                return null;
+            }
         } catch (SQLException e) {
+            System.out.println("Breaking at ListingsDaoImpl:74");
             throw new RuntimeException(e);
         }
     }
