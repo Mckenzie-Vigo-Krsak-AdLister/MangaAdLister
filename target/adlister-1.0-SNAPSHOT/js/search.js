@@ -81,7 +81,7 @@
 
         if(searchTerm.length === 0){
             console.log(searchTerm)
-            const request = await fetch("http://localhost:8083/search", {
+            const request = await fetch("http://localhost:8080/search", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"
@@ -97,7 +97,7 @@
             populateResults(response)
         }else {
             console.log(searchTerm)
-            const request = await fetch("http://localhost:8083/search", {
+            const request = await fetch("http://localhost:8080/search", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"
