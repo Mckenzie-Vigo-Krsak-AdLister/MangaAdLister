@@ -1,13 +1,53 @@
 (async ()=>{
 
-    const port = 8080;
+    const port = 8083;
+
+    const bgContainer = document.getElementById("bgContainer")
+
+    const userId = document.getElementById("userId").value
 
     const clearListings = () => {
         document.getElementById("listingsContainer").innerHTML = "";
+
     }
 
+    const bgCoverImg = async () => {
+
+        const response = await fetch(`http://localhost:${port}/listings`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+
+            },
+            body: JSON.stringify({
+                userId: userId
+            })
+        });
+
+        const data = await response.json();
+        console.log(data);
+        data.forEach(listing => {
+
+            const bgCover = document.createElement('div')
+            bgCover.className = "face"
+
+            const bgImg = document.createElement('img')
+            bgImg.src = listing.image
+
+            const bgMask = document.createElement('div')
+            bgMask.className = "mask"
+
+            bgCover.appendChild(bgImg)
+            bgCover.appendChild(bgMask)
+            bgContainer.appendChild(bgCover)
+
+        })
+    }
+
+    await bgCoverImg()
+
     const getAllListings = async () => {
-        const userId = document.getElementById("userId").value
+
         const response = await fetch(`http://localhost:${port}/profilelistings`, {
             method: 'POST',
             headers: {
@@ -25,6 +65,19 @@
         const container = document.getElementById("listingsContainer")
         container.innerHTML = ""
         data.forEach(listing => {
+
+            // const bgCover = document.createElement('div')
+            // bgCover.className = "face"
+            //
+            // const bgImg = document.createElement('img')
+            // bgImg.src = listing.image
+            //
+            // const bgMask = document.createElement('div')
+            // bgMask.className = "mask"
+            //
+            // bgCover.appendChild(bgImg)
+            // bgCover.appendChild(bgMask)
+            // bgContainer.appendChild(bgCover)
 
             const listingDiv = document.createElement("div")
             listingDiv.classList.add("listing", "col-12", "col-md-6", "col-lg-4", "mb-3")

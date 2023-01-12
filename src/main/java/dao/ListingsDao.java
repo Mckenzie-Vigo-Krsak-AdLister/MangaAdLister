@@ -9,7 +9,7 @@ public interface ListingsDao {
 
     public boolean createListing(Listing newlisting);
 
-    public Listing[] allListings();
+    public List<Listing> allListings();
 
     public boolean updateListing(long id, Listing updatedListing);
 

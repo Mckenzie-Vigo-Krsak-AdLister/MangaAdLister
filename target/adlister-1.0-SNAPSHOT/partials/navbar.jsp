@@ -14,7 +14,7 @@
 
 <html>
 <head>
-    <script src="../js/search.js" defer></script>
+    <script src="../Js/search.js" defer></script>
 </head>
 <body>
 
