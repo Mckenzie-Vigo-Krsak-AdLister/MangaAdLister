@@ -10,4 +10,6 @@ public interface CartDao {
     public Cart[] getUserCarts(User user);
 
     public Cart getLatestCartForUser(User user) throws SQLException;
+
+    public int createCartForUser(int id);
 }

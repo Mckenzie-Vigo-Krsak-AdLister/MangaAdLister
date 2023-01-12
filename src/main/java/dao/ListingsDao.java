@@ -15,7 +15,7 @@ public interface ListingsDao {
 
     public boolean deleteListing(int userId, int listingId);
 
-    public Listing getListingById(long id) throws SQLException;
+    public Listing getListingById(int id) throws SQLException;
 
     public List<Listing> getListingsByUserId(int id) throws SQLException;
 

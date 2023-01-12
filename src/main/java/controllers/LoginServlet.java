@@ -21,16 +21,19 @@ public class LoginServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         try {
+            //If theres a session variable for a logged in user
             if(request.getSession().getAttribute("loggedIn") != null) {
-                Boolean loggedIn = Boolean.getBoolean(request.getSession().getAttribute("loggedIn").toString());
-                if (loggedIn) {
+                //Grab it from the session
+                boolean loggedIn = (boolean) request.getSession().getAttribute("loggedIn");
+                if (loggedIn) { //Check if they are logged in
+                    System.out.println("Login servlet executing, user logged in: " + loggedIn);
+                    //Redirect to the listings page
                     request.getRequestDispatcher("/WEB-INF/listings.jsp").forward(request, response);
-                } else {
-                    request.getRequestDispatcher("/login.jsp").forward(request, response);
                 }
-            }else{
-                request.getRequestDispatcher("/login.jsp").forward(request,response);
             }
+
+            //Otheriwse just go to login
+            request.getRequestDispatcher("/login.jsp").forward(request, response);
         }catch(Exception e){  //Session is null
            throw e;
         }
@@ -65,11 +68,13 @@ public class LoginServlet extends HttpServlet {
                     request.getSession().setAttribute("loggedIn", true);
                     request.getSession().setAttribute("loggedInUser",matchingUser);
 
-                    //Pull the latest cart
-                    Cart latestCart = DaoFactory.getCartDao().getLatestCartForUser(matchingUser);
+                    if(DaoFactory.getCartDao().getLatestCartForUser(matchingUser) != null) {
+                        //Pull the latest cart
+                        Cart latestCart = DaoFactory.getCartDao().getLatestCartForUser(matchingUser);
 
-                    //Save the latest cart in a session variable
-                    request.getSession().setAttribute("cart",latestCart);
+                        //Save the latest cart in a session variable
+                        request.getSession().setAttribute("cart", latestCart);
+                    }
 
                     //Use the request dispatcher to send the user to the listings page
                     //                request.getRequestDispatcher("/listings").forward(request,response);

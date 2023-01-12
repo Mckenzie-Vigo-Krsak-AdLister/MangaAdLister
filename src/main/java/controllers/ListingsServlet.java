@@ -18,6 +18,10 @@ import java.util.List;
 @WebServlet(name = "ListingsServlet", urlPatterns = "/listings")
 public class ListingsServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        // Set standard HTTP/1.1 no-cache headers.
+        response.setHeader("Cache-Control", "private, no-store, no-cache, must-revalidate");
+// Set standard HTTP/1.0 no-cache header.
+        response.setHeader("Pragma", "no-cache");
         request.setAttribute("mangas", DaoFactory.getMangaDao().all());
         request.getRequestDispatcher("listings.jsp").forward(request, response);
     }

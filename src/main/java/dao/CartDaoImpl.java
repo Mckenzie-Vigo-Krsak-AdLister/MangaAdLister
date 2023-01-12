@@ -6,6 +6,7 @@ import models.Cart;
 import models.User;
 
 import java.sql.*;
+import java.time.Instant;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -103,6 +104,32 @@ public class CartDaoImpl implements CartDao{
             System.out.println("Error while getting the latest cart for the given user on CartDaoImpl");
             System.out.println(e.getMessage());
             return null;
+        }
+    }
+
+    public int createCartForUser(int userid){
+        try{
+            PreparedStatement stmt = connection.prepareStatement("INSERT INTO cart(users_id,created) VALUES(?,?);", new String[]{"id"});
+            stmt.setInt(1,userid);
+            stmt.setTimestamp(2,Timestamp.from(Instant.now()));
+            int id = -1;
+            int result = stmt.executeUpdate();
+            if (result > 0) {
+                try {
+                    ResultSet rs = stmt.getGeneratedKeys();
+                    if (rs.next()) {
+                        id = rs.getInt(1);
+                    }
+                }catch(Exception e){
+                    System.out.println("Error encountered while reading the generated key in CartDaoImpl->createCartForId() .");
+                    System.out.println(e.getMessage());
+                }
+            }
+            return id;
+        }catch(Exception e){
+            System.out.println("Error while creating a cart for user id " + userid + " in the CartDao implementation.");
+            System.out.println(e.getMessage());
+            return -1;
         }
     }
 }

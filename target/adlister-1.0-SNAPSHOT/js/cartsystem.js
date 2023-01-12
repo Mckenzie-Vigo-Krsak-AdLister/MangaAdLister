@@ -1,3 +1,0 @@
-(()=>{
-   alert("Cart System Loading.")
-})()

@@ -89,9 +89,10 @@ public class User implements Serializable {
             int id = rs.getInt("id");
             String email = rs.getString("email");
             String password = rs.getString("password");
-            Date created = rs.getDate("created");
             String firstName = rs.getString("first_name");
             String lastName = rs.getString("last_name");
+            Date created = rs.getDate("created");
+            String roles = rs.getString("roles");
 
             User usr = new User();
             usr.setId(id);
@@ -100,6 +101,7 @@ public class User implements Serializable {
             usr.setLast_name(lastName);
             usr.setPassword(password);
             usr.setCreated(created);
+            usr.setRoles(roles);
 
             return usr;
 
@@ -108,7 +110,7 @@ public class User implements Serializable {
         }
     }
 
-    public String getLast_name() {
+    public String getLastName() {
         return last_name;
     }
 
