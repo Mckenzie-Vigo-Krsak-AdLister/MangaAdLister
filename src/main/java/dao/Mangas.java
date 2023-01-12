@@ -10,4 +10,6 @@ public interface Mangas {
 
     Long insert(Manga manga);
 
+    void deleteManga(String title, int userId);
+
 }

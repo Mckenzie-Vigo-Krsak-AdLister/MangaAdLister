@@ -37,6 +37,11 @@ public class CreateListingServlet extends HttpServlet {
             System.out.println(newManga.getTitle_ov());
             System.out.println(req.getUserId());
             System.out.println(req.getPrice());
+
+            response.getWriter().println("{}");
+
+
+
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }

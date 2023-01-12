@@ -13,7 +13,7 @@ public interface ListingsDao {
 
     public boolean updateListing(long id, Listing updatedListing);
 
-    public boolean deleteListing(long id);
+    public boolean deleteListing(int userId, int listingId);
 
     public Listing getListingById(long id) throws SQLException;
 
