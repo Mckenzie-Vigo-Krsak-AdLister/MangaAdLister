@@ -26,8 +26,10 @@
 </head>
 <body>
     <jsp:include page="/partials/navbar.jsp" />
-    ${loggedInUser.getEmail()}'s Shopping Cart you have <span id="cartSizeLabel"></span> items.
     <div class="container p-4">
+        <p>
+            ${loggedInUser.getEmail()}'s Shopping Cart you have <span id="cartSizeLabel"></span> items.
+        </p>
         <div id="cartItems"></div>
     </div>
 </body>
