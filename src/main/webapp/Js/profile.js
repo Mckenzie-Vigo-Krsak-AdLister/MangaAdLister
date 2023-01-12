@@ -30,7 +30,7 @@
             listingDiv.classList.add("listing", "col-12", "col-md-6", "col-lg-4", "mb-3")
 
             const cardDiv = document.createElement("div")
-            cardDiv.class = "card"
+            cardDiv.className = "card"
 
             const cardHeader = document.createElement("div")
             cardHeader.classList.add("card-header", "d-flex", "justify-content-between")

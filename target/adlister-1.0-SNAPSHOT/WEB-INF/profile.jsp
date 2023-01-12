@@ -22,6 +22,7 @@
 <%--    <script src="/Js/messages.js"></script>--%>
     <script src="/Js/profile.js" defer></script>
     <link rel="stylesheet" href="../css/listing.css">
+    ;<ink rel="stylesheet" href="../css/profile.css"></ink>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
 </head>
 <body>
@@ -29,7 +30,7 @@
 <div class="container">
     <h1 class="mt-4">${loggedInUser.getFirstName()}'s Profile</h1>
 
-    <button id="addListingBtn">Add new listing</button>
+    <button id="addListingBtn" class="btn btn-light">Add new listing</button>
 
     <div id="createForm">
     </div>
@@ -37,24 +38,24 @@
     <div class="container">
 <%--        <h1 class="mt-4">Here Are all the ads!</h1>--%>
         <div id="listingsContainer" class="container-fluid row mt-4">
-<%--            <c:forEach var="manga" items="${listing}">--%>
-<%--                <div class="col-12 col-md-6 col-lg-4 mb-3">--%>
-<%--                    <div class="card">--%>
-<%--                        <div class="card-header d-flex justify-content-between">--%>
-<%--                            <h2>${manga.title}</h2>--%>
-<%--                            <button listing="${manga.id}" id="deleteButton" class="deleteButton btn">x</button>--%>
-<%--                        </div>--%>
-<%--                        <div class="card-body d-flex flex-column align-items-center">--%>
-<%--                            <div class="d-flex justify-content-between align-items-start">--%>
-<%--                                <p class="fw-bold">Buy this manga for $${manga.price}0</p>--%>
-<%--                                <button id="addToCartButton" class="btn"><i class="bi bi-cart-plus"></i></button>--%>
-<%--                            </div>--%>
-<%--                            <a href="/listing?id=${manga.id}"><img src="${manga.image}" alt="${manga.title}" class="img-fluid img-thumbnail mb-2"></a>--%>
-<%--                            <p>${manga.description}</p>--%>
-<%--                        </div>--%>
-<%--                    </div>--%>
-<%--                </div>--%>
-<%--            </c:forEach>--%>
+            <c:forEach var="manga" items="${listing}">
+                <div class="col-12 col-md-6 col-lg-4 mb-3">
+                    <div class="card">
+                        <div class="card-header d-flex justify-content-between">
+                            <h2>${manga.title}</h2>
+                            <button listing="${manga.id}" id="deleteButton" class="deleteButton btn">x</button>
+                        </div>
+                        <div class="card-body d-flex flex-column align-items-center">
+                            <div class="d-flex justify-content-between align-items-start">
+                                <p class="fw-bold">Buy this manga for $${manga.price}0</p>
+                                <button id="addToCartButton" class="btn"><i class="bi bi-cart-plus"></i></button>
+                            </div>
+                            <a href="/listing?id=${manga.id}"><img src="${manga.image}" alt="${manga.title}" class="img-fluid img-thumbnail mb-2"></a>
+                            <p>${manga.description}</p>
+                        </div>
+                    </div>
+                </div>
+            </c:forEach>
         </div>
     </div>
 
