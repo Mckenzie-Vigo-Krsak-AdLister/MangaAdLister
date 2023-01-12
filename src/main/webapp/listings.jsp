@@ -8,24 +8,23 @@
     <head>
         <title>Manga Listings</title>
         <jsp:include page="partials/header.jsp" />
-        <link href="./css/listings.css" rel="stylesheet" type="text/css">
-        <link href="/css/listings.css" rel="stylesheet" type="text/css">
+        <link href="/css/listings.css" rel="stylesheet" type="text/css"/>
         <script src="/js/search.js" defer></script>
     </head>
     <body>
     <jsp:include page="partials/navbar.jsp" />
         <div class="container">
             <h1 class="mt-4">Here Are all the ads!</h1>
-            <div class="container-fluid row" id="default_view">
-                <c:forEach var="manga" items="${mangas}">
-                    <div class="col-6 col-md-4 col-lg-3">
-                        <h2>${manga.title}</h2>
-                        <a href="/listing?id=${manga.id}"><img src="${manga.image}" alt="${manga.title}" class="img-fluid img-thumbnail"></a>
-                        <p>${manga.description}</p>
-                    </div>
-                </c:forEach>
-            </div>
-            <div class="container row" id="search_view">
+<%--            <div id="default_view">--%>
+<%--                <c:forEach var="manga" items="${mangas}">--%>
+<%--                    <div>--%>
+<%--                        <h2>${manga.title}</h2>--%>
+<%--                        <a href="/listing?id=${manga.id}"><img src="${manga.image}" alt="${manga.title}" class="img-fluid img-thumbnail"></a>--%>
+<%--                        <p>${manga.description}</p>--%>
+<%--                    </div>--%>
+<%--                </c:forEach>--%>
+<%--            </div>--%>
+            <div id="search_view">
 
             </div>
         </div>
