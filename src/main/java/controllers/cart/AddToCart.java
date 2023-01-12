@@ -4,10 +4,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import dao.CartDao;
 import dao.CartItemDao;
 import dao.DaoFactory;
-import models.Cart;
-import models.Listing;
-import models.Manga;
-import models.User;
+import models.*;
 
 import javax.servlet.AsyncContext;
 import javax.servlet.ServletException;
@@ -19,7 +16,10 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.io.Writer;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
+import java.util.List;
 
 @WebServlet(name="AddToCartServlet", urlPatterns = "/addtocart")
 public class AddToCart extends HttpServlet {
@@ -60,18 +60,34 @@ public class AddToCart extends HttpServlet {
             //Get the CartItemDao from the DaoFactory
             CartItemDao cartItemDao = DaoFactory.getCartItemsDao();
 
-            //Use the cart item dao to add the item to the latest user's cart
-            cartItemDao.addCartItem(
-                    loggedInUser.getId(), //The user's id
-                    latestUsersCartId, //The cart id
-                    response.getListingId() //The listing id
+            //Sanity Check
+            System.out.println(loggedInUser.getId());
+            System.out.println(latestUsersCartId);
+            System.out.println(response.getListingId());
+
+            //Create a cart item
+            CartItem newCartItem = new CartItem(
+                    loggedInUser.getId(),
+                    response.getListingId(),
+                    latestUsersCartId
             );
 
+            //Use the cart item dao to add the item to the latest user's cart
+            cartItemDao.addCartItem(newCartItem);
+
+            //Get all the cart itmes for the user
+            List<CartItem> cartItems = DaoFactory.getCartItemsDao().getCartItemsForUser(loggedInUser.getId());
+
+            //Get the session and add the cart items to it
+            req.getSession().setAttribute("cart", cartItems);
+
+            //Use the object mapper to turn the cart items into a json list
+            String cartItemsJson = mapper.writeValueAsString(cartItems);
 
             //Send a json response back to the client
             res.setContentType("application/json");
             PrintWriter w = res.getWriter();
-            w.printf("{\"added\":\"true\",\"message\":\"added " + response.getListingId() + "\"}");
+            w.printf(cartItemsJson);
 
         }catch(Exception e){
             System.out.println("Error during post request at CartServlet");

@@ -9,12 +9,32 @@
             listingId : listingId
          })
       })
-
       console.log("Response from add to cart request")
-      console.log(await fetchReq.json())
+      const cart = await fetchReq.json()
+      console.log(cart)
+
+      const cartSize = document.getElementById("cartSize");
+      cartSize.innerText = cart.length.toString();
    }
 
 
-   // await fetchFormTest()
-   await fetchBodyTest()
+   const getCartItemCount = async () => {
+      //Do an api call for the cart size
+      const request = await fetch("http://localhost:8080/getcartsize",{
+         method: "POST"
+      })
+
+      //Grab the response from the api call
+      const response = await request.json()
+
+      //Update the cart size indicator
+      const cartSize = document.getElementById("cartSize");
+      cartSize.innerText = response["cart_size"]
+
+      //Return the cart size
+      return response
+   }
+
+   //When the page loads update the cart size indicator
+   await getCartItemCount();
 })()

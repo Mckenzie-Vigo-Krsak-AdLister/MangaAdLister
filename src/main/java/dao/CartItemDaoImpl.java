@@ -47,7 +47,7 @@ public class CartItemDaoImpl implements CartItemDao{
     }
 
     @Override
-    public CartItem[] getCartItemsForUser(int userid) {
+    public List<CartItem> getCartItemsForUser(int userid) {
         try {
             //Prepare a statement to pull all the cart items for the given user
             PreparedStatement stmt = connection.prepareStatement("SELECT * FROM cart_item WHERE users_id = ?;");
@@ -62,7 +62,7 @@ public class CartItemDaoImpl implements CartItemDao{
                 CartItem it = new CartItem(rs.getInt(1),rs.getInt(2),rs.getInt(3));
                 cartItems.add(it);
             }
-            return (CartItem[]) cartItems.toArray();
+            return cartItems;
         }catch(Exception e){
             System.out.println("Error while getting cart items for the give user.");
             System.out.println(e.getMessage());
@@ -71,12 +71,12 @@ public class CartItemDaoImpl implements CartItemDao{
     }
 
     @Override
-    public boolean addCartItem(int user, int cartid,int listingid) {
+    public boolean addCartItem(CartItem item) {
         try{
             PreparedStatement stmt = connection.prepareStatement("INSERT INTO cart_item(users_id,listing_id,cart_id,created) VALUES(?,?,?,?);");
-            stmt.setInt(1,user);
-            stmt.setInt(2,listingid);
-            stmt.setInt(3,cartid);
+            stmt.setInt(1,item.getUsersId());
+            stmt.setInt(2,item.getListing_id());
+            stmt.setInt(3,item.getCart_id());
             stmt.setTimestamp(4, Timestamp.from(Instant.now()));
             return stmt.execute();
         }catch(Exception e){

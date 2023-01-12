@@ -1,4 +1,6 @@
-<%@ page import="models.User" %><%--
+<%@ page import="models.User" %>
+<%@ page import="models.CartItem" %>
+<%@ page import="java.util.List" %><%--
   Created by IntelliJ IDEA.
   User: aldanisvigo
   Date: 1/8/23
@@ -17,6 +19,7 @@
             <input class="form-control me-2 mt-3" type="search" placeholder="Find Titles" aria-label="Find">
             <button class="btn btn-outline-success mt-3" type="submit">Search</button>
         </form>
+        <button id=""><span id="cartSize"/>&nbsp;&nbsp;Items in Cart</button>
         <form style="display:${loggedIn ? "block" : "none"};" action="/logout" method="post">
             <button class="btn btn-outline-danger">Logout</button>
         </form>
@@ -25,5 +28,4 @@
         </a>
         ${loggedInUser.getFirstName().toString()}
     </div>
-    <script src="js/cartsystem.js" defer></script>
 </nav>
