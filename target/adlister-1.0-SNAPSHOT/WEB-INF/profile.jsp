@@ -41,7 +41,7 @@
                     <div class="card">
                         <div class="card-header d-flex justify-content-between">
                             <h2>${manga.title}</h2>
-                            <button class="btn">x</button>
+                            <button id="deleteButton" class="btn">x</button>
                         </div>
                         <div class="card-body d-flex flex-column align-items-center">
                             <p class="fw-bold">Buy this manga for $${manga.price}0</p>

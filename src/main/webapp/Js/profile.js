@@ -34,7 +34,7 @@
         }
     }
 
-    const deleteBtn = documetn.getElementById("deleteButton");
+    const deleteBtn = document.getElementById("deleteButton");
 
 
 
