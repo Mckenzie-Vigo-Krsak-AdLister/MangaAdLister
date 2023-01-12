@@ -17,7 +17,7 @@
 
 <html>
 <head>
-    <script src="./js/listing.js"></script>
+
 </head>
 <body>
 <div class="message-wrapper">

@@ -9,11 +9,11 @@
 <head>
     <title>MangaLister - Login</title>
     <jsp:include page="partials/header.jsp" />
-  <link href="./css/login.css" rel="stylesheet" type="text/css">
-  <script src="./js/login.js"></script>
+  <link href="/css/login.css" rel="stylesheet" type="text/css">
+  <script src="/js/login.js"></script>
 </head>
 <body>
-  <jsp:include page="partials/navbar.jsp" />
+  <jsp:include page="/partials/navbar.jsp" />
   <div class="container d-flex justify-content-center align-items-center w-100">
     <div class="card p-5" id="logCard">
       <form action="/login" method="POST">

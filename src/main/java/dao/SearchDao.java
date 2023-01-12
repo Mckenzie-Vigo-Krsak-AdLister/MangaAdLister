@@ -33,12 +33,12 @@ public class SearchDao {
             ResultSet rs = stmt.getResultSet();
             List<Listing> searchListing = new ArrayList<>();
             while(rs.next()) {
-                Long id = rs.getLong("id");
+                int id = rs.getInt("id");
                 String title = rs.getString("title");
                 String image = rs.getString("image");
                 String description = rs.getString("description");
                 Double price = rs.getDouble("price");
-                long userId = rs.getLong("users_id");
+                int userId = rs.getInt("users_id");
                 Listing newListing = new Listing(title, description, image, price, id, userId);
                 searchListing.add(newListing);
             }

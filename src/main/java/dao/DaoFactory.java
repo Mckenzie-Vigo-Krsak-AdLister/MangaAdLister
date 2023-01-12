@@ -21,6 +21,7 @@ public class DaoFactory {
 
     private static CartDao cartDao;
 
+
     private static ApiHandle apiHandle;
 
     public static ApiHandle getApiHandle() {
@@ -39,6 +40,9 @@ public class DaoFactory {
 
 
     private static SearchDao searchDao;
+
+
+    private static CartItemDao cartItemDao;
 
 
     public static Mangas getMangaDao() {
@@ -77,11 +81,21 @@ public class DaoFactory {
         return cartDao;
     }
 
+
     public static SearchDao getSearchDao() throws SQLException {
         if (searchDao == null) {
             searchDao = new SearchDao();
         }
         return searchDao;
     }
+
+    public static CartItemDao getCartItemsDao () throws SQLException {
+        if (cartItemDao == null) {
+            cartItemDao = new CartItemDaoImpl();
+        }
+        return cartItemDao;
+
+    }
+
 }
 

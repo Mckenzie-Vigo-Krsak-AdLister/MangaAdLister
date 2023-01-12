@@ -10,6 +10,7 @@
     <head>
         <title>Recover</title>
         <jsp:include page="/partials/header.jsp" />
+
         <script src="../js/recover.js" defer></script>
         <style>
             .reset_password_form {

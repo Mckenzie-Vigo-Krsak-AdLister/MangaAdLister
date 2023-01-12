@@ -5,73 +5,73 @@
 
 
     const populateResults = (response) => {
-        //Empty any previous results
-        search_view.innerHTML = ""
+        if (search_view){
 
-        //Iterate through the new results
-        for(let item in response){
-            const listing = response[item]
-            // const title = listing.title;
-            // const description = listing.description;
-            // const image = listing.image;
+            //Empty any previous results
+            search_view.innerHTML = ""
 
-            //lets see
-            const cardDiv = document.createElement("div")
-            cardDiv.class = "card"
+            //Iterate through the new results
+            for(let item in response) {
+                const listing = response[item]
+                // const title = listing.title;
+                // const description = listing.description;
+                // const image = listing.image;
 
-            const cardBody = document.createElement("div")
-            cardBody.classList.add("card-body", "d-flex", "flex-column", "align-items-center")
+                //lets see
+                const cardDiv = document.createElement("div")
+                cardDiv.class = "card"
 
-            const cardFooter = document.createElement("div")
-            cardFooter.classList.add("card-header", "d-flex", "justify-content-between")
+                const cardBody = document.createElement("div")
+                cardBody.classList.add("card-body", "d-flex", "flex-column", "align-items-center")
 
-            const positionDiv = document.createElement("div")
-            positionDiv.classList.add("d-flex", "justify-content-between", "align-items-start")
+                const cardFooter = document.createElement("div")
+                cardFooter.classList.add("card-header", "d-flex", "justify-content-between")
 
-
-
-
-            //end of lets see
+                const positionDiv = document.createElement("div")
+                positionDiv.classList.add("d-flex", "justify-content-between", "align-items-start")
 
 
-            //Generate a listing container
-            const listingContainer = document.createElement('div')
-            console.log(listing)
-            listingContainer.classList.add('col-6','col-md-4','col-lg-3')
-            listingContainer.style.display = 'inline-block'
-
-            const listingTitle = document.createElement('h2')
-            listingTitle.innerText = listing.title
-            console.log(listing.title)
-
-            const listingImage = document.createElement('img')
-            listingImage.classList.add('img-fluid')
-            listingImage.src = listing.image
-
-            const listingImageLink = document.createElement('h2')
-            listingImageLink.href = `/listing?id=${listing.id}`
-
-            // const descriptionParagraph = document.createElement('p')
-            // descriptionParagraph.innerText = listing.description
+                //end of lets see
 
 
-            cardBody.appendChild(positionDiv)
-            cardDiv.appendChild(cardFooter)
-            cardDiv.appendChild(cardBody)
-            listingContainer.appendChild(cardDiv)
+                //Generate a listing container
+                const listingContainer = document.createElement('div')
+                console.log(listing)
+                listingContainer.classList.add('col-6', 'col-md-4', 'col-lg-3')
+                listingContainer.style.display = 'inline-block'
+
+                const listingTitle = document.createElement('h2')
+                listingTitle.innerText = listing.title
+                console.log(listing.title)
+
+                const listingImage = document.createElement('img')
+                listingImage.classList.add('img-fluid')
+                listingImage.src = listing.image
+
+                const listingImageLink = document.createElement('a')
+                listingImageLink.href = `/listing?id=${listing.id}`
+
+                // const descriptionParagraph = document.createElement('p')
+                // descriptionParagraph.innerText = listing.description
 
 
+                cardBody.appendChild(positionDiv)
+                cardDiv.appendChild(cardFooter)
+                cardDiv.appendChild(cardBody)
+                listingContainer.appendChild(cardDiv)
 
-            listingContainer.appendChild(listingTitle);
 
-            listingImageLink.appendChild(listingImage);
+                listingContainer.appendChild(listingTitle);
 
-            listingContainer.appendChild(listingImageLink);
+                listingImageLink.appendChild(listingImage)
 
-            // listingContainer.appendChild(descriptionParagraph);
+                listingContainer.appendChild(listingImageLink);
 
-            //Attach it to the search_view
-            search_view.appendChild(listingContainer);
+                // listingContainer.appendChild(descriptionParagraph);
+
+                //Attach it to the search_view
+                search_view.appendChild(listingContainer);
+            }
         }
 
     }
@@ -81,7 +81,7 @@
 
         if(searchTerm.length === 0){
             console.log(searchTerm)
-            const request = await fetch("http://localhost:8080/search", {
+            const request = await fetch("http://localhost:8083/search", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"
@@ -93,11 +93,11 @@
             const response = await request.json()
             console.log(response)
             // default_view.style.display = 'none !important'
-            search_view.style.display = 'grid !important'
+            // search_view.style.display = 'grid !important'
             populateResults(response)
         }else {
             console.log(searchTerm)
-            const request = await fetch("http://localhost:8080/search", {
+            const request = await fetch("http://localhost:8083/search", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"

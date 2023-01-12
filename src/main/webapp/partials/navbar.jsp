@@ -14,25 +14,52 @@
 
 <html>
 <head>
-    <script src="../Js/search.js" defer></script>
+    <script src="../js/search.js" defer></script>
 </head>
 <body>
 
 <nav class="navbar bg-body-tertiary">
-    <div class="container-fluid">
+    <div>
+        <img src="/img/logo.png" width="60px" height="60"/>
         <a class="navbar-brand col-2">Manga Lister</a>
-        <input class="form-control me-2 mt-3" type="search" placeholder="Find Titles" aria-label="Find" id="searchTerm" name="searchTerm">
-<%--        <button class="btn btn-outline-success mt-3" type="submit">Search</button>--%>
-        <form style="display:${loggedIn ? "block" : "none"};" action="/logout" method="post">
-            <button class="btn btn-outline-danger">Logout</button>
-        </form>
-        <a href="/login" style="display:${!loggedIn ? "block" : "none"};">
-            <button class="btn btn-outline-success">Login</button>
-        </a>
-        <a href="/profile">${loggedInUser.getFirstName().toString()}'s Profile</a>
     </div>
+    <form class="d-flex justify-content-center col-12 col-md-3" role="search">
+        <input id="searchTerm" class="form-control me-2 mt-3" type="search" placeholder="Find Titles" aria-label="Find">
+        <button class="btn btn-outline-success mt-3" type="submit">Search</button>
+    </form>
+    ${loggedInUser.getFirstName().toString()}
+    <button style="border: none; background: transparent; display:${loggedIn ? "block" : "none"};" id="cartButton">
+        <span id="cartSizeLabel"></span>
+        <span class="material-symbols-outlined">
+                shopping_cart
+            </span>
+    </button>
+    <a href="/login" style="display:${!loggedIn ? "block" : "none"};">
+        <button class="btn btn-outline-success">Login</button>
+    </a>
+    <form style="display:${loggedIn ? "block" : "none"};" action="/logout" method="post" class="mt-3">
+        <button type="submit" style="border: none; background: transparent;">
+               <span class="material-symbols-outlined">
+                    logout
+               </span>
+        </button>
+    </form>
+<%--    <div class="container-fluid">--%>
 
+<%--        <a class="navbar-brand col-2">Manga Lister</a>--%>
+<%--        <input class="form-control me-2 mt-3" type="search" placeholder="Find Titles" aria-label="Find" id="searchTerm" name="searchTerm">--%>
+<%--&lt;%&ndash;        <button class="btn btn-outline-success mt-3" type="submit">Search</button>&ndash;%&gt;--%>
+<%--        <form style="display:${loggedIn ? "block" : "none"};" action="/logout" method="post">--%>
+<%--            <button class="btn btn-outline-danger">Logout</button>--%>
+<%--        </form>--%>
+<%--        <a href="/login" style="display:${!loggedIn ? "block" : "none"};">--%>
+<%--            <button class="btn btn-outline-success">Login</button>--%>
+<%--        </a>--%>
+<%--        <a href="/profile">${loggedInUser.getFirstName().toString()}'s Profile</a>--%>
+<%--    </div>--%>
 </nav>
-
 </body>
 </html>
+
+
+

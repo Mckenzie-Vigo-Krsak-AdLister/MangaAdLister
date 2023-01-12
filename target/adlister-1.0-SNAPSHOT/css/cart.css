@@ -1,0 +1,31 @@
+.cart_item_container{
+    display: grid !important;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: auto;
+    grid-template-areas: 'img titl del'
+                         'img desc del'
+                         'seller price del';
+}
+
+.cart_item_image{
+}
+
+.cart_item_title{
+    grid-area: img;
+}
+
+.cart_item_seller{
+    grid-area: seller;
+}
+
+.cart_item_price{
+    grid-area: price;
+}
+
+.cart_item_description{
+    grid-area: desc;
+}
+
+.cart_item_remove_button{
+    grid-area: del;
+}
