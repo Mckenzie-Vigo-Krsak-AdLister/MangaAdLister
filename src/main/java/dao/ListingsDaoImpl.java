@@ -43,8 +43,25 @@ public class ListingsDaoImpl implements ListingsDao {
     }
 
     @Override
-    public Listing[] allListings() {
-        return new Listing[0];
+    public List<Listing> allListings() {
+        try {
+            PreparedStatement stmt = connection.prepareStatement("SELECT * FROM listing");
+            stmt.execute();
+            ResultSet rs = stmt.getResultSet();
+            List<Listing> listings = new ArrayList<>();
+            while (rs.next()) {
+                String title = rs.getString("title");
+                String image = rs.getString("image");
+                String description = rs.getString("description");
+                Double price = rs.getDouble("price");
+                int id = rs.getInt("id");
+                Listing newListing = new Listing(title, description, image, price, id);
+                listings.add(newListing);
+            }
+            return listings;
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     @Override

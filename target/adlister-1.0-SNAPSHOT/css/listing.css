@@ -1,121 +1,121 @@
-.hide {
-    display: none;
-}
-.right {
-    float: right;
-}
-.clear:after {
-    content: '';
-    display: block;
-    clear: both;
-}
-.transparent {
-    opacity: 0;
-}
-body {
-    background-color: #5c9ebb;
-}
-.message-wrapper {
-    position: relative;
-    width: 400px;
-    margin: 0 auto;
-    background-color: #fff;
-    box-shadow: 0px 2px 8px 3px rgba(0,0,0,0.25);
-}
-.message-wrapper .chat-box {
-    padding: 15px;
-}
-.message-wrapper .chat-box .moniker {
-    font-size: 20px;
-    color: #5a5a5a;
-    text-align: center;
-    margin-bottom: 20px;
-}
-.message-wrapper .chat-box .dialog {
-    margin-bottom: 30px;
-}
-.message-wrapper .chat-box .dialog .para {
-    padding: 6px 20px 6px 15px;
-    border-radius: 20px;
-    background-color: #e0e0e0;
-    color: #5a5a5a;
-    max-width: 100%;
-    word-break: break-all;
-}
-.message-wrapper .talking-form {
-    position: relative;
-    display: block;
-    z-index: 0;
-    overflow: hidden;
-    padding: 20px 0;
-}
-.message-wrapper .talking-form:after {
-    content: '';
-    position: absolute;
-    display: block;
-    width: 100%;
-    height: 0%;
-    opacity: 0;
-    background-color: #6cd4f9;
-    z-index: -1;
-    bottom: 0;
-}
-.message-wrapper .talking-form.animate:after {
-    animation: fill-up 1s linear 1;
-}
-.message-wrapper .talking-form .talking-para,
-.message-wrapper .talking-form .talking-btn {
-    border: 0;
-    height: 22px;
-    background-color: transparent;
-}
-.message-wrapper .talking-form .talking-para:active,
-.message-wrapper .talking-form .talking-btn:active,
-.message-wrapper .talking-form .talking-para:focus,
-.message-wrapper .talking-form .talking-btn:focus {
-    outline: 0;
-}
-.message-wrapper .talking-form .talking-para {
-    color: #5a5a5a;
-    padding: 0 0 0 15px;
-    width: 75%;
-}
-.message-wrapper .talking-form .talking-btn {
-    float: right;
-    background-color: transparent;
-    color: #3e697b;
-    padding-right: 15px;
-}
-.message-wrapper .bubble-effect {
-    position: absolute;
-    padding: 24px 0 24px 15px;
-    font-size: 14px;
-    color: #5a5a5a;
-    top: calc(100% - 62px);
-    background-color: #6cd4f9;
-    width: calc(100% - 15px);
-}
-@-moz-keyframes fill-up {
-    100% {
-        height: 100%;
-        opacity: 1;
-    }
-}
-@-webkit-keyframes fill-up {
-    100% {
-        height: 100%;
-        opacity: 1;
-    }
-}
-@-o-keyframes fill-up {
-    100% {
-        height: 100%;
-        opacity: 1;
-    }
-}
-@keyframes fill-up {
-    100% {
-        height: 100%;
-        opacity: 1;
-    }
-}
+/*.hide {*/
+/*    display: none;*/
+/*}*/
+/*.right {*/
+/*    float: right;*/
+/*}*/
+/*.clear:after {*/
+/*    content: '';*/
+/*    display: block;*/
+/*    clear: both;*/
+/*}*/
+/*.transparent {*/
+/*    opacity: 0;*/
+/*}*/
+/*body {*/
+/*    background-color: #5c9ebb;*/
+/*}*/
+/*.message-wrapper {*/
+/*    position: relative;*/
+/*    width: 400px;*/
+/*    margin: 0 auto;*/
+/*    background-color: #fff;*/
+/*    box-shadow: 0px 2px 8px 3px rgba(0,0,0,0.25);*/
+/*}*/
+/*.message-wrapper .chat-box {*/
+/*    padding: 15px;*/
+/*}*/
+/*.message-wrapper .chat-box .moniker {*/
+/*    font-size: 20px;*/
+/*    color: #5a5a5a;*/
+/*    text-align: center;*/
+/*    margin-bottom: 20px;*/
+/*}*/
+/*.message-wrapper .chat-box .dialog {*/
+/*    margin-bottom: 30px;*/
+/*}*/
+/*.message-wrapper .chat-box .dialog .para {*/
+/*    padding: 6px 20px 6px 15px;*/
+/*    border-radius: 20px;*/
+/*    background-color: #e0e0e0;*/
+/*    color: #5a5a5a;*/
+/*    max-width: 100%;*/
+/*    word-break: break-all;*/
+/*}*/
+/*.message-wrapper .talking-form {*/
+/*    position: relative;*/
+/*    display: block;*/
+/*    z-index: 0;*/
+/*    overflow: hidden;*/
+/*    padding: 20px 0;*/
+/*}*/
+/*.message-wrapper .talking-form:after {*/
+/*    content: '';*/
+/*    position: absolute;*/
+/*    display: block;*/
+/*    width: 100%;*/
+/*    height: 0%;*/
+/*    opacity: 0;*/
+/*    background-color: #6cd4f9;*/
+/*    z-index: -1;*/
+/*    bottom: 0;*/
+/*}*/
+/*.message-wrapper .talking-form.animate:after {*/
+/*    animation: fill-up 1s linear 1;*/
+/*}*/
+/*.message-wrapper .talking-form .talking-para,*/
+/*.message-wrapper .talking-form .talking-btn {*/
+/*    border: 0;*/
+/*    height: 22px;*/
+/*    background-color: transparent;*/
+/*}*/
+/*.message-wrapper .talking-form .talking-para:active,*/
+/*.message-wrapper .talking-form .talking-btn:active,*/
+/*.message-wrapper .talking-form .talking-para:focus,*/
+/*.message-wrapper .talking-form .talking-btn:focus {*/
+/*    outline: 0;*/
+/*}*/
+/*.message-wrapper .talking-form .talking-para {*/
+/*    color: #5a5a5a;*/
+/*    padding: 0 0 0 15px;*/
+/*    width: 75%;*/
+/*}*/
+/*.message-wrapper .talking-form .talking-btn {*/
+/*    float: right;*/
+/*    background-color: transparent;*/
+/*    color: #3e697b;*/
+/*    padding-right: 15px;*/
+/*}*/
+/*.message-wrapper .bubble-effect {*/
+/*    position: absolute;*/
+/*    padding: 24px 0 24px 15px;*/
+/*    font-size: 14px;*/
+/*    color: #5a5a5a;*/
+/*    top: calc(100% - 62px);*/
+/*    background-color: #6cd4f9;*/
+/*    width: calc(100% - 15px);*/
+/*}*/
+/*@-moz-keyframes fill-up {*/
+/*    100% {*/
+/*        height: 100%;*/
+/*        opacity: 1;*/
+/*    }*/
+/*}*/
+/*@-webkit-keyframes fill-up {*/
+/*    100% {*/
+/*        height: 100%;*/
+/*        opacity: 1;*/
+/*    }*/
+/*}*/
+/*@-o-keyframes fill-up {*/
+/*    100% {*/
+/*        height: 100%;*/
+/*        opacity: 1;*/
+/*    }*/
+/*}*/
+/*@keyframes fill-up {*/
+/*    100% {*/
+/*        height: 100%;*/
+/*        opacity: 1;*/
+/*    }*/
+/*}*/
