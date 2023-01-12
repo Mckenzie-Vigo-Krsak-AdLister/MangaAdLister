@@ -6,7 +6,7 @@ const cartItems = document.getElementById("cartItems");
 const addToCartClick = async function(e) {
    const listingId = this.getAttribute('listing')
    // console.log("Clicked add to cart on listing with id " + listingId)
-   const fetchReq = await fetch('http://localhost:8080/addtocart',{
+   const fetchReq = await fetch('http://localhost:8083/addtocart',{
       method : 'POST',
       body : JSON.stringify({
          listingId : listingId
@@ -26,7 +26,7 @@ Array.from(addToCartButtons).forEach(button=>{
 
 export const getCartSize = async () => {
    setTimeout(async ()=>{
-      const fetchReq = await fetch('http://localhost:8080/getcartsize',{
+      const fetchReq = await fetch('http://localhost:8083/getcartsize',{
          method : 'POST',
          body : JSON.stringify({
             // userId : userId.value
@@ -42,7 +42,7 @@ export const getCartSize = async () => {
 }
 
 const removeCartItem = async (item) => {
-   const request = await fetch('http://localhost:8080/removeFromCart',{
+   const request = await fetch('http://localhost:8083/removeFromCart',{
       method : "POST",
       headers : {
          "Content-Type" : "application/json",
@@ -112,7 +112,7 @@ const generateCartItem = (item)=> {
 }
 
 export const getCartItems = async () => {
-   const request = await fetch('http://localhost:8080/cart',{
+   const request = await fetch('http://localhost:8083/cart',{
       method : 'POST',
       body : JSON.stringify({})
    })

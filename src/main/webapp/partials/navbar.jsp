@@ -27,7 +27,7 @@
         <input id="searchTerm" class="form-control me-2 mt-3" type="search" placeholder="Find Titles" aria-label="Find">
         <button class="btn btn-outline-success mt-3" type="submit">Search</button>
     </form>
-    ${loggedInUser.getFirstName().toString()}
+    <a href="/profile"> ${loggedInUser.getFirstName().toString()}</a>
     <button style="border: none; background: transparent; display:${loggedIn ? "block" : "none"};" id="cartButton">
         <span id="cartSizeLabel"></span>
         <span class="material-symbols-outlined">
