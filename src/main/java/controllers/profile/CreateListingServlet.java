@@ -31,7 +31,7 @@ public class CreateListingServlet extends HttpServlet {
         ApiHandle myApi = new ApiHandleImpl();
         try {
             Manga newManga = myApi.getMangaContentById(req.getNewListing().getMyanimelist_id());
-            Listing newListing = new Listing(newManga.getTitle_ov(), newManga.getSynopsis(), newManga.getPicture_url(), req.getPrice(), Long.parseLong(req.getUserId()));
+            Listing newListing = new Listing(newManga.getTitle_ov(), newManga.getSynopsis(), newManga.getPicture_url(), req.getPrice(), req.getUserId());
             DaoFactory.getListingsDao().createListing(newListing);
             System.out.println(newManga.getSynopsis());
             System.out.println(newManga.getTitle_ov());
@@ -50,16 +50,16 @@ public class CreateListingServlet extends HttpServlet {
 @JsonIgnoreProperties(ignoreUnknown = true)
 class CreateListingRequest {
 
-    public String getUserId() {
-        return userId;
+    public int getUserId() {
+        return this.userId;
     }
 
-    public void setUserId(String userId) {
+    public void setUserId(int userId) {
         this.userId = userId;
     }
 
     private double price;
-    private String userId;
+    private int userId;
     private Manga newListing;
 
     public double getPrice() {
@@ -70,7 +70,7 @@ class CreateListingRequest {
         this.price = price;
     }
 
-    public CreateListingRequest(Manga newListing , String userId, double price) {
+    public CreateListingRequest(Manga newListing , int userId, double price) {
         this.userId = userId;
         this.newListing = newListing;
     }
