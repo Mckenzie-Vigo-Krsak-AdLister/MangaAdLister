@@ -1,8 +1,10 @@
 #search_view, #default_view {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr !important;
-    grid-template-rows: auto !important;
-    text-align: center !important;
+    /*display: grid;*/
+    /*grid-template-columns: 1fr 1fr 1fr !important;*/
+    /*grid-template-rows: auto !important;*/
+    /*text-align: center !important;*/
+}
+
 
 
 
@@ -15,5 +17,4 @@
     /*padding: 10px;*/
     /*box-shadow: 0 0 10px #ccc;*/
 
-}
 
