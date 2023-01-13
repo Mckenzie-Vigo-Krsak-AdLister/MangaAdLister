@@ -47,9 +47,6 @@ public class LoginServlet extends HttpServlet {
             String password = request.getParameter("password");
 
             //Display the incoming login request on the terminal
-            System.out.println("Incoming login request.");
-            System.out.println("Email:" + email);
-            System.out.println("Password:" + password);
 
             //Use the UsersDao to retrieve a user with that email
             UsersDao usersDao = new UsersDaoImpl();

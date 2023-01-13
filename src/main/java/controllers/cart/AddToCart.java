@@ -6,30 +6,20 @@ import dao.CartItemDao;
 import dao.DaoFactory;
 import models.Cart;
 import models.Listing;
-import models.Manga;
 import models.User;
-
-import javax.servlet.AsyncContext;
 import javax.servlet.ServletException;
-import javax.servlet.ServletResponse;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.io.Writer;
-import java.util.HashMap;
 
 @WebServlet(name="AddToCartServlet", urlPatterns = "/addtocart")
 public class AddToCart extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse res) throws IOException, ServletException {
         try{
-
-            Manga manga = (Manga) req.getAttribute("manga");
-            System.out.println(manga.getTitle_ov());
-
             //Create an object mapper
             ObjectMapper mapper = new ObjectMapper();
 
@@ -76,7 +66,6 @@ public class AddToCart extends HttpServlet {
             res.setContentType("application/json");
             PrintWriter w = res.getWriter();
             w.printf("{\"added\":\"true\",\"message\":\"added " + response.getListingId() + "\"}");
-
 
         }catch(Exception e){
             System.out.println("Error during post request at CartServlet");
