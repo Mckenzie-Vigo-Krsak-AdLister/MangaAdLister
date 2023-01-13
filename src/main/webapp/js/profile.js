@@ -133,8 +133,10 @@
         return data;
     }
 
-    const deleteFunction = async function () {
-        console.log("i work");
+    const deleteFunction = async function (e) {
+
+        e.stopPropagation()
+
         const userId = document.getElementById("userId").value
         const listingId = this.getAttribute("listing")
 
@@ -153,7 +155,7 @@
         if (response){
             clearListings()
             await getAllListings()
-            assignedDeleteHandlers()
+
         }
     }
 
