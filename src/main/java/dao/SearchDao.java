@@ -25,6 +25,7 @@ public class SearchDao {
         }
 
     }
+
     public List<Listing> getListingsByTitle(String searchTitle) throws SQLException {
         try {
             PreparedStatement stmt = connection.prepareStatement("Select * from listing where title like ?;");

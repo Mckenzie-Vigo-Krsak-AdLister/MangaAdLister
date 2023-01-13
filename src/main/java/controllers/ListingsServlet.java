@@ -27,14 +27,11 @@ public class ListingsServlet extends HttpServlet {
     }
 
     protected void doPost(HttpServletRequest request,HttpServletResponse response) throws ServletException, IOException {
-        System.out.println(request.getParameter("searchInput"));
-        System.out.println("log");
+
         try {
             ObjectMapper mapper = new ObjectMapper();
             GetListingsRequest req = mapper.readValue(request.getInputStream(), GetListingsRequest.class);
-            System.out.println("request: " + req.getUserId());
-//            User loggedInUser = (User) req.getSession().getAttribute("user");
-//            System.out.println(loggedInUser.getFirstName());
+
             List<Listing> listings = DaoFactory.getListingsDao().allListings();
 
             response.setContentType("application/json");

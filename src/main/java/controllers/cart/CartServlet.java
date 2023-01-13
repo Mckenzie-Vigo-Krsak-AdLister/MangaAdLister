@@ -45,8 +45,7 @@ public class CartServlet extends HttpServlet {
                 List<PopulatedCartItem> populatedCartItems = new ArrayList<>();
 
                 for(CartItem item : cartItems) {
-//                    System.out.println(item.getUsersId());
-//                    System.out.println(item.getListingId());
+
                     Listing listing = DaoFactory.getListingsDao().getListingById(item.getListingId());
                     User owner = DaoFactory.getUsersDao().getUserById((int)listing.getUserId());
                     System.out.println(owner.getFirstName());

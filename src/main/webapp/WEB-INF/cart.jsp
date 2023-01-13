@@ -13,15 +13,12 @@
 <head>
     <title>Manga Listings</title>
     <jsp:include page="/partials/header.jsp" />
-<%--    <script type="module" defer>--%>
-<%--        import {getCartSize} from '../js/cartsystem.js'--%>
-<%--        window.addEventListener("pageshow", getCartSize, false);--%>
-<%--    </script>--%>
+
     <script type="module">
         import {getCartSize} from '../js/cartsystem.js'
         window.addEventListener("pageshow", getCartSize, false);
     </script>
-<%--    <script src="../js/cartsystem.js" defer></script>--%>
+
     <link rel="stylesheet" href="../css/cart.css"/>
 </head>
 <body>

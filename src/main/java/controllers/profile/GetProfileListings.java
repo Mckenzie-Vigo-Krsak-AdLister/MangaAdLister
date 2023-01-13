@@ -23,9 +23,7 @@ public class GetProfileListings extends HttpServlet {
         try {
             ObjectMapper mapper = new ObjectMapper();
             GetProfileListingsRequest request = mapper.readValue(req.getInputStream(), GetProfileListingsRequest.class);
-            System.out.println("request: " + request.getUserId());
-//            User loggedInUser = (User) req.getSession().getAttribute("user");
-//            System.out.println(loggedInUser.getFirstName());
+
             List<Listing> listings = DaoFactory.getListingsDao().getListingsByUserId(request.getUserId());
 
             resp.setContentType("application/json");

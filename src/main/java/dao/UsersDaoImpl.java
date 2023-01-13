@@ -24,6 +24,7 @@ public class UsersDaoImpl implements UsersDao {
         }
 
     }
+
     @Override
     public User getUserById(int id) throws SQLException {
         try {
