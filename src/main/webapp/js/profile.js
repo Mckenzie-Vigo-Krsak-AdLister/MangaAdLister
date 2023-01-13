@@ -4,6 +4,7 @@
     //
     // const imgContainer = document.getElementById("imgContainer")
     //
+
     const userId = document.getElementById("userId").value
 
     const clearListings = () => {
