@@ -11,18 +11,14 @@
 <%@ page import="models.User" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%--<jsp:useBean id="listing" scope="request" type="models.Listing"/>--%>
 <% List<Listing> listing = (List<Listing>) request.getAttribute("listing"); %>
 <% User loggedInUser = (User) request.getSession().getAttribute("loggedInUser"); %>
-
 <html>
 <head>
     <title>Profile</title>
     <jsp:include page="/partials/header.jsp" />
-
     <script src="../js/profile.js" defer></script>
-
-    <link rel="stylesheet" href="/css/profile.css">
+    <link rel="stylesheet" href="/css/profile.css"></link>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -41,11 +37,10 @@
 
     <button id="addListingBtn" class="mt-4 btn btn-light">Add new listing</button>
 
-    <div id="createForm" class="mt-4">
+    <div id="createForm">
     </div>
     <div class="container ms-4 me-4">
         <div class="container">
-
             <div id="listingsContainer" class="container row mt-4">
 
             </div>

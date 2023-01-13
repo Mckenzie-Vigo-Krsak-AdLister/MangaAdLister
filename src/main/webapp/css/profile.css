@@ -1,6 +1,31 @@
-#createForm {
-    background: white;
+/*:root {*/
+/*    --main-bg: #E6ECF0;*/
+/*    --link-color: #3B94D9;*/
+/*    --main-link-color: #848487;*/
+/*    --light-bg: #FFF;*/
+/*    --separator-color: #DDD;*/
+/*}*/
+#createForm{
+    height: 60px;
+    z-index: 1000;
+    visibility: visible;
+}
+.createForm {
+    padding: 10px;
+    background: lightgrey;
+    border-radius: 8px;
+}
 
+.createForm_input{
+    background: white !important;
+}
+
+.createForm_submit{
+    margin-left: 10px !important;
+    background: white !important;
+    color: black !important;
+    position: relative;
+    top: -3px;
 }
 
 .rounded {
