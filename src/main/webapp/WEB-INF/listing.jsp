@@ -16,7 +16,7 @@
 <% Listing listing = (Listing) request.getAttribute("listing"); %>
 <% User loggedInUser = (User) request.getSession().getAttribute("loggedInUser"); %>
 <% User listingOwner = (User) request.getAttribute("listingOwner"); %>
-
+<% List<Manga> mangaList = (List<Manga>) request.getAttribute("mangaList"); %>
 
 <html>
 <head>
@@ -24,14 +24,23 @@
     <jsp:include page="/partials/header.jsp" />
 
     <link rel="stylesheet" href="../css/listing.css">
+    <script src="../js/profile.js" defer></script>
     <script type="module" defer>
         import {getCartSize} from '../js/cartsystem.js'
         window.addEventListener("pageshow", getCartSize, false);
     </script>
 
+    <link rel="stylesheet" href="/css/profile.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@100;300&display=swap" rel="stylesheet">
+
 </head>
 <body>
 <jsp:include page="/partials/navbar.jsp" />
+<div id="backgroundImg"></div>
+<div id="backgroundOverlay"></div>
 <div class="container">
 
     <h1 class="mt-4">Hey ${loggedInUser.getFirstName()}!, here's the manga you asked for!</h1>
@@ -54,6 +63,7 @@
     <jsp:include page="/partials/messages.jsp" >
         <jsp:param name="listingOwner" value="${listingOwner.getFirstName()}" />
     </jsp:include>
+    <input type="hidden" id="userId" value="${loggedInUser.getId()}">
 
 </div>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
