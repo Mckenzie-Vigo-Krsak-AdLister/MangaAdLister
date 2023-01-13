@@ -1,9 +1,11 @@
 (async ()=>{
 
+
     const port = 8083;
     //
     // const imgContainer = document.getElementById("imgContainer")
     //
+
     const userId = document.getElementById("userId").value
     //
     const clearListings = () => {

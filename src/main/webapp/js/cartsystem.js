@@ -1,3 +1,4 @@
+
 const addToCartButtons = document.getElementsByClassName("addToCartButton")
 
 // const userId = document.getElementById("userId")
@@ -145,3 +146,4 @@ if(cartButton) {
       window.location.href = "/cart"
    }
 }
+
