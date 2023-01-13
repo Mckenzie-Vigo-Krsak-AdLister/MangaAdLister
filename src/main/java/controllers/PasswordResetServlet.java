@@ -20,11 +20,6 @@ public class PasswordResetServlet extends HttpServlet {
             String password_confirmation = req.getParameter("password_confirmation");
             String nonce = req.getParameter("nonce");
 
-            System.out.println("Received request to change password");
-            System.out.println("Password:" + password);
-            System.out.println("Password Confirmation: " + password_confirmation);
-            System.out.println("Nonce: " + nonce);
-
             //Server side validation check
             if(password.equals(password_confirmation) && nonce != null){
                 //If the passwords match and there's a nonce available

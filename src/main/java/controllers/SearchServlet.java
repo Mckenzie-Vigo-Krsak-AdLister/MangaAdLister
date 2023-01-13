@@ -20,7 +20,6 @@ public class SearchServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request,HttpServletResponse response) throws ServletException, IOException{
         ObjectMapper  mapper = new ObjectMapper();
         SearchRequest req = mapper.readValue(request.getInputStream(), SearchRequest.class);
-        System.out.println(req.getSearchTerm());
 
         try {
            List<Listing> l =  DaoFactory.getSearchDao().getListingsByTitle(req.getSearchTerm());
@@ -42,7 +41,6 @@ public class SearchServlet extends HttpServlet {
 
 class SearchRequest {
     private String searchTerm;
-
     public SearchRequest(String searchTerm) {
         this.searchTerm = searchTerm;
     }

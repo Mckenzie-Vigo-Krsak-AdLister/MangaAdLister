@@ -92,5 +92,4 @@ public class Manga implements Serializable {
         this.myanimelist_id = myanimelist_id;
     }
 
-
 }
