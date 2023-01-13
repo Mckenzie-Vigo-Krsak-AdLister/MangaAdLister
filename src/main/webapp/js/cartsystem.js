@@ -1,12 +1,11 @@
 
 const addToCartButtons = document.getElementsByClassName("addToCartButton")
 
-// const userId = document.getElementById("userId")
+
 const cartSizeLabel = document.getElementById("cartSizeLabel")
 const cartItems = document.getElementById("cartItems");
 const addToCartClick = async function(e) {
    const listingId = this.getAttribute('listing')
-   // console.log("Clicked add to cart on listing with id " + listingId)
    const fetchReq = await fetch('http://localhost:8083/addtocart',{
       method : 'POST',
       body : JSON.stringify({
@@ -14,8 +13,6 @@ const addToCartClick = async function(e) {
       })
    })
 
-   console.log("Response from add to cart request")
-   console.log(await fetchReq.json())
    await getCartSize()
    alert("Item added to your cart!.")
 }
@@ -24,19 +21,15 @@ Array.from(addToCartButtons).forEach(button=>{
    button.onclick = addToCartClick;
 })
 
-
 export const getCartSize = async () => {
    setTimeout(async ()=>{
       const fetchReq = await fetch('http://localhost:8083/getcartsize',{
          method : 'POST',
          body : JSON.stringify({
-            // userId : userId.value
          })
       })
 
       const resp = await fetchReq.json()
-      console.log("Cart Size:")
-      console.log(resp)
 
       cartSizeLabel.innerText = resp
    },300)
@@ -54,15 +47,13 @@ const removeCartItem = async (item) => {
    })
 
    const response = await request.json()
-   console.log(response)
 
    await getCartItems()
    await getCartSize()
 }
 
 const generateCartItem = (item)=> {
-   console.log("Generating cart item for:")
-   console.log(item)
+
    //Main cart item container
    const container = document.createElement('div')
    container.className = "cart_item_container"
@@ -119,8 +110,7 @@ export const getCartItems = async () => {
    })
 
    const response = await request.json()
-   console.log("Cart Items:")
-   console.log(response)
+
    if(response) {
       //Clear the list of cart items
       cartItems.innerHTML = "";
@@ -142,7 +132,6 @@ if(cartItems){
 const cartButton = document.getElementById("cartButton");
 if(cartButton) {
    cartButton.onclick = () => {
-      console.log("Cart button clicked.")
       window.location.href = "/cart"
    }
 }

@@ -52,14 +52,6 @@ public class RegisterServlet extends HttpServlet {
             String lastName = request.getParameter("last_name");
             String accountType = request.getParameter("accountType");
 
-            System.out.println("Incoming login request.");
-            System.out.println("Email:" + email);
-            System.out.println("Password:" + password);
-            System.out.println("Confirm:" + confirm);
-            System.out.println("Name:" + name);
-            System.out.println("Last Name:" + lastName);
-            System.out.println("Account Type" + accountType);
-
             if(!password.equals(confirm)){
                 response.sendRedirect("/register?error=passwordmismatch");
             }else{
@@ -82,7 +74,6 @@ public class RegisterServlet extends HttpServlet {
 
                     request.getSession().setAttribute("loggedIn", true);
                     request.getSession().setAttribute("uid", newUserId);
-//                    request.getRequestDispatcher("/listings.jsp").forward(request, response);
                     response.sendRedirect("/listings");
                 }else{
                     request.getSession().invalidate();

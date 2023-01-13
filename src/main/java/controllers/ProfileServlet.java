@@ -21,16 +21,14 @@ public class ProfileServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        System.out.println("Please work");
-        ;
 
             //Check if the user is logged in
             try {
                 boolean loggedIn = (boolean) req.getSession().getAttribute("loggedIn");
                 User loggedInUser = (User) req.getSession().getAttribute("loggedInUser");
-                System.out.println(loggedInUser.getFirstName());
+
                 List<Listing> l = DaoFactory.getListingsDao().getListingsByUserId(loggedInUser.getId());
-                System.out.println(l.size());
+
                 for (Listing listing : l) {
                     System.out.println(listing.getTitle());
                 }
@@ -43,7 +41,7 @@ public class ProfileServlet extends HttpServlet {
                 }
             }catch(Exception e){ //If there's not even an attribute set in the session for loggedIn
                 System.out.println(e.getMessage());
-//                resp.sendRedirect("/login"); //Send them to the login page, because the session is null
+
             }
 
     }

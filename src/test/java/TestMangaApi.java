@@ -88,7 +88,6 @@ public class TestMangaApi {
 
         Listing expectedListing = this.listingsDao.getListingById(10);
 
-//        Assert.assertEquals(fakeListing.getDescription(), expectedListing.getDescription());
         Assert.assertEquals(true, expectedListing != null);
 
     }

@@ -11,7 +11,6 @@
 
         <link href="/css/listings.css" rel="stylesheet" type="text/css"/>
 
-
         <link href="${pageContext.request.contextPath}/css/listings.css" rel="stylesheet" type="text/css">
         <script type="module" defer>
             import { getCartSize } from '/js/cartsystem.js'

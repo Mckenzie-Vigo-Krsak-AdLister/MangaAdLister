@@ -57,17 +57,6 @@ public class MySQLMangaDao implements Mangas  {
 
     }
 
-//    @Override
-//    public void deleteManga(int userId, String title) {
-//        try {
-//            PreparedStatement stmt = connection.prepareStatement("DELETE FROM listing WHERE user_id = ?");
-//            stmt.setLong(1, userId);
-//            stmt.executeUpdate();
-//        } catch (SQLException e) {
-//            throw new RuntimeException("Error deleting manga.", e);
-//        }
-//    }
-
     private String createInsertQuery(Manga manga) {
         String sql = "INSERT INTO listing(id, title, image, description, price, users_id) VALUES (?, ?, ?, ?, ?, ?)";
         PreparedStatement statement = null;

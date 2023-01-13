@@ -26,21 +26,16 @@ public class CreateListingServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request,HttpServletResponse response) throws ServletException, IOException {
         ObjectMapper mapper = new ObjectMapper();
         CreateListingRequest req = mapper.readValue(request.getInputStream(), CreateListingRequest.class);
-        System.out.println(req.getNewListing().getMyanimelist_id());
 
         ApiHandle myApi = new ApiHandleImpl();
+
         try {
+
             Manga newManga = myApi.getMangaContentById(req.getNewListing().getMyanimelist_id());
             Listing newListing = new Listing(newManga.getTitle_ov(), newManga.getSynopsis(), newManga.getPicture_url(), req.getPrice(), req.getUserId());
             DaoFactory.getListingsDao().createListing(newListing);
-            System.out.println(newManga.getSynopsis());
-            System.out.println(newManga.getTitle_ov());
-            System.out.println(req.getUserId());
-            System.out.println(req.getPrice());
 
             response.getWriter().println("{}");
-
-
 
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
@@ -53,36 +48,28 @@ class CreateListingRequest {
     public int getUserId() {
         return this.userId;
     }
-
     public void setUserId(int userId) {
         this.userId = userId;
     }
-
     private double price;
     private int userId;
     private Manga newListing;
-
     public double getPrice() {
         return price;
     }
-
     public void setPrice(double price) {
         this.price = price;
     }
-
     public CreateListingRequest(Manga newListing , int userId, double price) {
         this.userId = userId;
         this.newListing = newListing;
     }
-
     public Manga getNewListing() {
         return newListing;
     }
-
     public void setNewListing(Manga newListing) {
         this.newListing = newListing;
     }
-
     public CreateListingRequest(){}
 
 }

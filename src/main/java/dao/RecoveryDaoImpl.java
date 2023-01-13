@@ -19,6 +19,7 @@ public class RecoveryDaoImpl implements RecoveryDao {
 
     @Override
     public String getRecoverCodeForUserId(int userid) throws SQLException {
+
         try {
             //Grab the recovery for the user with the passed user id
             PreparedStatement stmt = connection.prepareStatement("SELECT * FROM recovery WHERE userid=?;");

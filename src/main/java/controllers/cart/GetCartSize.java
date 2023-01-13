@@ -27,7 +27,6 @@ public class GetCartSize extends HttpServlet {
             System.out.println(cartItems.size());
 
             //Pull their cart items and return their length
-//            ObjectMapper mapper = new ObjectMapper();
             res.getWriter().println(cartItems.size());
 
         }catch (Exception e){
