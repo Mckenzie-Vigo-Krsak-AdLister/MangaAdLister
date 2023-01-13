@@ -1,6 +1,5 @@
 (async ()=>{
 
-
     const port = 8083;
 
     const userId = document.getElementById("userId").value
@@ -205,6 +204,7 @@
         const formTag = document.createElement("form")
         formTag.action = "/profile"
         formTag.method = "post"
+        formTag.className = "createForm"
 
         const titleLable = document.createElement("label")
         titleLable.for = "title"
@@ -213,6 +213,7 @@
         titleInput.id = "title"
         titleInput.type = "text"
         titleInput.placeholder = "enter manga title"
+        titleInput.classList.add("createForm_input")
 
         const priceLable = document.createElement("label")
         priceLable.for = "price"
@@ -221,9 +222,10 @@
         priceInput.id = "price"
         priceInput.type = "text"
         priceInput.placeholder = "set a price for the listing"
+        priceInput.classList.add("createForm_input")
 
         const createSubmitBtn = document.createElement("button")
-        createSubmitBtn.classList.add("btn", "btn-secondary")
+        createSubmitBtn.classList.add("btn", "btn-secondary","createForm_submit")
         createSubmitBtn.type = "button"
         createSubmitBtn.id = "submitBtn"
         createSubmitBtn.value = "Submit"
@@ -237,19 +239,18 @@
 
         createSubmitBtn.onclick = ()=> {
             createSearchTerm(document.getElementById("title").value, document.getElementById("price").value)
-            createForm.innerHTML = ""
+            createForm.style.display = "none";
             addListingBtn.style.display = "inline-block"
         }
 
         return formTag;
-
     }
 
     addListingBtn.onclick = async ()=> {
-
-        createForm.innerHTML = "";
-        createForm.appendChild(form())
-        addListingBtn.style.display = "none"
+        createForm.style.display = "block" //Diaplay it
+        createForm.innerHTML = "" //Clear it
+        createForm.appendChild(form()) //Fill it
+        addListingBtn.style.display = "none" //Hide listing btn
 
     }
 

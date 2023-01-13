@@ -12,7 +12,10 @@
 <%@ page import="models.User" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ page import="java.math.BigDecimal" %>
+<%@ page import="java.io.PrintWriter" %>
+<%@ page import="java.util.Formatter" %>
 <% Listing listing = (Listing) request.getAttribute("listing"); %>
 <% User loggedInUser = (User) request.getSession().getAttribute("loggedInUser"); %>
 <% User listingOwner = (User) request.getAttribute("listingOwner"); %>
@@ -51,8 +54,12 @@
             <h2>${listing.title}</h2>
             <img src="${listing.image}" class="img-fluid img-thumbnail">
             <p>${listing.description}</p>
-
-            <button id="addToCartButton" class="addToCartButton" listing="${listing.getId()}" style="border: none; background: transparent;display:${loggedInUser.getId() != listing.getUserId() ? "block" : "none"};">
+<%--            <h4>Price: <fmt:formatNumber type="number" maxFractionDigits="2" value="${listing.price}"/></h4>--%>
+            <span><strong>Price:</strong> $<%
+               String price = new Formatter().format("%.2f", listing.getPrice()).toString();
+                out.write(price);
+            %></span>&nbsp;&nbsp;
+            <button id="addToCartButton" class="addToCartButton" listing="${listing.getId()}" style="border: none; background: transparent;display:${loggedInUser.getId() != listing.getUserId() ? "inline-block" : "none"};">
                 <span class="material-symbols-outlined">
                     add_shopping_cart
                 </span>
