@@ -28,6 +28,11 @@
     top: -3px;
 }
 
+.rounded {
+    border: 1px solid transparent;
+    box-shadow: 0px 0px 3px 2px lightgrey;
+}
+
 #backgroundOverlay {
     left: 0;
     top: 0;

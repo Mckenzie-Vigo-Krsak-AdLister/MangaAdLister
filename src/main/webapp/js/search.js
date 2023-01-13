@@ -14,45 +14,57 @@
             for(let item in response) {
                 const listing = response[item]
 
+                const listingDiv = document.createElement("div")
+                listingDiv.classList.add("container", "listing", "col-12", "col-md-6", "col-lg-4", "mb-3")
+
                 const cardDiv = document.createElement("div")
-                cardDiv.class = "card"
+                cardDiv.className = "card"
+                cardDiv.onclick = () => window.location.href = `http://localhost:${port}/listing?id=${listing.id}`
+
+                const cardHeader = document.createElement("div")
+                cardHeader.classList.add("card-header", "d-flex", "justify-content-center")
+                const title = document.createElement("h4")
+                title.innerText = listing.title.length > 10? listing.title.substring(0, 10) + "...": listing.title
 
                 const cardBody = document.createElement("div")
                 cardBody.classList.add("card-body", "d-flex", "flex-column", "align-items-center")
 
-                const cardFooter = document.createElement("div")
-                cardFooter.classList.add("card-header", "d-flex", "justify-content-between")
-
                 const positionDiv = document.createElement("div")
                 positionDiv.classList.add("d-flex", "justify-content-between", "align-items-start")
 
-                //Generate a listing container
-                const listingContainer = document.createElement('div')
-                listingContainer.classList.add('col-6', 'col-md-4', 'col-lg-3')
-                listingContainer.style.display = 'inline-block'
+                const imgA = document.createElement("a")
+                imgA.href = "/listing?id=" + listing.id
+                const img = document.createElement("img")
+                img.style.width = "222px"
+                img.style.height = "350px"
+                img.src = listing.image
+                img.alt = listing.title
+                img.classList.add("img-fluid", "rounded", "mb-2", "img-thumbnail")
+                const descriptionP = document.createElement("p")
+                descriptionP.innerText = listing.description.substring(0,75) + "..."
 
-                const listingTitle = document.createElement('h2')
-                listingTitle.innerText = listing.title
-
-                const listingImage = document.createElement('img')
-                listingImage.classList.add('img-fluid')
-                listingImage.src = listing.image
-
-                const listingImageLink = document.createElement('a')
-                listingImageLink.href = `/listing?id=${listing.id}`
-
+                cardHeader.appendChild(title)
+                imgA.appendChild(img)
                 cardBody.appendChild(positionDiv)
-                cardDiv.appendChild(cardFooter)
+                cardBody.appendChild(imgA)
+                cardBody.appendChild(descriptionP)
+                cardDiv.appendChild(cardHeader)
                 cardDiv.appendChild(cardBody)
-                listingContainer.appendChild(cardDiv)
+                listingDiv.appendChild(cardDiv)
+                search_view.appendChild(listingDiv)
 
-                listingContainer.appendChild(listingTitle);
-
-                listingImageLink.appendChild(listingImage)
-
-                listingContainer.appendChild(listingImageLink);
-
-                search_view.appendChild(listingContainer);
+                // cardBody.appendChild(positionDiv)
+                // cardDiv.appendChild(cardFooter)
+                // cardDiv.appendChild(cardBody)
+                // listingContainer.appendChild(cardDiv)
+                //
+                // listingContainer.appendChild(listingTitle);
+                //
+                // listingImageLink.appendChild(listingImage)
+                //
+                // listingContainer.appendChild(listingImageLink);
+                //
+                // search_view.appendChild(listingContainer);
             }
         }
 

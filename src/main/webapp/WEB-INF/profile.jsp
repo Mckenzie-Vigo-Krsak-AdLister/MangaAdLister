@@ -41,7 +41,6 @@
     </div>
     <div class="container ms-4 me-4">
         <div class="container">
-
             <div id="listingsContainer" class="container row mt-4">
 
             </div>

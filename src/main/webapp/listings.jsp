@@ -34,12 +34,15 @@
     <jsp:include page="partials/navbar.jsp" />
     <div id="backgroundImg"></div>
     <div id="backgroundOverlay"></div>
-        <div class="container">
+        <div class="container table">
 
             <h1 class="mt-4">Here Are all the ads!</h1>
+            <div class="container ms-4 me-4">
+                <div class="container">
+                    <div id="search_view" class="listingsContainer row mt-4">
 
-            <div id="search_view">
-
+                    </div>
+                </div>
             </div>
         </div>
     <input type="hidden" id="userId" value="${loggedInUser.getId()}">
