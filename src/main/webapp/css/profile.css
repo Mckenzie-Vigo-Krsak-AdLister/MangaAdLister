@@ -5,9 +5,27 @@
 /*    --light-bg: #FFF;*/
 /*    --separator-color: #DDD;*/
 /*}*/
-#createForm {
-    background: white;
+#createForm{
+    height: 60px;
+    z-index: 1000;
+    visibility: visible;
+}
+.createForm {
+    padding: 10px;
+    background: lightgrey;
+    border-radius: 8px;
+}
 
+.createForm_input{
+    background: white !important;
+}
+
+.createForm_submit{
+    margin-left: 10px !important;
+    background: white !important;
+    color: black !important;
+    position: relative;
+    top: -3px;
 }
 
 #backgroundOverlay {

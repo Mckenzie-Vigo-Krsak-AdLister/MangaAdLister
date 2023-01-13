@@ -2,7 +2,7 @@
     // const default_view = document.getElementById('default_view')
     const search_view = document.getElementById('search_view')
     const searchinput = document.getElementById("searchTerm")
-    const port = 8083;
+    const port = 8080;
 
     const populateResults = (response) => {
         if (search_view){
