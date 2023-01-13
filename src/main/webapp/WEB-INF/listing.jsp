@@ -23,7 +23,6 @@
     <title>Manga Listings</title>
     <jsp:include page="/partials/header.jsp" />
 
-    <script src="../js/listing.js"></script>
     <link rel="stylesheet" href="../css/listing.css">
     <script type="module" defer>
         import {getCartSize} from '../js/cartsystem.js'

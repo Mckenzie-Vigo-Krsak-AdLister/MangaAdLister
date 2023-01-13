@@ -22,12 +22,13 @@ public class ProfileServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         System.out.println("Please work");
-
+        ;
 
             //Check if the user is logged in
             try {
                 boolean loggedIn = (boolean) req.getSession().getAttribute("loggedIn");
                 User loggedInUser = (User) req.getSession().getAttribute("loggedInUser");
+                System.out.println(loggedInUser.getFirstName());
                 List<Listing> l = DaoFactory.getListingsDao().getListingsByUserId(loggedInUser.getId());
                 System.out.println(l.size());
                 for (Listing listing : l) {

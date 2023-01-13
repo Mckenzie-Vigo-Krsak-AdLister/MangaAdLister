@@ -1,14 +1,34 @@
 (async ()=>{
 
-    const port = 8080;
 
-    const bgContainer = document.getElementById("bgContainer")
+    const port = 8083;
+    //
+    // const imgContainer = document.getElementById("imgContainer")
+    //
 
     const userId = document.getElementById("userId").value
-
+    //
     const clearListings = () => {
         document.getElementById("listingsContainer").innerHTML = "";
 
+    }
+
+    const shuffle = (array)=> {
+        let currentIndex = array.length,  randomIndex;
+
+        // While there remain elements to shuffle.
+        while (currentIndex != 0) {
+
+            // Pick a remaining element.
+            randomIndex = Math.floor(Math.random() * currentIndex);
+            currentIndex--;
+
+            // And swap it with the current element.
+            [array[currentIndex], array[randomIndex]] = [
+                array[randomIndex], array[currentIndex]];
+        }
+
+        return array;
     }
 
     const bgCoverImg = async () => {
@@ -25,23 +45,93 @@
         });
 
         const data = await response.json();
-        console.log(data);
-        data.forEach(listing => {
+        // let array = [];
+        // let url;
+        //
+        // let array2 = [];
+        // console.log(data);
 
-            const bgCover = document.createElement('div')
-            bgCover.className = "face"
+        // for (let i = 0; i < data.length; i++) {
+        //     // let url;
+        //     // let url1;
+        //
+        //     url = data[i].image;
+        //     console.log(url);
+        //     body.style.backgroundImage = "url(" + url + ")";
+        //     array.push(url);
+        //     // backgroundImg = "no-repeat"
+        //     // array2.push(backgroundImg);
+        //
+        //
+        //     // document.getElementById("bgContainer").style.backgroundImage = `url(array[i])`;
+        //     // document.getElementById("bgContainer").style.backgroundSize = "cover";
+        //     // document.getElementById("bgContainer").style.backgroundRepeat = array2[i];
+        //
+        // }
+        const backgroundImg = document.getElementById("backgroundImg");
+        const top50 = data.slice(0, 50)
 
-            const bgImg = document.createElement('img')
-            bgImg.src = listing.image
+        // let imageLoadCount = 0;
+        let randoImg = Array.of(...top50, ...top50, ...top50, ...top50, ...top50, ...top50, ...top50)
 
-            const bgMask = document.createElement('div')
-            bgMask.className = "mask"
+        randoImg = shuffle(randoImg)
 
-            bgCover.appendChild(bgImg)
-            bgCover.appendChild(bgMask)
-            bgContainer.appendChild(bgCover)
+        randoImg.forEach(listing => {
 
-        })
+            // const background = document.getElementById("background")
+            // const ctxt = background.getContext("2d");
+            // const currentX = 1
+            // const currentY = 1
+            // const maxWidth = 100
+            // const maxHeight = 100
+            // const maxX
+            // let currentImg = 0
+
+            const imgContain = document.createElement('div');
+            imgContain.className = "imgContain";
+            // imgContain.style.maxWidth = "300px !important";
+            imgContain.style.backgroundImage = `url(${listing.image})`;
+            // imgContain.style.backgroundSize = 'cover !important';
+            // imgContain.style.backgroundRepeat = 'no-repeat !important';
+            // imgContain.style.backgroundPosition = 'center !important';
+            // imgContain.style.width = '300px !important';
+            // imgContain.style.height = '200px !important';
+
+            backgroundImg.appendChild(imgContain);
+
+
+
+        });
+
+
+//         const imgContainer = document.getElementById("imgContainer");
+// // fix this so that it creates a background in the .jsp with all the image urls pulled form the fecth request
+//
+//         data.forEach(listing => {
+//             const bgCover = document.createElement('div')
+//             bgCover.className = "face"
+//
+//             const bgImg = document.createElement('img')
+//             bgImg.src = listing.image
+//
+//             const bgMask = document.createElement('div')
+//             bgMask.className = "mask"
+//
+//             bgCover.appendChild(bgImg)
+//             bgCover.appendChild(bgMask)
+//             imgContainer.appendChild(bgCover)
+//
+//         })
+
+
+//         for (let i = 0; i < data.length; i++) {
+//             url = data[i].image;
+//
+//         }
+        // for (url of data) {
+        //     imgContainer.style.backgroundImage = `url(${url.image})`;
+        //
+        // }
     }
 
     await bgCoverImg()
@@ -84,17 +174,20 @@
 
             const cardDiv = document.createElement("div")
             cardDiv.className = "card"
+            cardDiv.onclick = () => window.location.href = `http://localhost:${port}/listing?id=${listing.id}`
 
             const cardHeader = document.createElement("div")
             cardHeader.classList.add("card-header", "d-flex", "justify-content-between")
-            const title = document.createElement("h2")
-            title.innerText = listing.title
+            const title = document.createElement("h4")
+            // title.innerText = listing.title
+            title.innerText = listing.title.length > 10? listing.title.substring(0, 10) + "...": listing.title
             const deleteBtn = document.createElement("button")
             deleteBtn.classList.add("btn", "btn-danger")
             deleteBtn.id = "deleteButton"
             deleteBtn.setAttribute("listing", listing.id)
             deleteBtn.innerText = "X"
-
+            deleteBtn.style.maxHeight = "38px"
+            deleteBtn.style.maxWidth = "36px"
             deleteBtn.onclick = deleteFunction
 
             const cardBody = document.createElement("div")
@@ -102,29 +195,32 @@
 
             const positionDiv = document.createElement("div")
             positionDiv.classList.add("d-flex", "justify-content-between", "align-items-start")
-            const priceP = document.createElement("p")
-            priceP.class = "fw-bold"
-            priceP.innerText = "Buy this Manga for $" + listing.price + "0"
-            const cartBtn = document.createElement("button")
-            cartBtn.id = "cartBtn"
-            cartBtn.class = "btn"
-            const cartIcon = document.createElement("i")
-            cartIcon.classList.add("bi", "bi-cart-plus")
+            // const priceP = document.createElement("p")
+            // priceP.class = "fw-bold"
+            // priceP.innerText = "Buy this Manga for $" + listing.price + "0"
+            // const cartBtn = document.createElement("button")
+            // cartBtn.id = "cartBtn"
+            // cartBtn.class = "btn"
+            // const cartIcon = document.createElement("i")
+            // cartIcon.classList.add("bi", "bi-cart-plus")
 
             const imgA = document.createElement("a")
             imgA.href = "/listing?id=" + listing.id
             const img = document.createElement("img")
+            img.style.width = "222px"
+            img.style.height = "350px"
             img.src = listing.image
             img.alt = listing.title
             img.classList.add("img-fluid", "rounded", "mb-2", "img-thumbnail")
             const descriptionP = document.createElement("p")
-            descriptionP.innerText = listing.description
+            // descriptionP.style.fontFamily = "monospace"
+            descriptionP.innerText = listing.description.substring(0,75) + "..."
 
             cardHeader.appendChild(title)
             cardHeader.appendChild(deleteBtn)
-            positionDiv.appendChild(priceP)
-            cartBtn.appendChild(cartIcon)
-            positionDiv.appendChild(cartBtn)
+            // positionDiv.appendChild(priceP)
+            // cartBtn.appendChild(cartIcon)
+            // positionDiv.appendChild(cartBtn)
             imgA.appendChild(img)
             cardBody.appendChild(positionDiv)
             cardBody.appendChild(imgA)
