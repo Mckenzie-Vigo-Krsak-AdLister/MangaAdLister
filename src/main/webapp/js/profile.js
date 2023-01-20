@@ -45,7 +45,7 @@
         const backgroundImg = document.getElementById("backgroundImg");
         const top50 = data.slice(0, 50)
 
-        let randoImg = Array.of(...top50, ...top50, ...top50, ...top50, ...top50, ...top50, ...top50)
+        let randoImg = Array.of(...top50, ...top50, ...top50, ...top50, ...top50, ...top50, ...top50, ...top50, ...top50)
 
         randoImg = shuffle(randoImg)
 
