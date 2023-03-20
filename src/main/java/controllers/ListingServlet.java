@@ -14,6 +14,8 @@ import java.sql.SQLException;
 
 @WebServlet(name="ListingServlet", urlPatterns = "/listing")
 public class ListingServlet extends HttpServlet {
+
+    // i love java
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         try {
